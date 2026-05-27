@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaunchPad — Think! Ventures | Start Your Business</title>
+  <meta name="description" content="Free interactive tool to walk you through starting your business. All forms, fees, and steps — aggregated in one place.">
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    /* ── LaunchPad Wizard Styles ── */
+    .wizard { max-width: 900px; margin: 0 auto; }
+
+    .wizard__progress {
+      display: flex; gap: 4px; margin-bottom: var(--sp-2xl);
+    }
+    .wizard__progress-step {
+      flex: 1; height: 6px; border-radius: 3px;
+      background: rgba(255,255,255,0.1);
+      transition: var(--transition-base);
+    }
+    .wizard__progress-step.active { background: var(--color-accent); }
+    .wizard__progress-step.complete { background: var(--color-secondary); }
+
+    .wizard__step { display: none; animation: fadeUp 0.5s ease; }
+    .wizard__step.active { display: block; }
+
+    .wizard__question {
+      font-family: var(--font-heading);
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      margin-bottom: var(--sp-sm);
+    }
+    .wizard__hint {
+      color: var(--color-text-muted);
+      margin-bottom: var(--sp-2xl);
+    }
+
+    /* Option Cards */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: var(--sp-lg);
+    }
+    .option-card {
+      background: var(--color-bg-card);
+      border: 2px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--sp-xl);
+      cursor: pointer;
+      transition: var(--transition-base);
+      text-align: center;
+    }
+    .option-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+    .option-card.selected {
+      border-color: var(--color-secondary);
+      background: rgba(245, 166, 35, 0.08);
+      box-shadow: 0 0 20px rgba(245, 166, 35, 0.15);
+    }
+    .option-card__icon { font-size: 2.5rem; margin-bottom: var(--sp-md); display: block; }
+    .option-card__title { font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); margin-bottom: var(--sp-sm); }
+    .option-card__desc { color: var(--color-text-muted); font-size: var(--fs-sm); line-height: 1.6; }
+
+    /* Entity comparison */
+    .entity-card {
+      background: var(--color-bg-card);
+      border: 2px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--sp-xl);
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+    .entity-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .entity-card.selected { border-color: var(--color-secondary); background: rgba(245,166,35,0.08); }
+    .entity-card__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-md); }
+    .entity-card__title { font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-xl); }
+    .entity-card__badge {
+      padding: var(--sp-xs) var(--sp-md);
+      border-radius: var(--border-radius-xl);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge--recommended { background: var(--color-accent); color: var(--color-bg); }
+    .badge--simple { background: rgba(245,166,35,0.2); color: var(--color-secondary); }
+    .entity-card__pros { margin-top: var(--sp-md); }
+    .entity-card__pros li {
+      list-style: none;
+      color: var(--color-text-muted);
+      padding: var(--sp-xs) 0;
+      font-size: var(--fs-sm);
+    }
+    .entity-card__pros li::before { content: "✓ "; color: var(--color-accent); font-weight: 700; }
+    .entity-card__fee {
+      margin-top: var(--sp-lg);
+      padding-top: var(--sp-md);
+      border-top: 1px solid var(--color-border);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-secondary);
+    }
+
+    /* Checklist */
+    .checklist { margin-top: var(--sp-xl); }
+    .checklist__category {
+      margin-bottom: var(--sp-2xl);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+    }
+    .checklist__category-header {
+      display: flex; align-items: center; gap: var(--sp-md);
+      padding: var(--sp-lg) var(--sp-xl);
+      background: rgba(16,185,129,0.08);
+      border-bottom: 1px solid var(--color-border);
+      cursor: pointer;
+    }
+    .checklist__category-icon { font-size: var(--fs-xl); }
+    .checklist__category-title { font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); }
+    .checklist__category-count {
+      margin-left: auto;
+      padding: var(--sp-xs) var(--sp-md);
+      background: rgba(16,185,129,0.15);
+      border-radius: var(--border-radius-xl);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+    .checklist__items { padding: var(--sp-md) 0; }
+    .checklist__item {
+      display: flex; align-items: flex-start; gap: var(--sp-lg);
+      padding: var(--sp-md) var(--sp-xl);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition: var(--transition-fast);
+    }
+    .checklist__item:last-child { border-bottom: none; }
+    .checklist__item:hover { background: rgba(16,185,129,0.03); }
+    .checklist__check {
+      width: 24px; height: 24px; min-width: 24px;
+      border: 2px solid var(--color-border);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition-fast);
+      margin-top: 2px;
+    }
+    .checklist__check.checked {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+    .checklist__check.checked::after { content: "✓"; color: white; font-size: 14px; font-weight: 700; }
+    .checklist__item-content { flex: 1; }
+    .checklist__item-title { font-weight: 600; margin-bottom: 4px; }
+    .checklist__item-desc { font-size: var(--fs-sm); color: var(--color-text-muted); line-height: 1.6; }
+    .checklist__item-meta {
+      display: flex; gap: var(--sp-lg); margin-top: var(--sp-sm);
+      flex-wrap: wrap;
+    }
+    .checklist__item-tag {
+      font-size: var(--fs-xs);
+      padding: 2px var(--sp-sm);
+      border-radius: var(--border-radius-xl);
+      font-weight: 600;
+    }
+    .tag--fee { background: rgba(245,166,35,0.15); color: var(--color-secondary); }
+    .tag--time { background: rgba(16,185,129,0.15); color: var(--color-accent); }
+    .tag--link { background: rgba(99,102,241,0.15); color: #818CF8; }
+    .checklist__item-link {
+      font-size: var(--fs-xs);
+      color: #818CF8;
+      text-decoration: underline;
+    }
+
+    /* Summary bar */
+    .summary-bar {
+      position: sticky; bottom: 0;
+      background: rgba(7,15,26,0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--color-border);
+      padding: var(--sp-lg) var(--sp-xl);
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 100;
+    }
+    .summary-bar__info { display: flex; gap: var(--sp-2xl); }
+    .summary-bar__stat-value { font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-xl); color: var(--color-secondary); }
+    .summary-bar__stat-label { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+    /* Resource cards */
+    .resource-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-md);
+      padding: var(--sp-lg);
+      display: flex; align-items: center; gap: var(--sp-lg);
+      transition: var(--transition-base);
+    }
+    .resource-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .resource-card__icon { font-size: 2rem; min-width: 50px; text-align: center; }
+    .resource-card__title { font-weight: 600; margin-bottom: 4px; }
+    .resource-card__desc { font-size: var(--fs-sm); color: var(--color-text-muted); }
+
+    /* Nav buttons */
+    .wizard__nav {
+      display: flex; justify-content: space-between; margin-top: var(--sp-2xl);
+      padding-top: var(--sp-xl); border-top: 1px solid var(--color-border);
+    }
+
+    /* Think! CTA in results */
+    .think-cta {
+      background: linear-gradient(135deg, rgba(13,79,79,0.3) 0%, rgba(16,185,129,0.1) 100%);
+      border: 2px solid var(--color-accent);
+      border-radius: var(--border-radius-xl);
+      padding: var(--sp-2xl);
+      text-align: center;
+      margin-top: var(--sp-2xl);
+    }
+    .think-cta__title { font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 700; margin-bottom: var(--sp-md); }
+    .think-cta__text { color: var(--color-text-muted); margin-bottom: var(--sp-xl); }
+
+    @media (max-width: 768px) {
+      .option-grid { grid-template-columns: 1fr; }
+      .summary-bar { flex-direction: column; gap: var(--sp-md); }
+      .summary-bar__info { gap: var(--sp-lg); }
+      .wizard__question { font-size: var(--fs-xl); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">💡</span>
+        <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="index.html#programs" class="nav__link">Programs</a>
+        <a href="index.html#transparency" class="nav__link">Transparency</a>
+        <a href="launchpad.html" class="nav__link" style="color:var(--color-accent);">LaunchPad Tool</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="section" style="padding-top:120px;">
+    <div class="container">
+      <div class="wizard" id="wizard">
+
+        <!-- Progress Bar -->
+        <div class="wizard__progress" id="progress">
+          <div class="wizard__progress-step active" data-step="1"></div>
+          <div class="wizard__progress-step" data-step="2"></div>
+          <div class="wizard__progress-step" data-step="3"></div>
+          <div class="wizard__progress-step" data-step="4"></div>
+          <div class="wizard__progress-step" data-step="5"></div>
+        </div>
+
+        <!-- STEP 1: What's your business? -->
+        <div class="wizard__step active" id="step-1">
+          <span class="section-label">Step 1 of 5</span>
+          <h2 class="wizard__question">What kind of business do you want to start?</h2>
+          <p class="wizard__hint">Select the category that best fits your idea. This helps us find the right forms, licenses, and permits for you.</p>
+
+          <div class="option-grid" id="industry-grid">
+            <div class="option-card" data-value="home-services">
+              <span class="option-card__icon">🏠</span>
+              <div class="option-card__title">Home Services</div>
+              <div class="option-card__desc">Landscaping, lighting, cleaning, painting, HVAC, plumbing, electrical</div>
+            </div>
+            <div class="option-card" data-value="food-beverage">
+              <span class="option-card__icon">🍽️</span>
+              <div class="option-card__title">Food & Beverage</div>
+              <div class="option-card__desc">Restaurant, food truck, catering, bakery, bar, coffee shop</div>
+            </div>
+            <div class="option-card" data-value="health-beauty">
+              <span class="option-card__icon">💇</span>
+              <div class="option-card__title">Health & Beauty</div>
+              <div class="option-card__desc">Salon, barbershop, spa, fitness, wellness, personal training</div>
+            </div>
+            <div class="option-card" data-value="professional">
+              <span class="option-card__icon">💼</span>
+              <div class="option-card__title">Professional Services</div>
+              <div class="option-card__desc">Consulting, accounting, legal, marketing, design, IT support</div>
+            </div>
+            <div class="option-card" data-value="retail">
+              <span class="option-card__icon">🛍️</span>
+              <div class="option-card__title">Retail & E-Commerce</div>
+              <div class="option-card__desc">Online store, boutique, merch, dropshipping, handmade goods</div>
+            </div>
+            <div class="option-card" data-value="creative">
+              <span class="option-card__icon">🎨</span>
+              <div class="option-card__title">Creative & Media</div>
+              <div class="option-card__desc">Photography, videography, music, art, content creation, publishing</div>
+            </div>
+            <div class="option-card" data-value="construction">
+              <span class="option-card__icon">🔨</span>
+              <div class="option-card__title">Construction & Trades</div>
+              <div class="option-card__desc">General contractor, roofing, flooring, carpentry, welding</div>
+            </div>
+            <div class="option-card" data-value="tech">
+              <span class="option-card__icon">💻</span>
+              <div class="option-card__title">Technology</div>
+              <div class="option-card__desc">Software, app development, SaaS, AI tools, web development</div>
+            </div>
+            <div class="option-card" data-value="education">
+              <span class="option-card__icon">📚</span>
+              <div class="option-card__title">Education & Tutoring</div>
+              <div class="option-card__desc">Tutoring, online courses, training, coaching, childcare</div>
+            </div>
+          </div>
+
+          <div class="wizard__nav">
+            <div></div>
+            <button class="btn btn--primary" id="next-1" disabled>Next: Choose Your State &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: What state? -->
+        <div class="wizard__step" id="step-2">
+          <span class="section-label">Step 2 of 5</span>
+          <h2 class="wizard__question">Where will your business be based?</h2>
+          <p class="wizard__hint">Each state has different filing requirements, fees, and permits. We'll customize everything for you.</p>
+
+          <div class="option-grid" id="state-grid">
+            <div class="option-card" data-value="NC">
+              <span class="option-card__icon">🌲</span>
+              <div class="option-card__title">North Carolina</div>
+              <div class="option-card__desc">LLC filing: $125 | Business-friendly | Our home state</div>
+            </div>
+            <div class="option-card" data-value="FL">
+              <span class="option-card__icon">🌴</span>
+              <div class="option-card__title">Florida</div>
+              <div class="option-card__desc">LLC filing: $125 | No state income tax | Growing market</div>
+            </div>
+            <div class="option-card" data-value="other">
+              <span class="option-card__icon">🗺️</span>
+              <div class="option-card__title">Other State</div>
+              <div class="option-card__desc">We'll provide general guidance. Fees and forms vary by state.</div>
+            </div>
+          </div>
+
+          <div class="wizard__nav">
+            <button class="btn btn--outline" id="back-2">&larr; Back</button>
+            <button class="btn btn--primary" id="next-2" disabled>Next: Choose Entity Type &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Entity Type -->
+        <div class="wizard__step" id="step-3">
+          <span class="section-label">Step 3 of 5</span>
+          <h2 class="wizard__question">What type of business entity?</h2>
+          <p class="wizard__hint">Not sure? Here's a comparison to help you decide. Most small businesses start as an LLC.</p>
+
+          <div style="display:grid;gap:var(--sp-lg);margin-top:var(--sp-lg);" id="entity-grid">
+            <div class="entity-card" data-value="llc">
+              <div class="entity-card__header">
+                <div class="entity-card__title">LLC (Limited Liability Company)</div>
+                <span class="entity-card__badge badge--recommended">Recommended</span>
+              </div>
+              <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Most popular choice for small businesses. Protects your personal assets, flexible management, and pass-through taxation.</p>
+              <ul class="entity-card__pros">
+                <li>Personal asset protection from business debts</li>
+                <li>Flexible management structure</li>
+                <li>Pass-through taxation (no double tax)</li>
+                <li>Easy to set up and maintain</li>
+                <li>Can add members later as you grow</li>
+              </ul>
+              <div class="entity-card__fee" id="llc-fee">NC Filing Fee: $125</div>
+            </div>
+
+            <div class="entity-card" data-value="sole-prop">
+              <div class="entity-card__header">
+                <div class="entity-card__title">Sole Proprietorship</div>
+                <span class="entity-card__badge badge--simple">Simplest</span>
+              </div>
+              <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Easiest and cheapest to start, but offers no personal liability protection. Best for very small, low-risk businesses.</p>
+              <ul class="entity-card__pros">
+                <li>No state filing required</li>
+                <li>Simplest tax filing (Schedule C)</li>
+                <li>Complete control of your business</li>
+                <li>Minimal paperwork</li>
+              </ul>
+              <div class="entity-card__fee">Filing Fee: $0 (just need EIN)</div>
+            </div>
+
+            <div class="entity-card" data-value="s-corp">
+              <div class="entity-card__header">
+                <div class="entity-card__title">S-Corporation</div>
+                <span class="entity-card__badge" style="background:rgba(255,255,255,0.1);color:var(--color-text-muted);">Advanced</span>
+              </div>
+              <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Better for businesses earning $50K+ in profit. Potential self-employment tax savings, but more complex and expensive to maintain.</p>
+              <ul class="entity-card__pros">
+                <li>Self-employment tax savings on distributions</li>
+                <li>Personal asset protection</li>
+                <li>Professional credibility</li>
+                <li>Stock options for future investors</li>
+              </ul>
+              <div class="entity-card__fee" id="scorp-fee">NC Filing Fee: $125 (LLC) + IRS Form 2553</div>
+            </div>
+
+            <div class="entity-card" data-value="nonprofit">
+              <div class="entity-card__header">
+                <div class="entity-card__title">501(c)(3) Nonprofit</div>
+                <span class="entity-card__badge" style="background:rgba(99,102,241,0.2);color:#818CF8;">Mission-Driven</span>
+              </div>
+              <p style="color:var(--color-text-muted);font-size:var(--fs-sm);">For charitable, educational, or social missions. Tax-exempt status and eligible for grants, but requires a board and more compliance.</p>
+              <ul class="entity-card__pros">
+                <li>Tax-exempt federal and state</li>
+                <li>Eligible for grants and donations</li>
+                <li>Donors get tax deductions</li>
+                <li>Mission-driven credibility</li>
+              </ul>
+              <div class="entity-card__fee" id="nonprofit-fee">NC Filing: $60 | IRS 1023-EZ: $275</div>
+            </div>
+          </div>
+
+          <div class="wizard__nav">
+            <button class="btn btn--outline" id="back-3">&larr; Back</button>
+            <button class="btn btn--primary" id="next-3" disabled>Next: Your Business Name &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Business Name -->
+        <div class="wizard__step" id="step-4">
+          <span class="section-label">Step 4 of 5</span>
+          <h2 class="wizard__question">What will you call your business?</h2>
+          <p class="wizard__hint">Enter your desired business name. We'll include it in your personalized checklist.</p>
+
+          <div style="margin:var(--sp-2xl) 0;">
+            <label style="display:block;font-weight:600;margin-bottom:var(--sp-sm);">Business Name</label>
+            <input type="text" id="biz-name" placeholder="e.g., Arlan LLC" style="width:100%;padding:var(--sp-lg);font-size:var(--fs-lg);background:var(--color-bg-card);border:2px solid var(--color-border);border-radius:var(--border-radius-md);color:var(--color-text);font-family:var(--font-body);outline:none;transition:var(--transition-fast);" onfocus="this.style.borderColor='var(--color-accent)'" onblur="this.style.borderColor='var(--color-border)'">
+          </div>
+
+          <div style="margin:var(--sp-xl) 0;">
+            <label style="display:block;font-weight:600;margin-bottom:var(--sp-sm);">Describe your business in one sentence</label>
+            <input type="text" id="biz-desc" placeholder="e.g., Premium exterior lighting and home services" style="width:100%;padding:var(--sp-lg);font-size:var(--fs-base);background:var(--color-bg-card);border:2px solid var(--color-border);border-radius:var(--border-radius-md);color:var(--color-text);font-family:var(--font-body);outline:none;transition:var(--transition-fast);" onfocus="this.style.borderColor='var(--color-accent)'" onblur="this.style.borderColor='var(--color-border)'">
+          </div>
+
+          <div class="wizard__nav">
+            <button class="btn btn--outline" id="back-4">&larr; Back</button>
+            <button class="btn btn--gold btn--lg" id="next-4">Generate My Checklist &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: Complete Checklist -->
+        <div class="wizard__step" id="step-5">
+          <span class="section-label">Your Personalized Roadmap</span>
+          <h2 class="wizard__question">Launch Checklist for <span id="result-name" class="text-gradient"></span></h2>
+          <p class="wizard__hint" id="result-summary"></p>
+
+          <div class="checklist" id="checklist-container">
+            <!-- Generated dynamically -->
+          </div>
+
+          <!-- Think! CTA -->
+          <div class="think-cta">
+            <div class="think-cta__title">Want Us to Do All of This <span class="text-gradient">For You?</span></div>
+            <p class="think-cta__text">Through our LaunchPad program, Think! Ventures builds your entire digital business — brand, website, merch store, business plan — in days. At zero cost.</p>
+            <a href="index.html#apply" class="btn btn--gold btn--lg">Apply to LaunchPad (Free) &rarr;</a>
+          </div>
+
+          <!-- Resources -->
+          <div style="margin-top:var(--sp-3xl);">
+            <h3 style="margin-bottom:var(--sp-xl);">📚 Resources & Tutorials</h3>
+            <div style="display:grid;gap:var(--sp-md);" id="resources-container">
+              <!-- Generated dynamically -->
+            </div>
+          </div>
+
+          <div class="wizard__nav">
+            <button class="btn btn--outline" id="back-5">&larr; Start Over</button>
+            <button class="btn btn--primary" id="print-btn">🖨️ Print Checklist</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary Bar (visible on Step 5) -->
+  <div class="summary-bar" id="summary-bar" style="display:none;">
+    <div class="summary-bar__info">
+      <div>
+        <div class="summary-bar__stat-value" id="total-fees">$0</div>
+        <div class="summary-bar__stat-label">Total Estimated Fees</div>
+      </div>
+      <div>
+        <div class="summary-bar__stat-value" id="total-steps">0</div>
+        <div class="summary-bar__stat-label">Steps to Complete</div>
+      </div>
+      <div>
+        <div class="summary-bar__stat-value" id="completed-steps">0 / 0</div>
+        <div class="summary-bar__stat-label">Completed</div>
+      </div>
+    </div>
+    <div>
+      <div class="summary-bar__stat-value" id="est-time">2–4 weeks</div>
+      <div class="summary-bar__stat-label">Estimated Timeline</div>
+    </div>
+  </div>
+
+  <script>
+    // ── Data: Forms, fees, and steps by state and entity ──
+    const DATA = {
+      states: {
+        NC: {
+          name: "North Carolina",
+          llcFee: 125, corpFee: 125, nonprofitFee: 60,
+          sosUrl: "https://www.sosnc.gov/divisions/business_registration",
+          taxUrl: "https://www.ncdor.gov/",
+          privilegeLicense: false,
+        },
+        FL: {
+          name: "Florida",
+          llcFee: 125, corpFee: 70, nonprofitFee: 35,
+          sosUrl: "https://dos.fl.gov/sunbiz/",
+          taxUrl: "https://floridarevenue.com/",
+          privilegeLicense: false,
+        },
+        other: {
+          name: "Your State",
+          llcFee: 100, corpFee: 100, nonprofitFee: 50,
+          sosUrl: "https://www.usa.gov/start-business",
+          taxUrl: "",
+          privilegeLicense: false,
+        }
+      },
+
+      industries: {
+        "home-services": {
+          name: "Home Services",
+          licenses: ["General Business License", "Contractor License (if applicable)", "Liability Insurance"],
+          permits: ["Home Occupation Permit (if home-based)"],
+          resources: [
+            { icon: "🔨", title: "Starting a Home Services Business", desc: "Complete guide to licensing, insurance, and finding your first clients." },
+            { icon: "📋", title: "Contractor Licensing in NC/FL", desc: "When you do and don't need a contractor license." },
+          ]
+        },
+        "food-beverage": {
+          name: "Food & Beverage",
+          licenses: ["Food Service Permit", "Health Department Inspection", "ServSafe Certification", "ABC License (if serving alcohol)"],
+          permits: ["Food Truck Permit (if mobile)", "Zoning Approval"],
+          resources: [
+            { icon: "🍽️", title: "Starting a Food Business", desc: "Health permits, kitchen requirements, and food safety certifications." },
+            { icon: "🚚", title: "Food Truck Startup Guide", desc: "Mobile food vendor permits, commissary kitchen requirements." },
+          ]
+        },
+        "health-beauty": {
+          name: "Health & Beauty",
+          licenses: ["Cosmetology License (state board)", "Establishment License", "Liability Insurance"],
+          permits: ["Health & Safety Inspection"],
+          resources: [
+            { icon: "💇", title: "Opening a Salon or Spa", desc: "State board licensing, insurance, and client management." },
+          ]
+        },
+        "professional": {
+          name: "Professional Services",
+          licenses: ["Professional License (if applicable)", "Business License"],
+          permits: [],
+          resources: [
+            { icon: "💼", title: "Starting a Consulting Business", desc: "Low overhead, high value — how to price and sell your expertise." },
+          ]
+        },
+        "retail": {
+          name: "Retail & E-Commerce",
+          licenses: ["Sales Tax Permit", "Resale Certificate"],
+          permits: ["Zoning Approval (if physical location)"],
+          resources: [
+            { icon: "🛍️", title: "E-Commerce Startup Guide", desc: "Stripe, Shopify, print-on-demand — choosing the right platform." },
+          ]
+        },
+        "creative": {
+          name: "Creative & Media",
+          licenses: ["Business License"],
+          permits: [],
+          resources: [
+            { icon: "🎨", title: "Freelance Creative Business", desc: "Pricing, contracts, copyright, and building a client base." },
+          ]
+        },
+        "construction": {
+          name: "Construction & Trades",
+          licenses: ["General Contractor License", "Trade-Specific License", "Workers Comp Insurance", "Liability Insurance"],
+          permits: ["Building Permits (per project)"],
+          resources: [
+            { icon: "🔨", title: "Construction Business Startup", desc: "Licensing requirements, bonding, and insurance essentials." },
+          ]
+        },
+        "tech": {
+          name: "Technology",
+          licenses: ["Business License"],
+          permits: [],
+          resources: [
+            { icon: "💻", title: "Tech Startup Guide", desc: "MVP development, SaaS pricing, and finding your first customers." },
+          ]
+        },
+        "education": {
+          name: "Education & Tutoring",
+          licenses: ["Business License", "Childcare License (if applicable)"],
+          permits: ["Background Check (if working with minors)"],
+          resources: [
+            { icon: "📚", title: "Starting an Education Business", desc: "Online courses, tutoring platforms, and certification programs." },
+          ]
+        }
+      }
+    };
+
+    // ── State ──
+    let selections = { industry: null, state: null, entity: null, name: '', desc: '' };
+    let currentStep = 1;
+
+    // ── Option selection ──
+    function setupOptionCards(gridId, key, nextBtnId) {
+      const grid = document.getElementById(gridId);
+      const nextBtn = document.getElementById(nextBtnId);
+      grid.querySelectorAll('.option-card, .entity-card').forEach(card => {
+        card.addEventListener('click', () => {
+          grid.querySelectorAll('.option-card, .entity-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          selections[key] = card.dataset.value;
+          if (nextBtn) nextBtn.disabled = false;
+        });
+      });
+    }
+
+    setupOptionCards('industry-grid', 'industry', 'next-1');
+    setupOptionCards('state-grid', 'state', 'next-2');
+    setupOptionCards('entity-grid', 'entity', 'next-3');
+
+    // ── Navigation ──
+    function goToStep(step) {
+      currentStep = step;
+      document.querySelectorAll('.wizard__step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`step-${step}`).classList.add('active');
+
+      document.querySelectorAll('.wizard__progress-step').forEach((s, i) => {
+        s.classList.remove('active', 'complete');
+        if (i + 1 === step) s.classList.add('active');
+        if (i + 1 < step) s.classList.add('complete');
+      });
+
+      document.getElementById('summary-bar').style.display = step === 5 ? 'flex' : 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (step === 5) generateChecklist();
+    }
+
+    document.getElementById('next-1').addEventListener('click', () => goToStep(2));
+    document.getElementById('next-2').addEventListener('click', () => goToStep(3));
+    document.getElementById('next-3').addEventListener('click', () => goToStep(4));
+    document.getElementById('next-4').addEventListener('click', () => {
+      selections.name = document.getElementById('biz-name').value || 'Your Business';
+      selections.desc = document.getElementById('biz-desc').value || '';
+      goToStep(5);
+    });
+    document.getElementById('back-2').addEventListener('click', () => goToStep(1));
+    document.getElementById('back-3').addEventListener('click', () => goToStep(2));
+    document.getElementById('back-4').addEventListener('click', () => goToStep(3));
+    document.getElementById('back-5').addEventListener('click', () => { currentStep = 1; location.reload(); });
+    document.getElementById('print-btn').addEventListener('click', () => window.print());
+
+    // ── Generate Checklist ──
+    function generateChecklist() {
+      const s = DATA.states[selections.state] || DATA.states.other;
+      const ind = DATA.industries[selections.industry];
+      const entity = selections.entity;
+
+      document.getElementById('result-name').textContent = selections.name;
+      document.getElementById('result-summary').textContent =
+        `${ind.name} business in ${s.name} as a ${entity === 'llc' ? 'LLC' : entity === 'sole-prop' ? 'Sole Proprietorship' : entity === 's-corp' ? 'S-Corporation' : '501(c)(3) Nonprofit'}. Here is every step, form, and fee you need.`;
+
+      let categories = [];
+      let totalFee = 0;
+
+      // Category 1: Entity Formation
+      if (entity === 'llc') {
+        const fee = s.llcFee;
+        totalFee += fee;
+        categories.push({
+          icon: '📄', title: 'Form Your LLC', count: 4,
+          items: [
+            { title: `File Articles of Organization with ${s.name} Secretary of State`, desc: `The official document that creates your LLC. You'll need: a business name, registered agent (with physical NC address), and business purpose.`, fee: `$${fee}`, time: '1–3 business days', link: s.sosUrl, linkText: 'File Online' },
+            { title: 'Draft an Operating Agreement', desc: 'Internal document defining ownership, responsibilities, and profit sharing. Not filed with the state but essential for credibility and banking.', fee: '$0', time: '1 day' },
+            { title: 'Get an EIN (Employer Identification Number)', desc: 'Your federal tax ID number. Required to open a business bank account, hire employees, and file taxes. Apply online at IRS.gov — free and instant.', fee: '$0 (free)', time: 'Immediate', link: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online', linkText: 'Apply at IRS.gov' },
+            { title: 'Open a Business Bank Account', desc: 'Keep personal and business finances separate. Bring your Articles of Organization, EIN, and Operating Agreement to any bank.', fee: '$0–$25', time: '1 day' }
+          ]
+        });
+      } else if (entity === 'sole-prop') {
+        categories.push({
+          icon: '📄', title: 'Register Your Business', count: 3,
+          items: [
+            { title: 'Register a DBA (Doing Business As) / Trade Name', desc: `If operating under a name other than your own legal name, register your trade name with the ${s.name} county clerk or Secretary of State.`, fee: '$10–$26', time: '1–3 days', link: s.sosUrl, linkText: 'File Online' },
+            { title: 'Get an EIN', desc: 'Your federal tax ID. Even sole proprietors should get one to keep personal SSN off business documents.', fee: '$0 (free)', time: 'Immediate', link: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online', linkText: 'Apply at IRS.gov' },
+            { title: 'Open a Business Bank Account', desc: 'Separate your finances. Bring your EIN and DBA registration.', fee: '$0–$25', time: '1 day' }
+          ]
+        });
+        totalFee += 26;
+      } else if (entity === 's-corp') {
+        totalFee += s.llcFee;
+        categories.push({
+          icon: '📄', title: 'Form Your S-Corporation', count: 5,
+          items: [
+            { title: 'Form an LLC first', desc: 'Most small S-Corps start as an LLC and then elect S-Corp tax treatment. File Articles of Organization with your state.', fee: `$${s.llcFee}`, time: '1–3 days', link: s.sosUrl, linkText: 'File Online' },
+            { title: 'Get an EIN', desc: 'Required before filing the S-Corp election.', fee: '$0 (free)', time: 'Immediate', link: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online', linkText: 'Apply at IRS.gov' },
+            { title: 'File IRS Form 2553 (S-Corp Election)', desc: 'This elects your LLC to be taxed as an S-Corporation. Must be filed within 75 days of formation or by March 15 for existing businesses.', fee: '$0', time: '2–4 weeks processing', link: 'https://www.irs.gov/forms-pubs/about-form-2553', linkText: 'IRS Form 2553' },
+            { title: 'Set Up Payroll', desc: 'S-Corp owners must pay themselves a "reasonable salary" via payroll. Use Gusto, ADP, or QuickBooks Payroll.', fee: '$40–$80/mo', time: 'Ongoing' },
+            { title: 'Open a Business Bank Account', desc: 'Bring Articles, EIN, and Operating Agreement.', fee: '$0–$25', time: '1 day' }
+          ]
+        });
+      } else if (entity === 'nonprofit') {
+        totalFee += s.nonprofitFee + 275;
+        categories.push({
+          icon: '📄', title: 'Form Your 501(c)(3) Nonprofit', count: 6,
+          items: [
+            { title: 'Recruit 3+ Board Members', desc: 'The IRS requires at least 3 unrelated individuals on your board of directors.', fee: '$0', time: '1–2 weeks' },
+            { title: `File Articles of Incorporation with ${s.name}`, desc: 'Must include: charitable purpose statement, dissolution clause, and political activity restriction language.', fee: `$${s.nonprofitFee}`, time: '1–3 days', link: s.sosUrl, linkText: 'File Online' },
+            { title: 'Draft Bylaws & Conflict of Interest Policy', desc: 'Internal governance documents. Not filed with the state but required by the IRS when applying for 501(c)(3) status.', fee: '$0', time: '1–3 days' },
+            { title: 'Get an EIN', desc: 'Apply online, free, instant.', fee: '$0 (free)', time: 'Immediate', link: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online', linkText: 'Apply at IRS.gov' },
+            { title: 'File IRS Form 1023-EZ for 501(c)(3) Status', desc: 'The streamlined application for tax-exempt status. For organizations with projected gross receipts ≤ $50,000/year.', fee: '$275', time: '3–6 months', link: 'https://www.pay.gov/', linkText: 'File on Pay.gov' },
+            { title: 'Register for Charitable Solicitation (if soliciting donations)', desc: `If you plan to raise more than $25,000/year in donations, register with ${s.name}'s charitable solicitation office.`, fee: '$0–$200', time: '2–4 weeks' }
+          ]
+        });
+      }
+
+      // Category 2: Taxes
+      categories.push({
+        icon: '💰', title: 'Tax Registration', count: 3,
+        items: [
+          { title: `Register with ${s.name} Department of Revenue`, desc: 'Required for state income tax withholding and sales tax (if applicable to your industry).', fee: '$0', time: '1–2 weeks', link: s.taxUrl || '#', linkText: 'State Revenue Dept' },
+          { title: 'Determine Sales Tax Requirements', desc: `If you sell physical products, you likely need a Sales Tax Permit. Services may be exempt — check ${s.name} rules.`, fee: '$0', time: '1 week' },
+          { title: 'Set Up Bookkeeping', desc: 'Use QuickBooks, Wave (free), or hire a bookkeeper. Track income, expenses, and receipts from day one.', fee: '$0–$30/mo', time: 'Ongoing' }
+        ]
+      });
+
+      // Category 3: Industry-specific
+      if (ind.licenses.length > 0 || ind.permits.length > 0) {
+        const items = [];
+        ind.licenses.forEach(l => {
+          items.push({ title: l, desc: `Required for ${ind.name} businesses in ${s.name}. Contact your local county or city clerk for specific requirements.`, fee: 'Varies', time: 'Varies' });
+        });
+        ind.permits.forEach(p => {
+          items.push({ title: p, desc: `May be required depending on your specific location and setup.`, fee: 'Varies', time: 'Varies' });
+        });
+        categories.push({
+          icon: '📋', title: `${ind.name} Licenses & Permits`, count: items.length, items
+        });
+      }
+
+      // Category 4: Insurance
+      categories.push({
+        icon: '🛡️', title: 'Insurance', count: 3,
+        items: [
+          { title: 'General Liability Insurance', desc: 'Protects against third-party claims of bodily injury or property damage. Required by many clients and landlords.', fee: '$30–$100/mo', time: '1 day' },
+          { title: 'Professional Liability / E&O Insurance', desc: 'Protects against claims of negligence or mistakes in your professional services. Important for consultants, contractors, and service providers.', fee: '$20–$80/mo', time: '1 day' },
+          { title: `Workers' Compensation (if hiring employees)`, desc: `Required in most states once you hire employees. ${s.name} requires it for businesses with 3+ employees.`, fee: 'Varies by industry', time: '1 day' }
+        ]
+      });
+
+      // Category 5: Digital Presence
+      categories.push({
+        icon: '🌐', title: 'Digital Presence', count: 5,
+        items: [
+          { title: 'Register a Domain Name', desc: 'Your web address (e.g., yourbusiness.com). Use Namecheap, Google Domains, or GoDaddy.', fee: '$10–$15/yr', time: 'Immediate' },
+          { title: 'Build a Professional Website', desc: 'Your 24/7 storefront. Include services, about, contact, and portfolio pages. Think! Ventures does this for free through LaunchPad.', fee: '$0 through Think! / $5,000–$25,000 elsewhere', time: '1–2 days (Think!) / 4–12 weeks (traditional)' },
+          { title: 'Set Up Google Business Profile', desc: 'Appear in local Google searches and Maps. Free, essential for local businesses.', fee: '$0', time: '30 minutes', link: 'https://business.google.com/', linkText: 'Google Business' },
+          { title: 'Create Social Media Accounts', desc: 'Instagram, Facebook, TikTok — wherever your customers are. Consistent branding across all platforms.', fee: '$0', time: '1 hour' },
+          { title: 'Set Up Payment Processing', desc: 'Accept payments online and in-person. Stripe (2.9% + $0.30), Square, or PayPal. Think! sets this up for LaunchPad partners.', fee: '$0 setup / transaction fees', time: '1 day' }
+        ]
+      });
+
+      // Render
+      const container = document.getElementById('checklist-container');
+      container.innerHTML = '';
+      let totalItems = 0;
+
+      categories.forEach(cat => {
+        totalItems += cat.items.length;
+        const section = document.createElement('div');
+        section.className = 'checklist__category';
+        section.innerHTML = `
+          <div class="checklist__category-header">
+            <span class="checklist__category-icon">${cat.icon}</span>
+            <span class="checklist__category-title">${cat.title}</span>
+            <span class="checklist__category-count">${cat.items.length} steps</span>
+          </div>
+          <div class="checklist__items">
+            ${cat.items.map(item => `
+              <div class="checklist__item">
+                <div class="checklist__check" onclick="this.classList.toggle('checked');updateProgress();"></div>
+                <div class="checklist__item-content">
+                  <div class="checklist__item-title">${item.title}</div>
+                  <div class="checklist__item-desc">${item.desc}</div>
+                  <div class="checklist__item-meta">
+                    ${item.fee ? `<span class="checklist__item-tag tag--fee">💰 ${item.fee}</span>` : ''}
+                    ${item.time ? `<span class="checklist__item-tag tag--time">⏱️ ${item.time}</span>` : ''}
+                    ${item.link ? `<a href="${item.link}" target="_blank" class="checklist__item-link">${item.linkText || 'Link'} →</a>` : ''}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        container.appendChild(section);
+      });
+
+      // Resources
+      const resContainer = document.getElementById('resources-container');
+      resContainer.innerHTML = '';
+      const allResources = [
+        ...ind.resources,
+        { icon: "📖", title: "How to Write a Business Plan", desc: "Free template and guide for creating a bank-ready business plan." },
+        { icon: "💡", title: "Think! Ventures LaunchPad", desc: "Apply for our free program and get everything built for you in days." },
+        { icon: "📊", title: "Financial Projections Template", desc: "Spreadsheet template for 3-year revenue and expense projections." }
+      ];
+      allResources.forEach(r => {
+        resContainer.innerHTML += `
+          <div class="resource-card">
+            <div class="resource-card__icon">${r.icon}</div>
+            <div>
+              <div class="resource-card__title">${r.title}</div>
+              <div class="resource-card__desc">${r.desc}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      // Summary bar
+      document.getElementById('total-fees').textContent = `$${totalFee}+`;
+      document.getElementById('total-steps').textContent = totalItems;
+      document.getElementById('completed-steps').textContent = `0 / ${totalItems}`;
+    }
+
+    function updateProgress() {
+      const total = document.querySelectorAll('.checklist__check').length;
+      const done = document.querySelectorAll('.checklist__check.checked').length;
+      document.getElementById('completed-steps').textContent = `${done} / ${total}`;
+    }
+  </script>
+
+</body>
+</html>
