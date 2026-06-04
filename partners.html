@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Directory — Think! Ventures Foundation</title>
+  <meta name="description" content="Browse the Think! Ventures partner ecosystem. Search services, view locations, and connect with our network of businesses across North Carolina, Virginia, and beyond.">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    /* ── Partner Page Styles ── */
+    .partner-hero {
+      padding: var(--sp-3xl) 0 var(--sp-2xl);
+      text-align: center;
+    }
+
+    /* Map */
+    .map-wrapper {
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+      margin-top: var(--sp-2xl);
+    }
+    #partnerMap {
+      height: 450px;
+      width: 100%;
+      background: var(--color-bg-card);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-sm);
+      justify-content: center;
+      margin: var(--sp-2xl) 0;
+    }
+    .filter-chip {
+      padding: var(--sp-sm) var(--sp-lg);
+      border-radius: var(--border-radius-xl);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: var(--fs-sm);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+    .filter-chip:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .filter-chip.active {
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      color: var(--color-white);
+      border-color: var(--color-accent);
+    }
+
+    /* Search */
+    .search-bar {
+      max-width: 500px;
+      margin: 0 auto var(--sp-2xl);
+      position: relative;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: var(--sp-md) var(--sp-xl);
+      padding-left: 48px;
+      border-radius: var(--border-radius-xl);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      color: var(--color-white);
+      font-size: var(--fs-md);
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .search-bar input::placeholder { color: var(--color-text-muted); }
+    .search-bar input:focus { border-color: var(--color-accent); }
+    .search-bar__icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      pointer-events: none;
+    }
+
+    /* Results count */
+    .results-count {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--fs-sm);
+      margin-bottom: var(--sp-xl);
+    }
+    .results-count strong { color: var(--color-accent); }
+
+    /* Partner Directory Grid */
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-xl);
+    }
+
+    .dir-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--sp-2xl);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .dir-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+    .dir-card.hidden { display: none; }
+
+    .dir-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-lg);
+      margin-bottom: var(--sp-lg);
+    }
+    .dir-card__logo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--border-radius-md);
+      object-fit: contain;
+      background: rgba(255,255,255,0.05);
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .dir-card__logo-placeholder {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--border-radius-md);
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dir-card__name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-lg);
+      color: var(--color-white);
+    }
+    .dir-card__role {
+      font-size: var(--fs-xs);
+      color: var(--color-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .dir-card__desc {
+      color: var(--color-text-muted);
+      font-size: var(--fs-sm);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: var(--sp-lg);
+    }
+
+    .dir-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-sm);
+      margin-bottom: var(--sp-lg);
+    }
+    .dir-card__tag {
+      padding: 2px var(--sp-sm);
+      border-radius: var(--border-radius-md);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .dir-card__tag--category {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--color-accent);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+    .dir-card__tag--live {
+      background: rgba(245, 166, 35, 0.12);
+      color: var(--color-secondary);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+    }
+    .dir-card__tag--location {
+      background: rgba(255,255,255,0.05);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+
+    .dir-card__services {
+      list-style: none;
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--sp-md);
+    }
+    .dir-card__services li {
+      font-size: var(--fs-xs);
+      color: var(--color-text-muted);
+      padding: var(--sp-xs) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-sm);
+    }
+    .dir-card__services li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .dir-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-sm);
+      color: var(--color-accent);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      margin-top: var(--sp-md);
+      text-decoration: none;
+    }
+    .dir-card__link:hover { text-decoration: underline; }
+
+    /* Stats bar */
+    .dir-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--sp-3xl);
+      padding: var(--sp-xl) 0;
+      margin-top: var(--sp-2xl);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .dir-stat__value {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: var(--fs-2xl);
+      color: var(--color-accent);
+    }
+    .dir-stat__label {
+      font-size: var(--fs-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Leaflet popup custom */
+    .leaflet-popup-content-wrapper {
+      background: #0D1B2A;
+      color: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .leaflet-popup-tip { background: #0D1B2A; }
+    .leaflet-popup-content { margin: 12px 16px; font-family: 'Inter', sans-serif; }
+    .leaflet-popup-content h4 { margin: 0 0 4px; font-family: 'Outfit', sans-serif; }
+    .leaflet-popup-content p { margin: 0; font-size: 13px; color: #8BA4B8; }
+    .leaflet-popup-content a { color: #10B981; }
+
+    @media (max-width: 1024px) {
+      .directory-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .directory-grid { grid-template-columns: 1fr; }
+      #partnerMap { height: 300px; }
+      .dir-stats { flex-wrap: wrap; gap: var(--sp-xl); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
+        <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html#programs" class="nav__link">Programs</a>
+        <a href="index.html#ready-made" class="nav__link">Ready-Made</a>
+        <a href="partners.html" class="nav__link" style="color: var(--color-accent);">Partners</a>
+        <a href="merch.html" class="nav__link">Merch</a>
+        <a href="index.html#transparency" class="nav__link">Transparency</a>
+        <a href="launchpad.html" class="btn btn--primary">LaunchPad Tool</a>
+      </div>
+      <div class="nav__hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ Hero ═══ -->
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="partner-hero">
+        <span class="section-label">Partner Ecosystem</span>
+        <h1 class="section-title">Our <span class="text-gradient">Network</span></h1>
+        <p class="section-subtitle">Every partner in the Think! Ventures ecosystem. Search by service, browse by category, or explore the map.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="dir-stats">
+        <div class="text-center">
+          <div class="dir-stat__value" id="statPartners">0</div>
+          <div class="dir-stat__label">Partners</div>
+        </div>
+        <div class="text-center">
+          <div class="dir-stat__value" id="statServices">0</div>
+          <div class="dir-stat__label">Services</div>
+        </div>
+        <div class="text-center">
+          <div class="dir-stat__value" id="statStates">0</div>
+          <div class="dir-stat__label">States</div>
+        </div>
+        <div class="text-center">
+          <div class="dir-stat__value" id="statValue">$114K+</div>
+          <div class="dir-stat__label">Value Delivered</div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-wrapper reveal">
+        <div id="partnerMap"></div>
+      </div>
+
+      <!-- Search -->
+      <div class="search-bar" style="margin-top: var(--sp-3xl);">
+        <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Search partners, services, locations...">
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-chip active" data-category="all">All Partners</button>
+        <button class="filter-chip" data-category="home-services">Home Services</button>
+        <button class="filter-chip" data-category="healthcare">Healthcare</button>
+        <button class="filter-chip" data-category="entertainment">Entertainment</button>
+        <button class="filter-chip" data-category="publishing">Publishing</button>
+        <button class="filter-chip" data-category="education">Education</button>
+        <button class="filter-chip" data-category="agtech">AgTech</button>
+        <button class="filter-chip" data-category="technology">Technology</button>
+      </div>
+
+      <!-- Results Count -->
+      <div class="results-count" id="resultsCount"></div>
+
+      <!-- Directory Grid -->
+      <div class="directory-grid" id="directoryGrid">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center" style="margin-top: var(--sp-3xl);">
+        <h3 style="margin-bottom: var(--sp-md);">Want to Join the Ecosystem?</h3>
+        <p style="color: var(--color-text-muted); margin-bottom: var(--sp-xl); max-width: 600px; margin-left: auto; margin-right: auto;">Whether you have your own idea or want to step into a Ready-Made Business -- we build it, coach you, and teach you how to grow. Zero cost.</p>
+        <div style="display: flex; gap: var(--sp-lg); justify-content: center; flex-wrap: wrap;">
+          <a href="launchpad.html" class="btn btn--primary btn--lg">Start Your Business</a>
+          <a href="index.html#ready-made" class="btn btn--gold btn--lg">Browse Ready-Made</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="/" class="nav__logo" style="margin-bottom: var(--sp-md);">
+            <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
+            <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
+          </a>
+          <p class="footer__description">Think! Ventures Foundation is a 501(c)(3) nonprofit building complete businesses for underserved entrepreneurs at zero cost.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Programs</h4>
+          <a href="index.html#programs" class="footer__link">LaunchPad</a>
+          <a href="index.html#programs" class="footer__link">12-Month Coaching</a>
+          <a href="index.html#ready-made" class="footer__link">Ready-Made Businesses</a>
+          <a href="launchpad.html" class="footer__link">Free Business Tool</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Ecosystem</h4>
+          <a href="partners.html" class="footer__link">Partner Directory</a>
+          <a href="index.html#transparency" class="footer__link">Transparency</a>
+          <a href="index.html#model" class="footer__link">Hybrid Model</a>
+          <a href="merch.html" class="footer__link">Merch Store</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Connect</h4>
+          <a href="mailto:chris@thinkdesignplanning.com" class="footer__link">Email Us</a>
+          <a href="https://thinkdesignplanning.com" target="_blank" class="footer__link">Think! Design & Planning</a>
+          <a href="index.html#apply" class="footer__link">Apply to LaunchPad</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation. All rights reserved.</span>
+        <span class="footer__copyright">A 501(c)(3) Public Charity</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Leaflet JS ═══ -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  // ──────────────────────────────────────────────
+  //  PARTNER DATA
+  // ──────────────────────────────────────────────
+  const PARTNERS = [
+    {
+      name: "Think! Design & Planning",
+      role: "Technology Partner",
+      category: "technology",
+      status: "live",
+      location: "Greensboro, NC",
+      lat: 36.0726,
+      lng: -79.7920,
+      logo: "assets/logo/think-logo-white.png",
+      url: "https://thinkdesignplanning.com",
+      desc: "Conservation, culture, memorial, and technology. Bridges ecological performance, cultural identity, and AI-powered design for landowners, institutions, and communities.",
+      services: ["Web Development", "AI Integration", "Brand Design", "E-Commerce", "Digital Strategy", "UX/UI Design"]
+    },
+    {
+      name: "Arlan LLC",
+      role: "LaunchPad Partner #1",
+      category: "home-services",
+      status: "live",
+      location: "Greensboro, NC",
+      lat: 36.0800,
+      lng: -79.8100,
+      logo: "assets/partners/arlan-logo.png",
+      url: "https://arlanpro.com",
+      desc: "Premium exterior lighting and home services across North Carolina and Florida. Holiday lighting, permanent LED systems, and landscape lighting. Brilliance in Every Detail.",
+      services: ["Holiday Lighting", "Permanent LED Systems", "Landscape Lighting", "Exterior Washing", "Gutter Cleaning"]
+    },
+    {
+      name: "Brenes Precision Dentistry",
+      role: "Healthcare Partner",
+      category: "healthcare",
+      status: "live",
+      location: "Greensboro, NC (Lake Jeanette)",
+      lat: 36.1350,
+      lng: -79.8550,
+      logo: "assets/partners/brenes-logo.png",
+      url: "https://brenesprecisiondentistry.netlify.app",
+      desc: "Lake Jeanette Family & Implant Dentistry. Digital twin technology, 3D scanning, AI diagnostics, and immersive patient experiences.",
+      services: ["Family Dentistry", "Implant Dentistry", "3D Scanning", "Cosmetic Dentistry", "Emergency Care"]
+    },
+    {
+      name: "Brothers Function Group",
+      role: "Entertainment Partner",
+      category: "entertainment",
+      status: "live",
+      location: "NC / VA / DC / GA",
+      lat: 36.0650,
+      lng: -79.7750,
+      logo: "assets/partners/bfg-logo.png",
+      url: "https://brothersfunctiongroup.netlify.app",
+      desc: "A premium social collective founded on Brotherhood. Live showcases, curated comedy, and high-energy legacy soundscapes across the Southeast.",
+      services: ["Live Events", "Comedy Shows", "DJ Services", "Event Production", "Brand Partnerships"]
+    },
+    {
+      name: "Hood Hymns Publishing",
+      role: "Literary Publishing Partner",
+      category: "publishing",
+      status: "live",
+      location: "Greensboro, NC",
+      lat: 36.0680,
+      lng: -79.8050,
+      logo: "assets/partners/dj-logo.png",
+      url: "https://hood-hymns-publishing.netlify.app",
+      desc: "A full literary publishing platform for author C.D. Howell. Trilingual store (EN/ES/ZH), AI narration, cinematic book trailers, and merch.",
+      services: ["Book Publishing", "Audiobook Production", "AI Narration", "Merch Store", "Trilingual Content"]
+    },
+    {
+      name: "DJ's Masterpiece Studio",
+      role: "Creative Production Partner",
+      category: "publishing",
+      status: "live",
+      location: "Greensboro, NC",
+      lat: 36.0700,
+      lng: -79.7980,
+      logo: "assets/partners/dj-logo.png",
+      url: "https://djsmasterpiece.netlify.app",
+      desc: "A premium creative writing and production studio for scripts, characters, scenes, soundtracks, and multilingual book publishing with AI narration.",
+      services: ["Script Writing", "Character Design", "Soundtrack Production", "Book Publishing", "AI Narration"]
+    },
+    {
+      name: "Mae's Story Bloom",
+      role: "Children's Education Partner",
+      category: "education",
+      status: "live",
+      location: "Online (Nationwide)",
+      lat: 36.0740,
+      lng: -79.7700,
+      logo: "assets/partners/mae-logo.png",
+      url: "https://maesstorybloom.com",
+      desc: "Create illustrated children's books with AI. Write a story, pick an art style, and export print-ready PDFs for Amazon KDP -- in minutes, not months.",
+      services: ["Children's Book Creation", "AI Illustration", "PDF Export", "Amazon KDP Publishing", "Audiobook Generation"]
+    },
+    {
+      name: "ReThinking The Leaf",
+      role: "Agrotherapy Partner",
+      category: "agtech",
+      status: "live",
+      location: "Brunswick County, VA",
+      lat: 36.7660,
+      lng: -77.9160,
+      logo: "assets/partners/rttl-logo.png",
+      url: "https://rethinkingtheleaffarm.netlify.app",
+      desc: "A 66-acre agrotherapy estate in Virginia. Reconnect with the land through lavender fields, cabin retreats, wetland education, and community-driven healing.",
+      services: ["Agrotherapy", "Lavender Production", "Cabin Retreats", "Wetland Education", "Farm Events"]
+    },
+    {
+      name: "NC A&T State University",
+      role: "Workshop Partner",
+      category: "education",
+      status: "active",
+      location: "Greensboro, NC",
+      lat: 36.0756,
+      lng: -79.7740,
+      logo: null,
+      url: null,
+      desc: "Digital equity workshops, entrepreneurship education, and HBCU community outreach programs. Home base for Think! Ventures' workshop programming.",
+      services: ["Digital Equity Workshops", "Entrepreneurship Education", "HBCU Outreach", "AI Literacy", "Financial Literacy"]
+    },
+    {
+      name: "NC Small Farm Platform",
+      role: "AgTech Partner",
+      category: "agtech",
+      status: "live",
+      location: "Greensboro, NC",
+      lat: 36.0780,
+      lng: -79.7650,
+      logo: "assets/partners/ncsmall-logo.png",
+      url: "https://ncsmall.farm",
+      desc: "NC Cooperative Extension Digital Navigator. 4 AI-powered virtual assistants for agriculture, families, community development, and events. Powered by NC A&T.",
+      services: ["Agricultural AI Assistants", "Farm Planning", "Community Development", "Event Management", "Extension Services"]
+    }
+  ];
+
+  // ──────────────────────────────────────────────
+  //  RENDER CARDS
+  // ──────────────────────────────────────────────
+  const grid = document.getElementById('directoryGrid');
+  const searchInput = document.getElementById('searchInput');
+  const resultsCount = document.getElementById('resultsCount');
+
+  function renderCards() {
+    grid.innerHTML = '';
+    PARTNERS.forEach((p, i) => {
+      const logoHtml = p.logo
+        ? `<img src="${p.logo}" alt="${p.name}" class="dir-card__logo">`
+        : `<div class="dir-card__logo-placeholder"><span class="icon-wrapper" data-icon="graduation" style="width:28px;height:28px;color:#fff;"></span></div>`;
+
+      const statusLabel = p.status === 'live' ? 'Live Business' : 'Active Partner';
+
+      const servicesHtml = p.services.map(s => `<li>${s}</li>`).join('');
+
+      const linkHtml = p.url
+        ? `<a href="${p.url}" target="_blank" class="dir-card__link">Visit Site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>`
+        : '';
+
+      grid.innerHTML += `
+        <div class="dir-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}" data-services="${p.services.join(' ').toLowerCase()}" data-location="${p.location.toLowerCase()}">
+          <div class="dir-card__header">
+            ${logoHtml}
+            <div>
+              <div class="dir-card__name">${p.name}</div>
+              <div class="dir-card__role">${p.role}</div>
+            </div>
+          </div>
+          <p class="dir-card__desc">${p.desc}</p>
+          <div class="dir-card__meta">
+            <span class="dir-card__tag dir-card__tag--category">${p.category.replace('-', ' ')}</span>
+            <span class="dir-card__tag dir-card__tag--live">${statusLabel}</span>
+            <span class="dir-card__tag dir-card__tag--location">${p.location}</span>
+          </div>
+          <ul class="dir-card__services">${servicesHtml}</ul>
+          ${linkHtml}
+        </div>`;
+    });
+
+    // Inject icons
+    if (typeof renderIcons === 'function') renderIcons();
+  }
+
+  // ──────────────────────────────────────────────
+  //  FILTER + SEARCH
+  // ──────────────────────────────────────────────
+  let activeCategory = 'all';
+
+  function filterCards() {
+    const query = searchInput.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.dir-card');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const matchCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+      const searchable = `${card.dataset.name} ${card.dataset.services} ${card.dataset.location} ${card.dataset.category}`;
+      const matchSearch = !query || searchable.includes(query);
+
+      if (matchCategory && matchSearch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    resultsCount.innerHTML = `Showing <strong>${visible}</strong> of <strong>${PARTNERS.length}</strong> partners`;
+  }
+
+  // Filter chips
+  document.getElementById('filterBar').addEventListener('click', e => {
+    if (!e.target.classList.contains('filter-chip')) return;
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    e.target.classList.add('active');
+    activeCategory = e.target.dataset.category;
+    filterCards();
+  });
+
+  // Search
+  searchInput.addEventListener('input', filterCards);
+
+  // ──────────────────────────────────────────────
+  //  MAP
+  // ──────────────────────────────────────────────
+  function initMap() {
+    const map = L.map('partnerMap', {
+      scrollWheelZoom: false
+    }).setView([36.2, -79.2], 7);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CartoDB',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Custom marker
+    const markerIcon = L.divIcon({
+      className: 'custom-marker',
+      html: `<div style="width:16px;height:16px;border-radius:50%;background:#10B981;border:3px solid #0D4F4F;box-shadow:0 0 12px rgba(16,185,129,0.5);"></div>`,
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+
+    PARTNERS.forEach(p => {
+      if (!p.lat || !p.lng) return;
+      const popup = `
+        <h4 style="color:#10B981;">${p.name}</h4>
+        <p>${p.role} -- ${p.location}</p>
+        <p style="margin-top:6px;">${p.services.slice(0, 3).join(', ')}</p>
+        ${p.url ? `<a href="${p.url}" target="_blank" style="display:inline-block;margin-top:8px;">Visit Site</a>` : ''}
+      `;
+      L.marker([p.lat, p.lng], { icon: markerIcon })
+        .addTo(map)
+        .bindPopup(popup);
+    });
+  }
+
+  // ──────────────────────────────────────────────
+  //  STATS
+  // ──────────────────────────────────────────────
+  function updateStats() {
+    document.getElementById('statPartners').textContent = PARTNERS.length;
+
+    const allServices = new Set();
+    PARTNERS.forEach(p => p.services.forEach(s => allServices.add(s)));
+    document.getElementById('statServices').textContent = allServices.size;
+
+    const states = new Set();
+    PARTNERS.forEach(p => {
+      const match = p.location.match(/\b([A-Z]{2})\b/g);
+      if (match) match.forEach(s => states.add(s));
+    });
+    document.getElementById('statStates').textContent = states.size;
+  }
+
+  // ──────────────────────────────────────────────
+  //  INIT
+  // ──────────────────────────────────────────────
+  renderCards();
+  filterCards();
+  updateStats();
+  initMap();
+  </script>
+</body>
+</html>

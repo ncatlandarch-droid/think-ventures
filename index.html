@@ -4,400 +4,722 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Think! Ventures Foundation — From Dream to Launch in Days</title>
-  <meta name="description" content="Think! Ventures Foundation empowers underserved entrepreneurs with free AI-powered digital business infrastructure. From brand to website to merch store — in days, not months.">
+  <meta name="description" content="Think! Ventures Foundation is a 501(c)(3) nonprofit that builds complete businesses for underserved entrepreneurs in 2-5 days at zero cost. LaunchPad, MerchEngine, Digital Equity, and AI Research.">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
+  <style>
+    /* ── Page-Specific Styles ── */
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-3xl);
+      align-items: center;
+    }
+    .hero__avatar-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero__avatar-ring {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero__avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid var(--color-accent);
+      animation: pulseRing 3s ease-in-out infinite;
+    }
+    .hero__avatar-ring::after {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      animation: pulseRing 3s 0.5s ease-in-out infinite;
+    }
+    .hero__avatar-img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.1);
+    }
+    .hero__avatar-label {
+      margin-top: var(--sp-lg);
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: var(--fs-sm);
+      color: var(--color-text-muted);
+      max-width: 200px;
+      line-height: 1.5;
+    }
+
+    /* Ecosystem section */
+    .eco-connector {
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--color-accent), rgba(16, 185, 129, 0.3));
+      margin: 0 auto;
+    }
+    .eco-connector--gold {
+      background: linear-gradient(to bottom, var(--color-secondary), rgba(245, 166, 35, 0.3));
+    }
+    .eco-label {
+      font-family: var(--font-heading);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+      text-align: center;
+      padding: var(--sp-sm) 0;
+    }
+    .eco-label--gold { color: var(--color-secondary); }
+    .eco-programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-lg);
+    }
+    .eco-node--sm {
+      padding: var(--sp-lg);
+      min-width: auto;
+    }
+    .eco-result {
+      text-align: center;
+      padding: var(--sp-xl) var(--sp-2xl);
+      background: linear-gradient(135deg, rgba(245, 166, 35, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border: 1px solid var(--color-secondary);
+      border-radius: var(--border-radius-lg);
+    }
+    .eco-result__title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: var(--fs-xl);
+      color: var(--color-secondary);
+    }
+    .eco-result__sub {
+      font-size: var(--fs-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--sp-xs);
+    }
+
+    /* Value table */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-xl);
+      margin-top: var(--sp-2xl);
+    }
+    .value-card {
+      padding: var(--sp-2xl);
+      border-radius: var(--border-radius-lg);
+      text-align: center;
+    }
+    .value-card--trad {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    .value-card--think {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .value-card__label {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: var(--fs-sm);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: var(--sp-lg);
+    }
+    .value-card--trad .value-card__label { color: var(--color-danger); }
+    .value-card--think .value-card__label { color: var(--color-accent); }
+    .value-card__amount {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: var(--fs-4xl);
+      margin-bottom: var(--sp-md);
+    }
+    .value-card--trad .value-card__amount { color: var(--color-danger); }
+    .value-card--think .value-card__amount { color: var(--color-accent); }
+
+    .payback-card {
+      margin-top: var(--sp-xl);
+      padding: var(--sp-xl);
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: var(--border-radius-lg);
+      text-align: center;
+    }
+    .payback-card__title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-lg);
+      color: var(--color-secondary);
+      margin-bottom: var(--sp-sm);
+    }
+
+    /* Hybrid model */
+    .hybrid-card {
+      padding: var(--sp-2xl);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+    }
+    .hybrid-card__tag {
+      display: inline-block;
+      padding: var(--sp-xs) var(--sp-md);
+      border-radius: var(--border-radius-xl);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--sp-lg);
+    }
+    .hybrid-card__tag--green {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--color-accent);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .hybrid-card__tag--gold {
+      background: rgba(245, 166, 35, 0.15);
+      color: var(--color-secondary);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+    }
+    .hybrid-list {
+      list-style: none;
+      margin-top: var(--sp-lg);
+    }
+    .hybrid-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-sm);
+      padding: var(--sp-sm) 0;
+      color: var(--color-text-muted);
+    }
+    .hybrid-list li .icon-wrapper { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
+
+    /* CTA with mascot */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-2xl);
+      align-items: center;
+    }
+    .cta-mascot {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--color-secondary);
+      box-shadow: 0 0 40px rgba(245, 166, 35, 0.25);
+      transition: transform 0.3s ease;
+    }
+    .cta-mascot:hover { transform: scale(1.05); }
+
+    /* Apply section avatar */
+    .apply-avatar-area {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-lg);
+      justify-content: center;
+      margin-bottom: var(--sp-xl);
+    }
+    .apply-bubble {
+      padding: var(--sp-md) var(--sp-lg);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+
+    /* Flow cards */
+    .flow-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-xl);
+      margin-bottom: var(--sp-2xl);
+    }
+    .flow-card {
+      padding: var(--sp-xl);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      text-align: center;
+    }
+    .flow-card__icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      border-radius: var(--border-radius-md);
+      margin: 0 auto var(--sp-md);
+      color: var(--color-white);
+    }
+    .flow-card__title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: var(--sp-sm);
+    }
+    .flow-card__text { font-size: var(--fs-sm); color: var(--color-text-muted); }
+
+    .bella-guide {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--color-secondary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .bella-guide img { width: 100%; height: 100%; object-fit: cover; }
+
+    @media (max-width: 768px) {
+      .hero__grid { grid-template-columns: 1fr; text-align: center; }
+      .hero__avatar-area { margin-bottom: var(--sp-xl); order: -1; }
+      .nav__logo-img { height: 52px; width: auto; }
+      .hero__avatar-img { width: 160px; height: 160px; }
+      .hero__actions { justify-content: center; }
+      .eco-programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .value-grid { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; text-align: center; }
+      .cta-mascot { margin: 0 auto; }
+      .flow-cards { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav">
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo">
-        <span class="nav__logo-icon">💡</span>
+      <a href="/" class="nav__logo">
+        <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
         <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
       </a>
-      <div class="nav__links">
+      <div class="nav__links" id="navLinks">
+        <a href="#explainer" class="nav__link">How It Works</a>
         <a href="#mission" class="nav__link">Mission</a>
-        <a href="#how-it-works" class="nav__link">How It Works</a>
         <a href="#programs" class="nav__link">Programs</a>
-        <a href="#transparency" class="nav__link">Transparency</a>
-        <a href="#proof" class="nav__link">Proof</a>
-        <a href="#apply" class="btn btn--primary">Apply Now</a>
+        <a href="#ready-made" class="nav__link">Ready-Made</a>
+        <a href="partners.html" class="nav__link">Partners</a>
+        <a href="merch.html" class="nav__link">Merch</a>
+        <a href="launchpad.html" class="btn btn--primary">LaunchPad Tool</a>
       </div>
-      <div class="nav__hamburger" id="hamburger">
+      <div class="nav__hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ═══ Hero ═══ -->
   <section class="hero">
-    <div class="hero__bg" style="background-image:url('assets/images/hero.png');"></div>
+    <div class="hero__bg" style="background-image:url('assets/images/hero.png')">
+      <video class="hero__video" autoplay muted loop playsinline poster="assets/images/hero.png">
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="hero__overlay"></div>
-    <div class="container">
-      <div class="hero__content">
-        <div class="hero__label">501(c)(3) Nonprofit Foundation</div>
-        <h1 class="hero__title">From Dream to <span class="text-gradient">Launch in Days</span></h1>
-        <p class="hero__subtitle">We build entire digital businesses for underserved entrepreneurs — brand, website, merch store, business plan — at zero cost. You bring the dream. We bring the infrastructure.</p>
-        <div class="hero__actions">
-          <a href="#apply" class="btn btn--gold btn--lg">Apply to LaunchPad</a>
-          <a href="#how-it-works" class="btn btn--outline btn--lg">See How It Works</a>
-        </div>
-        <div class="hero__stat-bar">
-          <div>
-            <div class="hero__stat-number">$0</div>
-            <div class="hero__stat-label">Cost to You</div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <span class="hero__label">501(c)(3) Nonprofit Foundation</span>
+          <h1 class="hero__title">From Dream to <span class="text-gradient">Launch in Days</span></h1>
+          <p class="hero__subtitle">We build complete businesses for underserved entrepreneurs in 2-5 days. Website, brand, e-commerce, business plan -- plus 12 months of coaching and professional communication training. All at zero cost.</p>
+          <div class="hero__actions">
+            <a href="launchpad.html" class="btn btn--primary btn--lg">Start Your Business</a>
+            <a href="#ecosystem" class="btn btn--outline btn--lg">See How It Works</a>
           </div>
-          <div>
-            <div class="hero__stat-number">2–5</div>
-            <div class="hero__stat-label">Days to Launch</div>
-          </div>
-          <div>
-            <div class="hero__stat-number">$41K+</div>
-            <div class="hero__stat-label">Value Delivered</div>
+          <div class="hero__stat-bar">
+            <div><div class="hero__stat-number">$0</div><div class="hero__stat-label">Cost to Entrepreneur</div></div>
+            <div><div class="hero__stat-number">2-5</div><div class="hero__stat-label">Days to Launch</div></div>
+            <div><div class="hero__stat-number">$114K+</div><div class="hero__stat-label">Value Delivered (3 Businesses)</div></div>
           </div>
         </div>
+        <a href="launchpad.html" class="hero__avatar-area" style="text-decoration:none;cursor:pointer;">
+          <div class="hero__avatar-ring">
+            <img src="assets/images/bella-avatar.png" alt="Bella — Your Think! Ventures Guide" class="hero__avatar-img">
+          </div>
+          <p class="hero__avatar-label">Hi, I'm <strong style="color:var(--color-white)">Bella</strong>. Click me to start building your business!</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Mission -->
-  <section class="section" id="mission">
+  <!-- ═══ Explainer Video ═══ -->
+  <section class="section section--dark" id="explainer">
     <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Our Mission</span>
-        <h2 class="section-title">Empowering Entrepreneurs <span class="text-gradient">Who Can't Afford to Wait</span></h2>
-        <p class="section-subtitle">Traditional business infrastructure costs $15,000–$55,000 and takes months. We deliver it in days for free using AI-powered tools and cooperative partnerships.</p>
+      <div class="text-center">
+        <span class="section-label">See How It Works</span>
+        <h2 class="section-title">Your Business Journey <span class="text-gradient">Explained</span></h2>
+        <p class="section-subtitle">Watch the overview or click Bella to start building right now.</p>
       </div>
 
-      <div class="grid-3 stagger" style="margin-top:var(--sp-3xl);">
-        <div class="card">
-          <div class="card__icon">🎓</div>
-          <h3 class="card__title">HBCU Communities</h3>
-          <p class="card__text">Students and alumni of Historically Black Colleges and Universities with business ideas but no capital to launch.</p>
+      <div class="explainer-player reveal" style="margin-top: var(--sp-2xl);">
+        <!-- Video Player -->
+        <div style="width:100%;max-width:900px;margin:0 auto;border-radius:var(--border-radius-lg);overflow:hidden;background:#070F1A;box-shadow:0 8px 40px rgba(0,0,0,0.4);">
+          <video id="explainerVideo" controls preload="metadata"
+            poster="assets/images/video-cover.png"
+            style="width:100%;display:block;border-radius:var(--border-radius-lg);">
+            <source src="assets/video/how-it-works.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
         </div>
-        <div class="card">
-          <div class="card__icon">🌱</div>
-          <h3 class="card__title">First-Gen Founders</h3>
-          <p class="card__text">First-generation business owners with no access to professional networks, agencies, or digital expertise.</p>
-        </div>
-        <div class="card">
-          <div class="card__icon">🏘️</div>
-          <h3 class="card__title">Rural Communities</h3>
-          <p class="card__text">Small business owners in underserved rural areas lacking digital infrastructure and modern web presence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- How It Works -->
-  <section class="section section--dark" id="how-it-works">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Complete Transparency</span>
-        <h2 class="section-title">How It <span class="text-gradient">Works</span></h2>
-        <p class="section-subtitle">No hidden fees. No fine print. Here's exactly what happens from the moment you apply.</p>
-      </div>
-
-      <div style="margin-top:var(--sp-3xl);" class="reveal">
-        <div class="step">
-          <div class="step__number">1</div>
-          <div>
-            <h3 class="step__title">You Apply with Your Idea</h3>
-            <p class="step__text">Tell us your dream. A lighting company, a dental practice, a food truck, a tutoring service — any legitimate business idea. We review your application within 48 hours.</p>
-            <span class="step__tag">Your time: 15 minutes</span>
+        <!-- Key Points -->
+        <div class="explainer-points stagger" style="margin-top: var(--sp-2xl);">
+          <div class="explainer-point">
+            <div class="explainer-point__num">01</div>
+            <div>
+              <h4 class="explainer-point__title">Tell Us Your Dream</h4>
+              <p class="explainer-point__desc">Pick your industry, state, and business structure. Bella walks you through every step.</p>
+            </div>
           </div>
-        </div>
-
-        <div class="step">
-          <div class="step__number">2</div>
-          <div>
-            <h3 class="step__title">We Research & Plan</h3>
-            <p class="step__text">Using AI-powered tools (Gemini, NotebookLM), we conduct deep market research, competitive analysis, and build a bank-ready business plan for your idea. We identify your target market, pricing strategy, and growth opportunities.</p>
-            <span class="step__tag">We deliver: Business plan &mdash; Value: $5,000–$10,000</span>
+          <div class="explainer-point">
+            <div class="explainer-point__num">02</div>
+            <div>
+              <h4 class="explainer-point__title">We Build It For You</h4>
+              <p class="explainer-point__desc">Website, brand, merch store, business plan, payment processing — all in 2-5 days, at zero cost.</p>
+            </div>
           </div>
-        </div>
-
-        <div class="step">
-          <div class="step__number">3</div>
-          <div>
-            <h3 class="step__title">We Build Your Brand</h3>
-            <p class="step__text">Professional logo, color palette, typography, brand mascot, marketing copy. A complete identity that looks like you hired a $15,000 design agency — because the technology makes it possible.</p>
-            <span class="step__tag">We deliver: Full brand identity &mdash; Value: $8,000–$15,000</span>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step__number">4</div>
-          <div>
-            <h3 class="step__title">We Build Your Website</h3>
-            <p class="step__text">6–8 page premium website with animations, mobile responsiveness, SEO, contact forms, and hosting. Not a template — a custom-designed, hand-crafted digital presence deployed live.</p>
-            <span class="step__tag">We deliver: Live website &mdash; Value: $10,000–$25,000</span>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step__number">5</div>
-          <div>
-            <h3 class="step__title">We Launch Your Merch Store</h3>
-            <p class="step__text">Branded t-shirts, hoodies, hats, polos — designed, connected to Stripe payment processing, and ready to sell. Zero inventory. Print-on-demand fulfillment. Revenue flows directly to you.</p>
-            <span class="step__tag">We deliver: E-commerce store &mdash; Value: $3,000–$5,000</span>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step__number">6</div>
-          <div>
-            <h3 class="step__title">You Execute. We Support.</h3>
-            <p class="step__text">You run your business — serve customers, build relationships, grow. We handle ongoing digital infrastructure, updates, and technical support. When you make money, we share in 10% of profits as our cooperative partnership.</p>
-            <span class="step__tag">You pay: $0 upfront &mdash; Only 10% of profits when profitable</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What You Get (Value Breakdown) -->
-  <section class="section" id="value">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Complete Value Breakdown</span>
-        <h2 class="section-title">What You Get for <span class="text-gradient">$0</span></h2>
-        <p class="section-subtitle">Here's exactly what traditional agencies charge vs. what you pay with Think! Ventures.</p>
-      </div>
-
-      <div class="reveal" style="margin-top:var(--sp-3xl);">
-        <table class="flow-table">
-          <thead>
-            <tr>
-              <th>Deliverable</th>
-              <th>Traditional Agency Cost</th>
-              <th>You Pay</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Market research & business plan</td>
-              <td class="highlight">$2,000 – $10,000</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr>
-              <td>Brand identity (logo, mascot, palette)</td>
-              <td class="highlight">$3,000 – $15,000</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr>
-              <td>Premium website (6–8 pages, custom design)</td>
-              <td class="highlight">$5,000 – $25,000</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr>
-              <td>E-commerce / merch store setup</td>
-              <td class="highlight">$1,000 – $3,000</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr>
-              <td>AI mascot / chat assistant with voice</td>
-              <td class="highlight">$5,000 – $10,000</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr>
-              <td>LLC formation guidance & templates</td>
-              <td class="highlight">$500 – $1,500</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr>
-              <td>Hosting, deployment, and ongoing support</td>
-              <td class="highlight">$2,000 – $5,000/yr</td>
-              <td class="green">$0</td>
-            </tr>
-            <tr style="border-top:2px solid var(--color-accent);">
-              <td><strong>Total Value</strong></td>
-              <td class="highlight"><strong>$18,500 – $69,500</strong></td>
-              <td class="green"><strong>$0</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="text-center" style="margin-top:var(--sp-2xl);">
-        <div class="card" style="display:inline-block;max-width:600px;text-align:center;border-color:var(--color-secondary);background:rgba(245,166,35,0.05);">
-          <h3 class="card__title" style="color:var(--color-secondary);">The Only Fee: 10% of Profits</h3>
-          <p class="card__text">When your business becomes profitable, 10% goes back to Think! Ventures. When you don't make money, you owe nothing. We succeed together or not at all.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs -->
-  <section class="section section--teal" id="programs">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label" style="color:var(--color-secondary);">Our Programs</span>
-        <h2 class="section-title">Four Ways We <span class="text-gradient">Help</span></h2>
-      </div>
-
-      <div class="grid-2 stagger" style="margin-top:var(--sp-3xl);gap:var(--sp-2xl);">
-        <div class="card" style="background:rgba(7,15,26,0.4);">
-          <div class="card__icon">🚀</div>
-          <h3 class="card__title">LaunchPad</h3>
-          <p class="card__text">Our core incubation program. Transform your idea into a fully operational digital business in 2–5 days. Brand, website, merch, business plan — everything.</p>
-          <span class="card__value">$41,500+ value per participant</span>
-        </div>
-        <div class="card" style="background:rgba(7,15,26,0.4);">
-          <div class="card__icon">👕</div>
-          <h3 class="card__title">MerchEngine</h3>
-          <p class="card__text">A revenue-generating merch line for every partner. Branded apparel, zero inventory risk, print-on-demand fulfillment, Stripe payments. Revenue flows directly to you.</p>
-          <span class="card__value">Zero inventory, 100% upside</span>
-        </div>
-        <div class="card" style="background:rgba(7,15,26,0.4);">
-          <div class="card__icon">💻</div>
-          <h3 class="card__title">Digital Equity Workshops</h3>
-          <p class="card__text">Free workshops at HBCUs and community centers. Learn to build an online presence, use AI tools, understand e-commerce, and master financial literacy.</p>
-          <span class="card__value">Free at NC A&T + community centers</span>
-        </div>
-        <div class="card" style="background:rgba(7,15,26,0.4);">
-          <div class="card__icon">🔬</div>
-          <h3 class="card__title">AI Research Lab</h3>
-          <p class="card__text">Free AI-powered market research, grant identification, and business intelligence. We use NotebookLM and Gemini to find funding and opportunities for you.</p>
-          <span class="card__value">Powered by Google Gemini AI</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Transparency: Money Flow -->
-  <section class="section" id="transparency">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Full Transparency</span>
-        <h2 class="section-title">Where the <span class="text-gradient">Money Goes</span></h2>
-        <p class="section-subtitle">Every dollar. Every flow. No secrets. Here's exactly how funding moves through Think! Ventures.</p>
-      </div>
-
-      <div class="grid-3 stagger" style="margin-top:var(--sp-3xl);">
-        <div class="card" style="text-align:center;">
-          <h3 class="card__title" style="color:var(--color-accent);">Grant Funds In</h3>
-          <p class="card__text">Federal, state, and foundation grants fund our operations — technology, programs, and staff.</p>
-          <span class="card__value" style="color:var(--color-accent);">100% to mission</span>
-        </div>
-        <div class="card" style="text-align:center;">
-          <h3 class="card__title" style="color:var(--color-secondary);">Partner Revenue</h3>
-          <p class="card__text">When partner businesses profit, 10% flows back as cooperative program service revenue.</p>
-          <span class="card__value">90% to partner / 10% to Foundation</span>
-        </div>
-        <div class="card" style="text-align:center;">
-          <h3 class="card__title" style="color:var(--color-accent);">Merch Sales</h3>
-          <p class="card__text">Partner merch revenue goes directly to partners. Foundation merch revenue funds programs.</p>
-          <span class="card__value" style="color:var(--color-accent);">Direct to entrepreneur</span>
-        </div>
-      </div>
-
-      <div class="reveal" style="margin-top:var(--sp-3xl);">
-        <h3 style="text-align:center;margin-bottom:var(--sp-xl);">How We Spend Grant Funding</h3>
-        <table class="flow-table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>%&nbsp;of Budget</th>
-              <th>What It Covers</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Direct Program Services</strong></td>
-              <td class="green">70%</td>
-              <td>Technology infrastructure, AI tools, hosting, domain costs, Stripe fees, merch setup</td>
-            </tr>
-            <tr>
-              <td><strong>Workshops & Education</strong></td>
-              <td class="green">15%</td>
-              <td>Digital equity workshops, HBCU events, educational materials, guest speakers</td>
-            </tr>
-            <tr>
-              <td><strong>Administration</strong></td>
-              <td class="highlight">10%</td>
-              <td>Staff compensation, bookkeeping, insurance, legal compliance</td>
-            </tr>
-            <tr>
-              <td><strong>Fundraising</strong></td>
-              <td class="highlight">5%</td>
-              <td>Grant writing, donor outreach, marketing</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Proof: Arlan LLC Case Study -->
-  <section class="section section--dark" id="proof">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Proof of Concept</span>
-        <h2 class="section-title">Built in <span class="text-gradient">One Day</span></h2>
-        <p class="section-subtitle">Arlan LLC — our first LaunchPad graduate. Here's exactly what we delivered.</p>
-      </div>
-
-      <div class="case-study reveal" style="margin-top:var(--sp-3xl);">
-        <div style="padding:var(--sp-2xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2xl);align-items:center;">
-          <div>
-            <div class="case-study__badge">Case Study #001</div>
-            <h3 style="font-size:var(--fs-2xl);margin-bottom:var(--sp-md);">Arlan LLC</h3>
-            <p style="color:var(--color-secondary);font-weight:600;margin-bottom:var(--sp-lg);">Premium Exterior Lighting & Home Services</p>
-            <p style="color:var(--color-text-muted);line-height:1.8;">Dylan Thomas had a dream to launch a premium lighting business. In a single day, Think! Ventures built his entire digital foundation — brand, website, merch store, AI mascot, and Stripe payment system. The site went live the same night.</p>
-            <a href="https://arlen-llc.netlify.app" target="_blank" class="btn btn--primary" style="margin-top:var(--sp-xl);">Visit Live Site &rarr;</a>
-          </div>
-          <div>
-            <div class="case-study__stat-grid">
-              <div class="case-study__stat">
-                <div class="case-study__stat-value">8</div>
-                <div class="case-study__stat-label">Pages Built</div>
-              </div>
-              <div class="case-study__stat">
-                <div class="case-study__stat-value">8</div>
-                <div class="case-study__stat-label">Merch Products</div>
-              </div>
-              <div class="case-study__stat">
-                <div class="case-study__stat-value">$41K</div>
-                <div class="case-study__stat-label">Value Created</div>
-              </div>
-              <div class="case-study__stat">
-                <div class="case-study__stat-value">1</div>
-                <div class="case-study__stat-label">Day to Launch</div>
-              </div>
-              <div class="case-study__stat">
-                <div class="case-study__stat-value">$0</div>
-                <div class="case-study__stat-label">Cost to Dylan</div>
-              </div>
-              <div class="case-study__stat">
-                <div class="case-study__stat-value">Live</div>
-                <div class="case-study__stat-label">Stripe Payments</div>
-              </div>
+          <div class="explainer-point">
+            <div class="explainer-point__num">03</div>
+            <div>
+              <h4 class="explainer-point__title">Launch and Grow</h4>
+              <p class="explainer-point__desc">Go live with a real business. Join our ecosystem. Give back 10% of profits to fund the next entrepreneur.</p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div style="padding:0 var(--sp-2xl) var(--sp-2xl);">
-          <h4 style="margin-bottom:var(--sp-lg);color:var(--color-accent);">What Was Delivered:</h4>
+  <!-- ═══ Ecosystem Map ═══ -->
+  <section class="section" id="ecosystem">
+    <div class="container text-center">
+      <span class="section-label">The Think! Ecosystem</span>
+      <h2 class="section-title">How Everything <span class="text-gradient">Connects</span></h2>
+      <p class="section-subtitle">A hybrid model where nonprofit grant money powers a for-profit technology engine. 100% of the value flows to the entrepreneur.</p>
+
+      <div class="eco-map reveal" style="margin-top: var(--sp-3xl);">
+        <!-- Row 1: The two entities -->
+        <div class="eco-row">
+          <div class="eco-node eco-node--primary">
+            <div class="eco-node__icon"><span class="icon-wrapper icon-wrapper--lg" data-icon="construction"></span></div>
+            <div class="eco-node__title">Think! Design & Planning</div>
+            <div class="eco-node__sub">For-Profit Technology Partner</div>
+          </div>
+          <div class="eco-node eco-node--gold">
+            <div class="eco-node__icon"><span class="icon-wrapper icon-wrapper--lg" data-icon="seedling"></span></div>
+            <div class="eco-node__title">Think! Ventures Foundation</div>
+            <div class="eco-node__sub">501(c)(3) Grant-Funded Nonprofit</div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="eco-connector"></div>
+        <div class="eco-label">Funds 6 free programs</div>
+        <div class="eco-connector"></div>
+
+        <!-- Row 2: Programs -->
+        <div class="eco-programs-grid">
+          <div class="eco-node eco-node--sm">
+            <div class="eco-node__icon"><span class="icon-wrapper" data-icon="rocket"></span></div>
+            <div class="eco-node__title">LaunchPad</div>
+            <div class="eco-node__sub">Full business build, $0</div>
+          </div>
+          <div class="eco-node eco-node--sm">
+            <div class="eco-node__icon"><span class="icon-wrapper" data-icon="tshirt"></span></div>
+            <div class="eco-node__title">MerchEngine</div>
+            <div class="eco-node__sub">Zero-inventory e-commerce</div>
+          </div>
+          <div class="eco-node eco-node--sm">
+            <div class="eco-node__icon"><span class="icon-wrapper" data-icon="monitor"></span></div>
+            <div class="eco-node__title">Digital Equity</div>
+            <div class="eco-node__sub">Workshops and training</div>
+          </div>
+          <div class="eco-node eco-node--sm">
+            <div class="eco-node__icon"><span class="icon-wrapper" data-icon="microscope"></span></div>
+            <div class="eco-node__title">AI Research Lab</div>
+            <div class="eco-node__sub">Market analysis and insights</div>
+          </div>
+          <div class="eco-node eco-node--sm">
+            <div class="eco-node__icon"><span class="icon-wrapper" data-icon="handshake"></span></div>
+            <div class="eco-node__title">12-Month Coaching</div>
+            <div class="eco-node__sub">Learn your systems, grow your business</div>
+          </div>
+          <div class="eco-node eco-node--sm">
+            <div class="eco-node__icon"><span class="icon-wrapper" data-icon="trending"></span></div>
+            <div class="eco-node__title">Communication</div>
+            <div class="eco-node__sub">Pitch, network, and grow</div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="eco-connector eco-connector--gold"></div>
+        <div class="eco-label eco-label--gold">Delivers to entrepreneurs</div>
+        <div class="eco-connector eco-connector--gold"></div>
+
+        <!-- Row 3: Result -->
+        <div class="eco-result">
+          <div class="eco-result__title">Your Business — Live in Days</div>
+          <div class="eco-result__sub">Website, brand, legal, e-commerce, social media, business plan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Mission ═══ -->
+  <section class="section section--dark" id="mission">
+    <div class="container text-center">
+      <span class="section-label">Our Mission</span>
+      <h2 class="section-title">Empowering Entrepreneurs Who <span class="text-gradient">Can't Afford to Wait</span></h2>
+      <p class="section-subtitle">The average small business spends $30,000-$50,000 before opening its doors. We believe that number should be zero.</p>
+
+      <div class="grid-3 stagger" style="margin-top: var(--sp-3xl);">
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="graduation"></span></div>
+          <h3 class="card__title">HBCU Communities</h3>
+          <p class="card__text">Students and alumni at NC A&T and other HBCUs who have ideas but lack access to capital and professional networks.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="seedling"></span></div>
+          <h3 class="card__title">First-Gen Founders</h3>
+          <p class="card__text">First-generation entrepreneurs without family business experience or inherited knowledge of startup processes.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="community"></span></div>
+          <h3 class="card__title">Rural Communities</h3>
+          <p class="card__text">Small-town visionaries in rural North Carolina and beyond who lack access to digital infrastructure and design services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ How It Works ═══ -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">The Process</span>
+        <h2 class="section-title">How <span class="text-gradient">LaunchPad</span> Works</h2>
+        <p class="section-subtitle">From first conversation to live business in 2-5 days.</p>
+      </div>
+
+      <div style="margin-top: var(--sp-3xl);">
+        <div class="step reveal">
+          <div class="step__number">1</div>
+          <div>
+            <h3 class="step__title">Apply Online</h3>
+            <p class="step__text">Tell us about your business idea. No experience needed, no business plan needed, no fees. We take applications from anyone with a dream.</p>
+            <span class="step__tag">Free Application</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">2</div>
+          <div>
+            <h3 class="step__title">Discovery Session</h3>
+            <p class="step__text">We sit down (virtually or in person) to understand your vision, target market, and goals. This shapes everything we build.</p>
+            <span class="step__tag">1-Hour Meeting</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">3</div>
+          <div>
+            <h3 class="step__title">AI-Powered Market Research</h3>
+            <p class="step__text">Our AI Research Lab analyzes your market, competitors, pricing strategy, and growth potential. You get a complete market analysis report.</p>
+            <span class="step__tag">Powered by Gemini AI</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">4</div>
+          <div>
+            <h3 class="step__title">Full Business Build</h3>
+            <p class="step__text">Think! Design & Planning builds your complete digital presence: professional website, brand identity, logo, social media setup, and e-commerce store.</p>
+            <span class="step__tag">$41,500+ Value</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">5</div>
+          <div>
+            <h3 class="step__title">Launch Day</h3>
+            <p class="step__text">Everything goes live. We walk you through every system -- your website, your store, your payments, your analytics. You launch with confidence.</p>
+            <span class="step__tag">Go Live</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">6</div>
+          <div>
+            <h3 class="step__title">12 Months of Coaching</h3>
+            <p class="step__text">Monthly check-ins with your coach. Learn to manage your website, read your analytics, handle customers, and grow your business. You're never on your own.</p>
+            <span class="step__tag">Full Year of Support</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">7</div>
+          <div>
+            <h3 class="step__title">Communication & Growth Workshops</h3>
+            <p class="step__text">Professional communication training -- learn to pitch your business, talk to clients, network effectively, and build your public presence. Grow your voice, grow your revenue.</p>
+            <span class="step__tag">Business Communication</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">8</div>
+          <div>
+            <h3 class="step__title">Give Back, Pay Forward</h3>
+            <p class="step__text">Once profitable, contribute 10% of net profits back to the Foundation. Your success funds the next entrepreneur. The ecosystem grows.</p>
+            <span class="step__tag">Cooperative Model</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Value Breakdown ═══ -->
+  <section class="section section--dark" id="value">
+    <div class="container text-center">
+      <span class="section-label">The Value</span>
+      <h2 class="section-title">What You'd Pay vs. What <span class="text-gradient">You Actually Pay</span></h2>
+      <p class="section-subtitle">Every LaunchPad partner receives over $41,500 in professional services at zero cost.</p>
+
+      <div class="value-grid reveal">
+        <div class="value-card value-card--trad">
+          <div class="value-card__label">Traditional Agency</div>
+          <div class="value-card__amount">$41,500+</div>
+          <table class="flow-table" style="margin-top: var(--sp-lg);">
+            <tr><td>Custom Website</td><td class="highlight" style="color:var(--color-danger)">$15,000</td></tr>
+            <tr><td>Brand Identity</td><td class="highlight" style="color:var(--color-danger)">$8,000</td></tr>
+            <tr><td>E-Commerce Store</td><td class="highlight" style="color:var(--color-danger)">$5,000</td></tr>
+            <tr><td>Business Plan</td><td class="highlight" style="color:var(--color-danger)">$3,000</td></tr>
+            <tr><td>Social Media Setup</td><td class="highlight" style="color:var(--color-danger)">$2,500</td></tr>
+            <tr><td>Market Research</td><td class="highlight" style="color:var(--color-danger)">$5,000</td></tr>
+            <tr><td>Legal Structure</td><td class="highlight" style="color:var(--color-danger)">$3,000</td></tr>
+          </table>
+        </div>
+        <div class="value-card value-card--think">
+          <div class="value-card__label">Think! Ventures LaunchPad</div>
+          <div class="value-card__amount">$0</div>
+          <table class="flow-table" style="margin-top: var(--sp-lg);">
+            <tr><td>Custom Website</td><td class="green">Included</td></tr>
+            <tr><td>Brand Identity</td><td class="green">Included</td></tr>
+            <tr><td>E-Commerce Store</td><td class="green">Included</td></tr>
+            <tr><td>Business Plan</td><td class="green">Included</td></tr>
+            <tr><td>Social Media Setup</td><td class="green">Included</td></tr>
+            <tr><td>Market Research</td><td class="green">Included</td></tr>
+            <tr><td>Legal Structure</td><td class="green">Included</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="payback-card reveal">
+        <div class="payback-card__title">Sustainability Model: 10% of Profits</div>
+        <p style="color: var(--color-text-muted);">Once profitable, partners contribute 10% of net profits back to the Foundation. This funds the next wave of entrepreneurs. You only pay when you're succeeding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Programs ═══ -->
+  <section class="section section--teal" id="programs">
+    <div class="container text-center">
+      <span class="section-label">Our Programs</span>
+      <h2 class="section-title">Six Engines of <span class="text-gradient">Opportunity</span></h2>
+      <p class="section-subtitle">We don't just launch your business. We build it, coach you through it, and teach you how to grow it.</p>
+
+      <div class="grid-3 stagger" style="margin-top: var(--sp-3xl);">
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="rocket"></span></div>
+          <h3 class="card__title">LaunchPad</h3>
+          <p class="card__text">Complete business infrastructure built in 2-5 days. Website, brand, legal, e-commerce, and business plan at zero cost.</p>
+          <span class="card__value">$41,500+ Value</span>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="tshirt"></span></div>
+          <h3 class="card__title">MerchEngine</h3>
+          <p class="card__text">Zero-inventory e-commerce for every partner. Print-on-demand merchandise with automated fulfillment and Stripe integration.</p>
+          <span class="card__value">Zero Inventory Risk</span>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="handshake"></span></div>
+          <h3 class="card__title">12-Month Coaching</h3>
+          <p class="card__text">Every entrepreneur receives a full year of hands-on coaching. Monthly check-ins, systems training, operations guidance, and growth strategy.</p>
+          <span class="card__value">1 Year of Support</span>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="trending"></span></div>
+          <h3 class="card__title">Business Communication</h3>
+          <p class="card__text">Professional communication workshops covering pitching, client relations, networking, social media presence, and public speaking.</p>
+          <span class="card__value">Grow Your Voice</span>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="monitor"></span></div>
+          <h3 class="card__title">Digital Equity</h3>
+          <p class="card__text">Free workshops at NC A&T and community centers covering AI tools, digital marketing, financial literacy, and online presence.</p>
+          <span class="card__value">Free Workshops</span>
+        </div>
+        <div class="card">
+          <div class="card__icon"><span class="icon-wrapper" data-icon="microscope"></span></div>
+          <h3 class="card__title">AI Research Lab</h3>
+          <p class="card__text">Gemini-powered market analysis, competitor research, and financial projections. Professional-grade insights at zero cost.</p>
+          <span class="card__value">AI-Powered</span>
+        </div>
+      </div>
+
+      <a href="launchpad.html" class="mascot reveal" style="margin-top: var(--sp-3xl); max-width: 640px; margin-left: auto; margin-right: auto; flex-direction: column; text-align: center; padding: var(--sp-2xl); text-decoration:none; cursor:pointer; display:flex;">
+        <img src="assets/images/bella-mascot.png" alt="Bella — Think! Ventures Mascot" class="mascot__img" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--color-secondary); box-shadow: 0 0 30px rgba(245, 166, 35, 0.2); margin: 0 auto var(--sp-lg);">
+        <p class="mascot__text" style="font-size: var(--fs-md); line-height: 1.7;"><span class="mascot__name" style="display: block; font-size: var(--fs-lg); margin-bottom: var(--sp-xs);">Bella says:</span> "Every entrepreneur deserves a real shot. Click me to start building your business!"</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ Proof of Concept ═══ -->
+  <section class="section section--dark" id="proof">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Proof of Concept</span>
+        <h2 class="section-title">Arlan LLC — <span class="text-gradient">Built in 1 Day</span></h2>
+        <p class="section-subtitle">Our first LaunchPad partner. A complete lighting and electrical business launched from zero in a single day.</p>
+      </div>
+
+      <div class="case-study reveal" style="margin-top: var(--sp-3xl);">
+        <div class="case-study__body">
+          <span class="case-study__badge">Live Case Study</span>
+          <div class="grid-2" style="margin-top: var(--sp-xl);">
+            <div>
+              <h3 style="font-size: var(--fs-xl); margin-bottom: var(--sp-md);">Full Digital Infrastructure</h3>
+              <p style="color: var(--color-text-muted); line-height: 1.8;">Arlan LLC received a complete 8-page website, brand identity, mascot design, social media setup, e-commerce store with merch, Stripe payment processing, and a business plan. Total traditional agency cost: $41,500+. Cost to the founder: $0.</p>
+              <a href="https://arlanpro.com" target="_blank" class="btn btn--primary" style="margin-top: var(--sp-xl);">Visit Live Site <span class="icon-wrapper icon-wrapper--sm" data-icon="external-link"></span></a>
+            </div>
+            <div class="case-study__stat-grid">
+              <div class="case-study__stat"><div class="case-study__stat-value">8</div><div class="case-study__stat-label">Website Pages</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">8+</div><div class="case-study__stat-label">Merch Products</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">$41K+</div><div class="case-study__stat-label">Total Value</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">1</div><div class="case-study__stat-label">Day to Build</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">$0</div><div class="case-study__stat-label">Cost to Founder</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">Live</div><div class="case-study__stat-label">Stripe Payments</div></div>
+            </div>
+          </div>
+
+          <h4 style="margin-top: var(--sp-2xl); margin-bottom: var(--sp-lg); color: var(--color-accent);">Full Deliverables</h4>
           <table class="flow-table">
-            <thead>
-              <tr>
-                <th>Deliverable</th>
-                <th>Status</th>
-                <th>Market Value</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Deliverable</th><th>Details</th><th>Market Rate</th></tr></thead>
             <tbody>
-              <tr><td>Market research & business plan</td><td class="green">&#10003; Complete</td><td class="highlight">$5,000</td></tr>
-              <tr><td>Brand identity (logo, mascot, colors)</td><td class="green">&#10003; Complete</td><td class="highlight">$8,000</td></tr>
-              <tr><td>8-page premium website with animations</td><td class="green">&#10003; Complete</td><td class="highlight">$15,000</td></tr>
-              <tr><td>E-commerce merch store (8 products)</td><td class="green">&#10003; Complete</td><td class="highlight">$3,000</td></tr>
-              <tr><td>Stripe payment integration (live)</td><td class="green">&#10003; Complete</td><td class="highlight">$2,000</td></tr>
-              <tr><td>AI mascot assistant with TTS voice</td><td class="green">&#10003; Complete</td><td class="highlight">$5,000</td></tr>
-              <tr><td>3D drone experience page</td><td class="green">&#10003; Complete</td><td class="highlight">$3,000</td></tr>
-              <tr><td>Netlify deployment (live)</td><td class="green">&#10003; Complete</td><td class="highlight">$500</td></tr>
-              <tr style="border-top:2px solid var(--color-accent);"><td><strong>Total</strong></td><td class="green"><strong>1 day</strong></td><td class="highlight"><strong>$41,500</strong></td></tr>
+              <tr><td>Custom Website</td><td>8-page responsive site with animations</td><td class="highlight">$15,000</td></tr>
+              <tr><td>Brand Identity</td><td>Logo, colors, typography, mascot</td><td class="highlight">$8,000</td></tr>
+              <tr><td>E-Commerce</td><td>Merch store with Stripe</td><td class="highlight">$5,000</td></tr>
+              <tr><td>Business Plan</td><td>Market analysis + financial projections</td><td class="highlight">$3,000</td></tr>
+              <tr><td>Social Media</td><td>Google Business, all platforms</td><td class="highlight">$2,500</td></tr>
+              <tr><td>Market Research</td><td>AI-powered competitor and market analysis</td><td class="highlight">$5,000</td></tr>
+              <tr><td>Legal Setup</td><td>LLC filing guidance and structure</td><td class="highlight">$3,000</td></tr>
             </tbody>
           </table>
         </div>
@@ -405,98 +727,474 @@
     </div>
   </section>
 
-  <!-- The Hybrid Model -->
-  <section class="section">
+  <!-- ═══ Ready-Made Businesses ═══ -->
+  <section class="section" id="ready-made">
     <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Our Structure</span>
-        <h2 class="section-title">The <span class="text-gradient">Hybrid Model</span></h2>
-        <p class="section-subtitle">A nonprofit foundation backed by a for-profit technology company. Complete transparency on how the two work together.</p>
+      <div class="text-center">
+        <span class="section-label">Ready-Made Businesses</span>
+        <h2 class="section-title">Don't Have an Idea? <span class="text-gradient">Pick One</span></h2>
+        <p class="section-subtitle">We pre-build complete, proven business models. You browse the catalog, claim your city, and start operating. No franchise fees. No startup capital. Zero cost.</p>
       </div>
 
-      <div class="grid-2 stagger" style="margin-top:var(--sp-3xl);">
-        <div class="card" style="border-color:var(--color-accent);">
-          <h3 class="card__title" style="color:var(--color-accent);">Think! Ventures Foundation</h3>
-          <p style="color:var(--color-secondary);font-weight:600;margin-bottom:var(--sp-md);">501(c)(3) Nonprofit</p>
-          <ul style="list-style:none;color:var(--color-text-muted);line-height:2.2;">
-            <li>&#10003; Applies for grants and funding</li>
-            <li>&#10003; Recruits and selects entrepreneurs</li>
-            <li>&#10003; Runs workshops and programs</li>
-            <li>&#10003; Measures and reports social impact</li>
-            <li>&#10003; Issues tax-deductible donation receipts</li>
-            <li>&#10003; Owns cooperative partnership agreements</li>
-          </ul>
+      <!-- How Ready-Made Works -->
+      <div class="flow-cards stagger" style="margin-top: var(--sp-3xl);">
+        <div class="flow-card">
+          <div class="flow-card__icon"><span class="icon-wrapper" data-icon="monitor"></span></div>
+          <h4 class="flow-card__title">Browse the Catalog</h4>
+          <p class="flow-card__text">See available business models with descriptions, revenue potential, and open markets.</p>
         </div>
-        <div class="card" style="border-color:var(--color-secondary);">
-          <h3 class="card__title" style="color:var(--color-secondary);">Think! Design & Planning, LLC</h3>
-          <p style="color:var(--color-text-muted);font-weight:600;margin-bottom:var(--sp-md);">For-Profit Technology Partner</p>
-          <ul style="list-style:none;color:var(--color-text-muted);line-height:2.2;">
-            <li>&#10003; Provides technology services at fair market rates</li>
-            <li>&#10003; Builds websites, brands, and AI tools</li>
-            <li>&#10003; Maintains infrastructure (hosting, APIs, MCP)</li>
-            <li>&#10003; Owns proprietary tech (AVA, Gemini integrations)</li>
-            <li>&#10003; Contracted by Foundation — disclosed in Form 990</li>
-            <li>&#10003; Also serves direct (non-Foundation) clients</li>
-          </ul>
+        <div class="flow-card">
+          <div class="flow-card__icon"><span class="icon-wrapper" data-icon="check"></span></div>
+          <h4 class="flow-card__title">Claim Your Market</h4>
+          <p class="flow-card__text">Apply for your city. One operator per market. Your territory is exclusively yours.</p>
         </div>
+        <div class="flow-card">
+          <div class="flow-card__icon"><span class="icon-wrapper" data-icon="rocket"></span></div>
+          <h4 class="flow-card__title">Launch and Operate</h4>
+          <p class="flow-card__text">We customize the business for your market in 1-2 days. 12 months of coaching included.</p>
+        </div>
+      </div>
+
+      <!-- Arlan Ready-Made Card -->
+      <div class="case-study reveal" style="margin-top: var(--sp-3xl);">
+        <div class="case-study__body">
+          <div style="display: flex; align-items: center; gap: var(--sp-lg); flex-wrap: wrap; margin-bottom: var(--sp-xl);">
+            <span class="case-study__badge" style="margin: 0;">First Ready-Made Business</span>
+            <span style="background: rgba(16, 185, 129, 0.15); color: var(--color-accent); padding: var(--sp-xs) var(--sp-md); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(16, 185, 129, 0.3);">Proven Model</span>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <h3 style="font-size: var(--fs-xl); margin-bottom: var(--sp-sm); color: var(--color-white);">Arlan -- Premium Exterior Lighting & Home Services</h3>
+              <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--sp-lg);">Holiday lighting installations, permanent LED systems, landscape lighting, and exterior washing. High-margin, seasonal demand, recurring customers. Already live and operating in Greensboro.</p>
+
+              <h4 style="color: var(--color-accent); margin-bottom: var(--sp-md);">What You Get</h4>
+              <ul style="list-style: none; color: var(--color-text-muted); line-height: 2;">
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check" style="color: var(--color-accent); margin-right: var(--sp-sm);"></span> Professional website localized to your market</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check" style="color: var(--color-accent); margin-right: var(--sp-sm);"></span> Complete brand identity and marketing materials</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check" style="color: var(--color-accent); margin-right: var(--sp-sm);"></span> Operations manual with pricing and service delivery</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check" style="color: var(--color-accent); margin-right: var(--sp-sm);"></span> E-commerce store with Stripe payments</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check" style="color: var(--color-accent); margin-right: var(--sp-sm);"></span> 12 months of coaching and communication training</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check" style="color: var(--color-accent); margin-right: var(--sp-sm);"></span> Exclusive territory -- one operator per city</li>
+              </ul>
+
+              <h4 style="color: var(--color-secondary); margin-top: var(--sp-xl); margin-bottom: var(--sp-md);">What You Need</h4>
+              <ul style="list-style: none; color: var(--color-text-muted); line-height: 2;">
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="construction" style="color: var(--color-secondary); margin-right: var(--sp-sm);"></span> Reliable vehicle (truck or SUV)</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="construction" style="color: var(--color-secondary); margin-right: var(--sp-sm);"></span> Basic ladder and hand tools</li>
+                <li><span class="icon-wrapper icon-wrapper--sm" data-icon="construction" style="color: var(--color-secondary); margin-right: var(--sp-sm);"></span> Willingness to learn -- we teach you everything else</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="case-study__stat-grid">
+                <div class="case-study__stat"><div class="case-study__stat-value">$0</div><div class="case-study__stat-label">Franchise Fee</div></div>
+                <div class="case-study__stat"><div class="case-study__stat-value">$0</div><div class="case-study__stat-label">Startup Cost</div></div>
+                <div class="case-study__stat"><div class="case-study__stat-value">90%</div><div class="case-study__stat-label">You Keep</div></div>
+                <div class="case-study__stat"><div class="case-study__stat-value">10%</div><div class="case-study__stat-label">Funds Next Entrepreneur</div></div>
+                <div class="case-study__stat"><div class="case-study__stat-value">12mo</div><div class="case-study__stat-label">Coaching Included</div></div>
+                <div class="case-study__stat"><div class="case-study__stat-value">Live</div><div class="case-study__stat-label">Proven in Greensboro</div></div>
+              </div>
+
+              <h4 style="color: var(--color-accent); margin-top: var(--sp-xl); margin-bottom: var(--sp-md); text-align: center;">Available Markets</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: var(--sp-sm); justify-content: center;">
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-accent);">Durham, NC</span>
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-accent);">Raleigh, NC</span>
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-accent);">Charlotte, NC</span>
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-accent);">Atlanta, GA</span>
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-accent);">Richmond, VA</span>
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-accent);">Washington, DC</span>
+                <span style="padding: var(--sp-xs) var(--sp-md); background: rgba(245, 166, 35, 0.1); border: 1px solid rgba(245, 166, 35, 0.3); border-radius: var(--border-radius-xl); font-size: var(--fs-xs); color: var(--color-secondary);">+ Any City</span>
+              </div>
+
+              <a href="mailto:chris@thinkdesignplanning.com?subject=Ready-Made Business: Arlan - [Your City]" class="btn btn--gold btn--lg" style="margin-top: var(--sp-xl); width: 100%; text-align: center;">Claim Your Market</a>
+            </div>
+          </div>
+
+          <!-- vs Traditional Franchise -->
+          <h4 style="margin-top: var(--sp-3xl); margin-bottom: var(--sp-lg); color: var(--color-accent); text-align: center;">Think! Ventures vs. Traditional Franchise</h4>
+          <table class="flow-table">
+            <thead><tr><th></th><th>Traditional Franchise</th><th>Think! Ventures Ready-Made</th></tr></thead>
+            <tbody>
+              <tr><td>Upfront Fee</td><td class="highlight" style="color:var(--color-danger)">$50,000 - $500,000</td><td class="green">$0</td></tr>
+              <tr><td>Ongoing Royalties</td><td class="highlight" style="color:var(--color-danger)">5-8% of Gross Revenue</td><td class="green">10% of Net Profit (only when profitable)</td></tr>
+              <tr><td>Training</td><td class="highlight" style="color:var(--color-danger)">You pay for it</td><td class="green">12-month coaching included free</td></tr>
+              <tr><td>Communication Skills</td><td class="highlight" style="color:var(--color-danger)">Not included</td><td class="green">Professional workshops included</td></tr>
+              <tr><td>Corporate Control</td><td class="highlight" style="color:var(--color-danger)">Strict</td><td class="green">Collaborative partnership</td></tr>
+              <tr><td>Exit Costs</td><td class="highlight" style="color:var(--color-danger)">Thousands in penalties</td><td class="green">90 days notice, no penalty</td></tr>
+              <tr><td>Motivation</td><td class="highlight" style="color:var(--color-danger)">Corporate profit</td><td class="green">Mission-driven, grant-funded</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- More coming soon -->
+      <div class="text-center reveal" style="margin-top: var(--sp-2xl);">
+        <p style="color: var(--color-text-muted); font-style: italic;">More Ready-Made Business models coming soon. Have an idea for a business model? Tell us.</p>
+        <a href="mailto:chris@thinkdesignplanning.com?subject=Ready-Made Business Idea" class="btn btn--outline" style="margin-top: var(--sp-md);">Suggest a Business Model</a>
       </div>
     </div>
   </section>
 
-  <!-- Apply CTA -->
-  <section class="section section--dark" id="apply">
+  <!-- ═══ Free Business Tool CTA ═══ -->
+  <section class="section section--dark">
     <div class="container">
       <div class="cta-banner reveal">
-        <span class="section-label" style="color:var(--color-secondary);">Ready to Launch?</span>
-        <h2 class="cta-banner__title">Your Dream. Our <span class="text-gradient">Infrastructure.</span></h2>
-        <p class="cta-banner__text">No application fees. No hidden costs. No experience required. Just an idea and the drive to make it happen. We'll build everything else.</p>
-        <a href="mailto:chris@thinkdesignandplanning.com?subject=Think! Ventures LaunchPad Application&body=Hi Think! Ventures,%0A%0AI have a business idea I'd like to bring to life.%0A%0AMy name:%0AMy business idea:%0AMy location:%0A%0AThanks!" class="btn btn--gold btn--lg">Apply to LaunchPad &rarr;</a>
-        <p style="color:var(--color-text-muted);font-size:var(--fs-sm);margin-top:var(--sp-lg);">Applications reviewed within 48 hours. Currently accepting entrepreneurs in NC & FL.</p>
+        <div class="cta-grid">
+          <div style="text-align: left;">
+            <span class="section-label">Two Paths to Ownership</span>
+            <h2 class="cta-banner__title" style="text-align: left;">Have an Idea? <span class="text-gradient">Or Pick One</span></h2>
+            <p class="cta-banner__text" style="text-align: left; margin-left: 0;">Use our free LaunchPad tool to start building your own business idea. Or browse our Ready-Made catalog and step into a proven model. Either way -- zero cost, full support.</p>
+            <div style="display: flex; gap: var(--sp-lg); flex-wrap: wrap;">
+              <a href="launchpad.html" class="btn btn--primary btn--lg">I Have an Idea</a>
+              <a href="#ready-made" class="btn btn--gold btn--lg">Browse Ready-Made</a>
+            </div>
+          </div>
+          <img src="assets/images/bella-mascot.png" alt="Bella" class="cta-mascot">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- ═══ Hybrid Model ═══ -->
+  <section class="section section--dark" id="model">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">The Model</span>
+        <h2 class="section-title">How the <span class="text-gradient">Hybrid Structure</span> Works</h2>
+        <p class="section-subtitle">Grant money funds the mission. Professional expertise powers the delivery.</p>
+      </div>
+
+      <div class="grid-2 reveal" style="margin-top: var(--sp-3xl);">
+        <div class="hybrid-card">
+          <span class="hybrid-card__tag hybrid-card__tag--green">Nonprofit</span>
+          <h3 class="card__title">Think! Ventures Foundation</h3>
+          <p class="card__text">Applies for and receives grants. Manages partner relationships and workshop programs. Distributes funds for services.</p>
+          <ul class="hybrid-list">
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> 501(c)(3) tax-exempt status</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Eligible for federal and state grants</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Charitable mission: workforce development</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Board governance and transparency</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Tax-deductible donations accepted</li>
+          </ul>
+        </div>
+        <div class="hybrid-card">
+          <span class="hybrid-card__tag hybrid-card__tag--gold">For-Profit</span>
+          <h3 class="card__title">Think! Design & Planning</h3>
+          <p class="card__text">Contracted by the Foundation to deliver professional services. Brings proprietary AI technology, design expertise, and infrastructure.</p>
+          <ul class="hybrid-list">
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Professional design and development</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Proprietary AI tools (AVA, Gemini)</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Fair-market-rate contracts</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Rapid delivery (2-5 days)</li>
+            <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> Ongoing technical support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Partner Ecosystem ═══ -->
+  <section class="section section--dark" id="partners">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Our Network</span>
+        <h2 class="section-title">Partner <span class="text-gradient">Ecosystem</span></h2>
+        <p class="section-subtitle">Think! Ventures doesn't build in isolation. We connect entrepreneurs into a thriving network of partners, mentors, and resources.</p>
+      </div>
+
+      <div class="partner-grid stagger" style="margin-top: var(--sp-3xl);">
+        <!-- Think! Design & Planning -->
+        <a href="https://thinkdesignplanning.com" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/logo/think-logo-white.png" alt="Think! Design &amp; Planning" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">Think! Design &amp; Planning</h4>
+          <p class="partner-card__role">Technology Partner</p>
+          <p class="partner-card__desc">Conservation, culture, memorial, and technology. Bridges ecological performance, cultural identity, and AI-powered design for landowners, institutions, and communities.</p>
+          <span class="partner-card__tag">For-Profit LLC</span>
+        </a>
+
+        <!-- Arlan LLC -->
+        <a href="https://arlanpro.com" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/arlan-logo.png" alt="Arlan LLC" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">Arlan LLC</h4>
+          <p class="partner-card__role">LaunchPad Partner #1</p>
+          <p class="partner-card__desc">Premium exterior lighting and home services across North Carolina and Florida. Holiday lighting, permanent LED systems, and landscape lighting. Brilliance in Every Detail.</p>
+          <span class="partner-card__tag partner-card__tag--live">Live Business</span>
+        </a>
+
+        <!-- ReThinking The Leaf -->
+        <a href="https://rethinkingtheleaf.netlify.app" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/rttl-logo.png" alt="ReThinking The Leaf" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">ReThinking The Leaf</h4>
+          <p class="partner-card__role">Agrotherapy Partner</p>
+          <p class="partner-card__desc">A 66-acre agrotherapy estate in Brunswick County, Virginia. Reconnect with the land through lavender fields, cabin retreats, wetland education, and community-driven healing.</p>
+          <span class="partner-card__tag partner-card__tag--tech">AgTech</span>
+        </a>
+
+        <!-- Brothers Function Group -->
+        <a href="https://brothersfunctiongroup.netlify.app" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/bfg-logo.png" alt="Brothers Function Group" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">Brothers Function Group</h4>
+          <p class="partner-card__role">Entertainment Partner</p>
+          <p class="partner-card__desc">A premium social collective founded on Brotherhood. Live showcases, curated comedy, and high-energy legacy soundscapes across NC, VA, DC &amp; GA.</p>
+          <span class="partner-card__tag partner-card__tag--live">Live Business</span>
+        </a>
+
+        <!-- Brenes Precision Dentistry -->
+        <a href="https://brenesprecisiondentistry.netlify.app" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/brenes-logo.png" alt="Brenes Precision Dentistry" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">Brenes Precision Dentistry</h4>
+          <p class="partner-card__role">Healthcare Partner</p>
+          <p class="partner-card__desc">Lake Jeanette Family &amp; Implant Dentistry in Greensboro, NC. Digital twin technology, 3D scanning, AI diagnostics, and immersive patient experiences.</p>
+          <span class="partner-card__tag partner-card__tag--live">Live Business</span>
+        </a>
+
+        <!-- NC A&T -->
+        <div class="partner-card reveal">
+          <div class="partner-card__logo">
+            <span class="icon-wrapper" data-icon="graduation" style="width:56px;height:56px;"></span>
+          </div>
+          <h4 class="partner-card__name">NC A&amp;T State University</h4>
+          <p class="partner-card__role">Workshop Partner</p>
+          <p class="partner-card__desc">Digital equity workshops, entrepreneurship education, and HBCU community outreach programs.</p>
+          <span class="partner-card__tag partner-card__tag--edu">Education</span>
+        </div>
+
+        <!-- NC Small Farm -->
+        <a href="https://ncsmall.farm" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/ncsmall-logo.png" alt="NC Small Farm Platform" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">NC Small Farm Platform</h4>
+          <p class="partner-card__role">AgTech Partner</p>
+          <p class="partner-card__desc">NC Cooperative Extension Digital Navigator. 4 AI-powered virtual assistants for agriculture, families, community development, and events. Powered by NC A&amp;T.</p>
+          <span class="partner-card__tag partner-card__tag--tech">AgTech</span>
+        </a>
+
+        <!-- DJ's Masterpiece -->
+        <a href="https://djsmasterpiece.netlify.app" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/dj-logo.png" alt="DJ's Masterpiece Studio" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">DJ's Masterpiece Studio</h4>
+          <p class="partner-card__role">Literary Publishing Partner</p>
+          <p class="partner-card__desc">A premium creative writing and production studio for scripts, characters, scenes, soundtracks, and multilingual book publishing with AI narration.</p>
+          <span class="partner-card__tag partner-card__tag--live">Live Business</span>
+        </a>
+
+        <!-- Mae's Story Bloom -->
+        <a href="https://maesstorybloom.com/" target="_blank" class="partner-card reveal">
+          <div class="partner-card__logo">
+            <img src="assets/partners/mae-logo.png" alt="Mae's Story Bloom" style="height: 56px; width: auto;">
+          </div>
+          <h4 class="partner-card__name">Mae's Story Bloom</h4>
+          <p class="partner-card__role">Children's Education Partner</p>
+          <p class="partner-card__desc">Create beautiful illustrated children's books with AI. Write a story, pick an art style, and export print-ready PDFs for Amazon KDP -- in minutes, not months.</p>
+          <span class="partner-card__tag partner-card__tag--live">Live Business</span>
+        </a>
+
+        <!-- Open Slot -->
+        <div class="partner-card partner-card--open reveal">
+          <div class="partner-card__logo">
+            <span class="icon-wrapper" data-icon="rocket" style="width:56px;height:56px; opacity: 0.4;"></span>
+          </div>
+          <h4 class="partner-card__name">Your Business Here</h4>
+          <p class="partner-card__role">Next LaunchPad Partner</p>
+          <p class="partner-card__desc">Apply to LaunchPad and join our ecosystem. We'll build your complete business at zero cost.</p>
+          <a href="mailto:chris@thinkdesignplanning.com" class="btn btn--outline" style="margin-top: var(--sp-md); font-size: var(--fs-xs);">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Transparency ═══ -->
+  <section class="section" id="transparency">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Transparency</span>
+        <h2 class="section-title">Where the <span class="text-gradient">Money Goes</span></h2>
+        <p class="section-subtitle">Every dollar is accounted for. Here's exactly how funds flow through the Foundation.</p>
+      </div>
+
+      <div class="flow-cards stagger" style="margin-top: var(--sp-3xl);">
+        <div class="flow-card">
+          <div class="flow-card__icon"><span class="icon-wrapper" data-icon="funding"></span></div>
+          <h4 class="flow-card__title">Grant Funds In</h4>
+          <p class="flow-card__text">Federal, state, and private grants fund the Foundation's programs and operations.</p>
+        </div>
+        <div class="flow-card">
+          <div class="flow-card__icon"><span class="icon-wrapper" data-icon="handshake"></span></div>
+          <h4 class="flow-card__title">Partner Revenue</h4>
+          <p class="flow-card__text">10% of partner profits flow back to sustain the Foundation and fund new entrepreneurs.</p>
+        </div>
+        <div class="flow-card">
+          <div class="flow-card__icon"><span class="icon-wrapper" data-icon="trending"></span></div>
+          <h4 class="flow-card__title">Merch Sales</h4>
+          <p class="flow-card__text">Printful-powered merchandise generates passive revenue for both partners and the Foundation.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h4 style="text-align: center; margin-bottom: var(--sp-lg); color: var(--color-accent);">Budget Allocation</h4>
+        <table class="flow-table">
+          <thead><tr><th>Category</th><th>Allocation</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Program Delivery</td><td class="green">50%</td><td>Direct services via Think! D&P contracts</td></tr>
+            <tr><td>Workshops & Training</td><td class="green">20%</td><td>Digital equity programs at NC A&T and community centers</td></tr>
+            <tr><td>AI Research Lab</td><td class="green">15%</td><td>Market research tools and Gemini AI infrastructure</td></tr>
+            <tr><td>Operations</td><td class="highlight">10%</td><td>Foundation administration and compliance</td></tr>
+            <tr><td>Outreach</td><td class="highlight">5%</td><td>Community engagement and partner recruitment</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Apply CTA ═══ -->
+  <section class="section section--dark" id="apply">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="apply-avatar-area">
+          <div class="avatar-ring">
+            <img src="assets/images/bella-avatar.png" alt="Bella" class="avatar avatar--md">
+          </div>
+          <div class="apply-bubble">"Ready when you are. No cost, no catch. Let's build something real."</div>
+        </div>
+        <h2 class="cta-banner__title">Ready to <span class="text-gradient">Launch Your Dream</span>?</h2>
+        <p class="cta-banner__text">Apply to the LaunchPad program today. Or use our free interactive tool to start mapping your business right now.</p>
+        <div style="display: flex; gap: var(--sp-lg); justify-content: center; flex-wrap: wrap;">
+          <a href="mailto:chris@thinkdesignplanning.com" class="btn btn--gold btn--lg">Apply to LaunchPad</a>
+          <a href="launchpad.html" class="btn btn--outline btn--lg">Use the Free Tool</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+<footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="nav__logo" style="margin-bottom:var(--sp-md);">
-            <span class="nav__logo-icon">💡</span>
-            <span class="nav__logo-text">THINK! <span style="color:var(--color-accent);">VENTURES</span></span>
-          </div>
-          <p class="footer__description">A 501(c)(3) nonprofit empowering underserved entrepreneurs with free AI-powered digital business infrastructure. From Dream to Launch in Days.</p>
+          <a href="/" class="nav__logo" style="margin-bottom: var(--sp-md);">
+            <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
+            <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
+          </a>
+          <p class="footer__description">Think! Ventures Foundation is a 501(c)(3) nonprofit building complete businesses for underserved entrepreneurs at zero cost. Powered by Think! Design & Planning, LLC.</p>
         </div>
         <div>
           <h4 class="footer__heading">Programs</h4>
           <a href="#programs" class="footer__link">LaunchPad</a>
           <a href="#programs" class="footer__link">MerchEngine</a>
-          <a href="#programs" class="footer__link">Digital Workshops</a>
+          <a href="#programs" class="footer__link">12-Month Coaching</a>
+          <a href="#programs" class="footer__link">Business Communication</a>
+          <a href="#programs" class="footer__link">Digital Equity</a>
           <a href="#programs" class="footer__link">AI Research Lab</a>
+          <a href="launchpad.html" class="footer__link">Free Business Tool</a>
         </div>
         <div>
           <h4 class="footer__heading">Transparency</h4>
-          <a href="#transparency" class="footer__link">Where Money Goes</a>
+          <a href="#transparency" class="footer__link">Budget Allocation</a>
+          <a href="#model" class="footer__link">Hybrid Model</a>
           <a href="#value" class="footer__link">Value Breakdown</a>
           <a href="#proof" class="footer__link">Case Studies</a>
-          <a href="docs/nonprofit-business-plan.md" class="footer__link">Full Business Plan</a>
         </div>
         <div>
           <h4 class="footer__heading">Connect</h4>
-          <a href="mailto:chris@thinkdesignandplanning.com" class="footer__link">Email Us</a>
-          <a href="#" class="footer__link">NC A&T Partnership</a>
-          <a href="#" class="footer__link">Open Future Coalition</a>
-          <a href="#" class="footer__link">Donate</a>
+          <a href="mailto:chris@thinkdesignplanning.com" class="footer__link">Email Us</a>
+          <a href="https://thinkdesignplanning.com" target="_blank" class="footer__link">Think! Design & Planning</a>
+          <a href="#apply" class="footer__link">Apply to LaunchPad</a>
         </div>
       </div>
       <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026 Think! Ventures Foundation, Inc. All rights reserved. A 501(c)(3) nonprofit organization.</p>
+        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation. All rights reserved.</span>
+        <span class="footer__copyright">A 501(c)(3) Public Charity</span>
       </div>
     </div>
   </footer>
 
+  <!-- ═══ Persistent Bella Guide ═══ -->
+  <a href="launchpad.html" class="bella-float" id="bellaFloat" title="Launch the Business Formation Tool">
+    <div class="bella-float__ring">
+      <img src="assets/images/bella-avatar.png" alt="Bella" class="bella-float__img">
+    </div>
+    <div class="bella-float__tooltip">Click me to start your business!</div>
+  </a>
+
+  <style>
+    .bella-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 998;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+    .bella-float.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .bella-float__ring {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--color-secondary);
+      box-shadow: 0 4px 20px rgba(245, 166, 35, 0.3);
+      animation: pulseRingGold 3s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+    .bella-float:hover .bella-float__ring {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(245, 166, 35, 0.5);
+    }
+    .bella-float__img { width: 100%; height: 100%; object-fit: cover; }
+    .bella-float__tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      right: 0;
+      background: rgba(7, 15, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-md);
+      padding: 8px 14px;
+      font-family: var(--font-heading);
+      font-size: var(--fs-xs);
+      color: var(--color-white);
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    .bella-float:hover .bella-float__tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- ═══ Scripts ═══ -->
+  <script src="js/icons.js"></script>
   <script>
-    // Scroll reveal animations
+    // Render all data-icon elements
+    document.querySelectorAll('[data-icon]').forEach(el => {
+      el.innerHTML = ICONS[el.dataset.icon] || '';
+    });
+
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -507,31 +1205,230 @@
 
     document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile nav if open
+          document.getElementById('navLinks').classList.remove('open');
+        }
       });
     });
 
-    // Mobile hamburger
-    const hamburger = document.getElementById('hamburger');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        const links = document.querySelector('.nav__links');
-        links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-        links.style.flexDirection = 'column';
-        links.style.position = 'absolute';
-        links.style.top = '60px';
-        links.style.left = '0';
-        links.style.right = '0';
-        links.style.background = 'rgba(7,15,26,0.98)';
-        links.style.padding = '1rem';
-        links.style.borderBottom = '1px solid rgba(16,185,129,0.15)';
-      });
+    // Persistent Bella guide — appears after scrolling past hero
+    const bellaFloat = document.getElementById('bellaFloat');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        bellaFloat.classList.add('visible');
+      } else {
+        bellaFloat.classList.remove('visible');
+      }
+    });
+  </script>
+
+  <!-- ═══ Email Capture Modal ═══ -->
+  <div class="email-modal-overlay" id="emailModal">
+    <div class="email-modal">
+      <button class="email-modal__close" id="emailModalClose" aria-label="Close">&times;</button>
+      <div class="email-modal__avatar">
+        <img src="assets/images/bella-avatar.png" alt="Bella" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--color-secondary);">
+      </div>
+      <h3 class="email-modal__title">See How We Build Businesses <span class="text-gradient">for $0</span></h3>
+      <p class="email-modal__text">Watch the full explainer video and learn how Think! Ventures launches real businesses at zero cost.</p>
+      <form class="email-modal__form" id="emailCaptureForm" name="video-leads" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="video-leads">
+        <input type="email" name="email" class="email-modal__input" placeholder="Enter your email" required autocomplete="email">
+        <button type="submit" class="email-modal__btn">Watch the Video</button>
+      </form>
+      <p class="email-modal__fine">No spam. Just the good stuff for founders.</p>
+    </div>
+  </div>
+
+  <style>
+    .email-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(7, 15, 26, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
     }
+    .email-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .email-modal {
+      background: linear-gradient(145deg, rgba(13,79,79,0.4), rgba(7,15,26,0.95));
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: var(--border-radius-xl, 20px);
+      padding: 48px 40px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(245,166,35,0.08);
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.4s ease;
+    }
+    .email-modal-overlay.active .email-modal {
+      transform: translateY(0) scale(1);
+    }
+    .email-modal__close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .email-modal__close:hover { color: var(--color-white); }
+    .email-modal__avatar { margin-bottom: var(--sp-lg, 24px); }
+    .email-modal__title {
+      font-family: var(--font-heading, 'Outfit', sans-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-white, #fff);
+      margin-bottom: var(--sp-sm, 12px);
+    }
+    .email-modal__text {
+      font-size: 0.95rem;
+      color: var(--color-text-muted, #8b9ab5);
+      margin-bottom: var(--sp-xl, 32px);
+      line-height: 1.6;
+    }
+    .email-modal__form {
+      display: flex;
+      gap: 10px;
+    }
+    .email-modal__input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--color-white, #fff);
+      font-size: 0.95rem;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .email-modal__input:focus {
+      border-color: var(--color-secondary, #F5A623);
+    }
+    .email-modal__input::placeholder { color: rgba(255,255,255,0.35); }
+    .email-modal__btn {
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, var(--color-secondary, #F5A623), #e6951e);
+      color: var(--color-bg, #070F1A);
+      font-family: var(--font-heading, 'Outfit', sans-serif);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .email-modal__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245,166,35,0.4);
+    }
+    .email-modal__fine {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: var(--sp-md, 16px);
+    }
+    @media (max-width: 500px) {
+      .email-modal { padding: 36px 24px; }
+      .email-modal__form { flex-direction: column; }
+      .email-modal__btn { width: 100%; }
+    }
+  </style>
+
+  <script>
+    // Email capture modal — shows once after 8s delay or 30% scroll
+    (function() {
+      const modal = document.getElementById('emailModal');
+      const closeBtn = document.getElementById('emailModalClose');
+      const form = document.getElementById('emailCaptureForm');
+      const KEY = 'tv_email_modal_dismissed';
+
+      // Don't show if already dismissed this session
+      if (sessionStorage.getItem(KEY)) return;
+
+      function showModal() {
+        modal.classList.add('active');
+      }
+
+      function hideModal() {
+        modal.classList.remove('active');
+        sessionStorage.setItem(KEY, '1');
+      }
+
+      // Show after 8 seconds
+      const timer = setTimeout(showModal, 8000);
+
+      // Or show at 30% scroll (whichever comes first)
+      function onScroll() {
+        const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        if (scrollPct > 0.3) {
+          clearTimeout(timer);
+          showModal();
+          window.removeEventListener('scroll', onScroll);
+        }
+      }
+      window.addEventListener('scroll', onScroll);
+
+      // Close handlers
+      closeBtn.addEventListener('click', hideModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) hideModal();
+      });
+
+      // Form submit — scroll to video
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input[name="email"]').value;
+
+        // Submit to Netlify Forms via fetch
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            'form-name': 'video-leads',
+            'email': email
+          }).toString()
+        }).then(() => {
+          hideModal();
+          // Scroll to video
+          const explainer = document.getElementById('explainer');
+          if (explainer) {
+            explainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Auto-play video after scrolling
+            setTimeout(() => {
+              const video = document.getElementById('explainerVideo');
+              const overlay = document.getElementById('explainerOverlay');
+              if (video) video.play();
+              if (overlay) overlay.style.display = 'none';
+            }, 800);
+          }
+        }).catch(() => {
+          hideModal();
+          document.getElementById('explainer')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    })();
   </script>
 
 </body>

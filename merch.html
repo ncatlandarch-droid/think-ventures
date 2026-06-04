@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch Store | Think! Ventures Apparel</title>
+  <meta name="description" content="Rep the mission. Every purchase supports entrepreneurs. Think! Ventures branded apparel and merchandise.">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
+  <style>
+    /* ═══ Merch Page Styles ═══ */
+    .merch-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(13,79,79,0.2) 0%, rgba(7,15,26,1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .merch-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .merch-hero__bella {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--color-secondary);
+      box-shadow: 0 0 40px rgba(245,166,35,0.25);
+      margin: 0 auto var(--sp-xl);
+      display: block;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-xl);
+    }
+    .product-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-secondary);
+      box-shadow: 0 8px 30px rgba(245,166,35,0.12);
+    }
+    .product-card__image {
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-md);
+      color: rgba(255,255,255,0.6);
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card__image--1 { background: linear-gradient(135deg, #0D4F4F 0%, #0a3d3d 100%); }
+    .product-card__image--2 { background: linear-gradient(135deg, #F5A623 0%, #d4900f 100%); }
+    .product-card__image--3 { background: linear-gradient(135deg, #1a1a2e 0%, #0D4F4F 100%); }
+    .product-card__image--4 { background: linear-gradient(135deg, #10B981 0%, #0D4F4F 100%); }
+    .product-card__image--5 { background: linear-gradient(135deg, #0D4F4F 0%, #070F1A 100%); }
+    .product-card__image--6 { background: linear-gradient(135deg, #F5A623 0%, #10B981 100%); }
+    .product-card__image--7 { background: linear-gradient(135deg, #10B981 0%, #F5A623 100%); }
+    .product-card__image--8 { background: linear-gradient(135deg, #F5A623 0%, #ff8c00 100%); }
+
+    .product-card__image-label {
+      text-align: center;
+      padding: var(--sp-lg);
+      z-index: 1;
+    }
+    .product-card__image-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto var(--sp-sm);
+      opacity: 0.4;
+    }
+    .product-card__image-icon svg { width: 48px; height: 48px; }
+
+    .product-card__body {
+      padding: var(--sp-lg);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card__name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-base);
+      color: var(--color-white);
+      margin-bottom: var(--sp-xs);
+    }
+    .product-card__desc {
+      font-size: var(--fs-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--sp-md);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .product-card__price {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: var(--fs-lg);
+      color: var(--color-secondary);
+      margin-bottom: var(--sp-md);
+    }
+
+    /* Size Selector */
+    .size-selector {
+      display: flex;
+      gap: var(--sp-xs);
+      margin-bottom: var(--sp-md);
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--border-radius-sm);
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-muted);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: var(--fs-xs);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .size-btn:hover { border-color: var(--color-secondary); color: var(--color-white); }
+    .size-btn.active {
+      background: var(--color-secondary);
+      border-color: var(--color-secondary);
+      color: var(--color-bg);
+    }
+
+    /* How It Works */
+    .merch-how { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-xl); }
+    .merch-how__card {
+      text-align: center;
+      padding: var(--sp-2xl);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+    }
+    .merch-how__icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto var(--sp-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      border-radius: var(--border-radius-md);
+      color: var(--color-white);
+    }
+    .merch-how__icon svg { width: 26px; height: 26px; }
+
+    /* Bella Feature */
+    .bella-feature {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2xl);
+      max-width: 700px;
+      margin: 0 auto;
+      padding: var(--sp-2xl);
+      background: rgba(245,166,35,0.06);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: var(--border-radius-lg);
+    }
+    .bella-feature__img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .bella-feature__text {
+      font-size: var(--fs-lg);
+      font-style: italic;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    .bella-feature__name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-secondary);
+      font-style: normal;
+      display: block;
+      margin-top: var(--sp-sm);
+    }
+
+    /* Impact Stats */
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-xl); }
+    .impact-card {
+      text-align: center;
+      padding: var(--sp-2xl);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+    }
+    .impact-card__pct {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: var(--fs-3xl);
+      color: var(--color-secondary);
+    }
+    .impact-card__label {
+      font-size: var(--fs-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--sp-xs);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: var(--sp-md) var(--sp-xl);
+      border-radius: var(--border-radius-xl);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Cart Badge */
+    .cart-badge {
+      position: relative;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      color: var(--color-bg);
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+    }
+
+    @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .merch-how { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .bella-feature { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
+        <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="/" class="nav__link">Home</a>
+        <a href="/#explainer" class="nav__link">How It Works</a>
+        <a href="/#mission" class="nav__link">Mission</a>
+        <a href="/#programs" class="nav__link">Programs</a>
+        <a href="/#partners" class="nav__link">Partners</a>
+        <a href="merch.html" class="nav__link" style="color:var(--color-accent);">Merch</a>
+        <a href="/#transparency" class="nav__link">Transparency</a>
+        <a href="launchpad.html" class="btn btn--primary">LaunchPad Tool</a>
+      </div>
+      <div class="nav__hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ Hero ═══ -->
+  <section class="merch-hero">
+    <div class="container" style="position: relative; z-index: 1;">
+      <img src="assets/images/bella-mascot.png" alt="Bella — Think! Ventures Mascot" class="merch-hero__bella">
+      <span class="section-label">Think! Ventures Apparel</span>
+      <h1 class="section-title" style="font-size: var(--fs-3xl);">Rep the <span class="text-gradient">Mission</span></h1>
+      <p class="section-subtitle">Every purchase supports entrepreneurs. Wear your values.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Products ═══ -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Shop</span>
+        <h2 class="section-title">Our <span class="text-gradient">Collection</span></h2>
+      </div>
+
+      <div class="product-grid stagger" style="margin-top: var(--sp-3xl);" id="productGrid">
+        <!-- Products rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ How It Works ═══ -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Simple as <span class="text-gradient">1-2-3</span></h2>
+      </div>
+      <div class="merch-how stagger" style="margin-top: var(--sp-3xl);">
+        <div class="merch-how__card reveal">
+          <div class="merch-how__icon"><span class="icon-wrapper" data-icon="tshirt"></span></div>
+          <h3 style="margin-bottom: var(--sp-sm);">Choose Your Gear</h3>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-sm);">Browse our collection of Think! branded apparel and accessories.</p>
+        </div>
+        <div class="merch-how__card reveal">
+          <div class="merch-how__icon"><span class="icon-wrapper" data-icon="shield"></span></div>
+          <h3 style="margin-bottom: var(--sp-sm);">Checkout Securely</h3>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-sm);">Secure payment processing via Stripe. Printed and shipped on demand.</p>
+        </div>
+        <div class="merch-how__card reveal">
+          <div class="merch-how__icon"><span class="icon-wrapper" data-icon="award"></span></div>
+          <h3 style="margin-bottom: var(--sp-sm);">Support the Mission</h3>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-sm);">Proceeds fund new entrepreneur launches through the LaunchPad program.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Bella Feature ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="bella-feature reveal">
+        <img src="assets/images/bella-mascot.png" alt="Bella" class="bella-feature__img">
+        <div>
+          <p class="bella-feature__text">"Every shirt tells a story. Every purchase builds a business. When you wear Think!, you're telling the world you believe everyone deserves a real shot."
+          <span class="bella-feature__name">Bella, Think! Ventures Mascot</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Where Your Money Goes ═══ -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Impact</span>
+        <h2 class="section-title">Where Your <span class="text-gradient">Money Goes</span></h2>
+        <p class="section-subtitle">Every dollar is accounted for. Here's how merch revenue powers the mission.</p>
+      </div>
+      <div class="impact-grid stagger" style="margin-top: var(--sp-3xl);">
+        <div class="impact-card reveal">
+          <div class="impact-card__pct">40%</div>
+          <div class="impact-card__label">Program Funding</div>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-xs); margin-top: var(--sp-sm);">Directly funds new entrepreneur launches</p>
+        </div>
+        <div class="impact-card reveal">
+          <div class="impact-card__pct">30%</div>
+          <div class="impact-card__label">Operations</div>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-xs); margin-top: var(--sp-sm);">Infrastructure, hosting, and tools</p>
+        </div>
+        <div class="impact-card reveal">
+          <div class="impact-card__pct">30%</div>
+          <div class="impact-card__label">Partner Support</div>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-xs); margin-top: var(--sp-sm);">Sustains existing partner businesses</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: var(--sp-2xl);">
+        <a href="/#transparency" class="btn btn--outline">Full Transparency Report</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="section">
+    <div class="container text-center">
+      <div class="cta-banner reveal">
+        <h2 class="cta-banner__title">Want Your Own <span class="text-gradient">Merch Store</span>?</h2>
+        <p class="cta-banner__text">Every LaunchPad partner gets a fully set up merch store with custom products. Zero cost, zero inventory.</p>
+        <div style="display: flex; gap: var(--sp-lg); justify-content: center; flex-wrap: wrap;">
+          <a href="launchpad.html" class="btn btn--gold btn--lg">Start Your Business</a>
+          <a href="/" class="btn btn--outline btn--lg">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation</span>
+        <span class="footer__copyright"><a href="/" style="color: var(--color-text-muted);">Home</a> &middot; <a href="launchpad.html" style="color: var(--color-text-muted);">LaunchPad</a> &middot; <a href="merch.html" style="color: var(--color-text-muted);">Merch</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Added to cart!</div>
+
+  <!-- ═══ Scripts ═══ -->
+  <script src="js/icons.js"></script>
+  <script>
+    // Product data
+    const PRODUCTS = [
+      { id: 1, name: 'Think! Ventures Classic Tee', desc: 'Black tee with Bella mascot and Think! Ventures branding.', price: 29.99, sizes: true, img: 'assets/images/merch/bella-tee.png' },
+      { id: 2, name: 'Founder Mode Hoodie', desc: 'Premium hoodie with Bella mascot. "FOUNDER MODE" with Think! branding.', price: 54.99, sizes: true, img: 'assets/images/merch/founder-hoodie.png' },
+      { id: 3, name: 'Dream Builder Mug', desc: 'Ceramic mug with Bella + "Dream. Build. Launch." 11oz.', price: 19.99, sizes: false, img: 'assets/images/merch/dream-mug.png' },
+      { id: 4, name: 'Think! Ventures Cap', desc: 'Embroidered Think! logo with Bella accent. Distressed dad hat.', price: 24.99, sizes: false, img: 'assets/images/merch/think-cap.png' },
+      { id: 5, name: 'Dream Builder Tote', desc: 'Canvas tote with Bella mascot. Carry the mission everywhere.', price: 22.99, sizes: false, img: 'assets/images/merch/dream-tote.png' },
+      { id: 6, name: 'Bella Kids Tee', desc: '"Future Entrepreneur" kids tee with Bella mascot.', price: 24.99, sizes: ['YS','YM','YL'], img: 'assets/images/merch/bella-kids-tee.png' },
+    ];
+
+
+    // ─── Stripe Payment Links (auto-generated) ───
+    const STRIPE_LINKS = {
+  "classic-tee": "https://buy.stripe.com/00w3cw3CAfSe8X3d769MY08",
+  "bella-tee": "https://buy.stripe.com/dRm8wQb52axU5KRaYY9MY09",
+  "founder-hoodie": "https://buy.stripe.com/5kQ14ogpmfSeddj9UU9MY0a",
+  "launchpad-tee": "https://buy.stripe.com/28E3cwc9635s3CJ9UU9MY0b",
+  "ventures-cap": "https://buy.stripe.com/6oU4gA7SQeOab5bffe9MY0c",
+  "entrepreneur-mug": "https://buy.stripe.com/00waEYa0YeOa4GNaYY9MY0d",
+  "dream-tote": "https://buy.stripe.com/3cIfZidda0Xk2yFgji9MY0e",
+  "bella-kids-tee": "https://buy.stripe.com/28E4gAc96eOa3CJgji9MY0f"
+};
+
+    let cartCount = 0;
+
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = PRODUCTS.map(p => {
+        const sizes = p.sizes === true ? ['S','M','L','XL','2XL'] : (Array.isArray(p.sizes) ? p.sizes : null);
+        return `
+          <div class="product-card reveal">
+            <div class="product-card__image" style="background: var(--color-bg-card); padding: var(--sp-md);">
+              <img src="${p.img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">${p.name}</h3>
+              <p class="product-card__desc">${p.desc}</p>
+              <div class="product-card__price">$${p.price.toFixed(2)}</div>
+              ${sizes ? `
+                <div class="size-selector" data-product="${p.id}">
+                  ${sizes.map((s, i) => `<button class="size-btn ${i === 1 ? 'active' : ''}" onclick="selectSize(this)">${s}</button>`).join('')}
+                </div>
+              ` : ''}
+              <a href="${STRIPE_LINKS[PRODUCTS[p.id-1]?.id] || '#'}" target="_blank" class="btn btn--gold" style="width: 100%; display: block; text-align: center; text-decoration: none;">Buy Now</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectSize(btn) {
+      btn.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function addToCart(id) {
+      cartCount++;
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Init
+    renderProducts();
+
+    // Render icons
+    document.querySelectorAll('[data-icon]').forEach(el => {
+      el.innerHTML = ICONS[el.dataset.icon] || '';
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
