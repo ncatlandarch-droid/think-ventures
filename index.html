@@ -686,18 +686,26 @@
     <div class="container">
       <div class="text-center">
         <span class="section-label">Proof of Concept</span>
-        <h2 class="section-title">Arlan LLC — <span class="text-gradient">Built in 1 Day</span></h2>
-        <p class="section-subtitle">Our first LaunchPad partner. A complete lighting and electrical business launched from zero in a single day.</p>
+        <h2 class="section-title">3 Businesses. 4 Days. <span class="text-gradient">$114K+ Value</span></h2>
+        <p class="section-subtitle">Real businesses built for real entrepreneurs. Every deliverable documented. Every dollar transparent.</p>
       </div>
 
-      <div class="case-study reveal" style="margin-top: var(--sp-3xl);">
+      <!-- Case Study Tabs -->
+      <div style="display:flex; justify-content:center; gap:var(--sp-md); margin-top:var(--sp-2xl); flex-wrap:wrap;" id="caseStudyTabs">
+        <button class="filter-chip active" onclick="showCaseStudy('arlan', this)">Arlan LLC</button>
+        <button class="filter-chip" onclick="showCaseStudy('hoodhymns', this)">Hood Hymns Publishing</button>
+        <button class="filter-chip" onclick="showCaseStudy('brenes', this)">Brenes Precision Dentistry</button>
+      </div>
+
+      <!-- Arlan Case Study -->
+      <div class="case-study reveal" id="cs-arlan" style="margin-top: var(--sp-2xl);">
         <div class="case-study__body">
-          <span class="case-study__badge">Live Case Study</span>
+          <span class="case-study__badge">LaunchPad Partner #1</span>
           <div class="grid-2" style="margin-top: var(--sp-xl);">
             <div>
-              <h3 style="font-size: var(--fs-xl); margin-bottom: var(--sp-md);">Full Digital Infrastructure</h3>
-              <p style="color: var(--color-text-muted); line-height: 1.8;">Arlan LLC received a complete 8-page website, brand identity, mascot design, social media setup, e-commerce store with merch, Stripe payment processing, and a business plan. Total traditional agency cost: $41,500+. Cost to the founder: $0.</p>
-              <a href="https://arlanpro.com" target="_blank" class="btn btn--primary" style="margin-top: var(--sp-xl);">Visit Live Site <span class="icon-wrapper icon-wrapper--sm" data-icon="external-link"></span></a>
+              <h3 style="font-size: var(--fs-xl); margin-bottom: var(--sp-md);">Arlan LLC -- Premium Exterior Lighting</h3>
+              <p style="color: var(--color-text-muted); line-height: 1.8;">A complete lighting and home services business launched from zero in a single day. 8-page website, brand identity, mascot design, social media, e-commerce with merch, Stripe payments, and a full business plan.</p>
+              <a href="https://arlanpro.com" target="_blank" class="btn btn--primary" style="margin-top: var(--sp-xl);">Visit Live Site</a>
             </div>
             <div class="case-study__stat-grid">
               <div class="case-study__stat"><div class="case-study__stat-value">8</div><div class="case-study__stat-label">Website Pages</div></div>
@@ -708,7 +716,6 @@
               <div class="case-study__stat"><div class="case-study__stat-value">Live</div><div class="case-study__stat-label">Stripe Payments</div></div>
             </div>
           </div>
-
           <h4 style="margin-top: var(--sp-2xl); margin-bottom: var(--sp-lg); color: var(--color-accent);">Full Deliverables</h4>
           <table class="flow-table">
             <thead><tr><th>Deliverable</th><th>Details</th><th>Market Rate</th></tr></thead>
@@ -720,6 +727,74 @@
               <tr><td>Social Media</td><td>Google Business, all platforms</td><td class="highlight">$2,500</td></tr>
               <tr><td>Market Research</td><td>AI-powered competitor and market analysis</td><td class="highlight">$5,000</td></tr>
               <tr><td>Legal Setup</td><td>LLC filing guidance and structure</td><td class="highlight">$3,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Hood Hymns Case Study -->
+      <div class="case-study" id="cs-hoodhymns" style="margin-top: var(--sp-2xl); display:none;">
+        <div class="case-study__body">
+          <span class="case-study__badge">LaunchPad Partner #2</span>
+          <div class="grid-2" style="margin-top: var(--sp-xl);">
+            <div>
+              <h3 style="font-size: var(--fs-xl); margin-bottom: var(--sp-md);">Hood Hymns Publishing -- Literary Platform</h3>
+              <p style="color: var(--color-text-muted); line-height: 1.8;">A full literary publishing platform for author C.D. Howell. Trilingual store (English, Spanish, Mandarin), AI narration, cinematic book trailers, merch store, and an AI avatar of the author that visitors can talk to.</p>
+              <a href="https://hood-hymns-publishing.netlify.app" target="_blank" class="btn btn--primary" style="margin-top: var(--sp-xl);">Visit Live Site</a>
+            </div>
+            <div class="case-study__stat-grid">
+              <div class="case-study__stat"><div class="case-study__stat-value">3</div><div class="case-study__stat-label">Languages</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">AI</div><div class="case-study__stat-label">Narration + Avatar</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">$44K+</div><div class="case-study__stat-label">Total Value</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">2</div><div class="case-study__stat-label">Days to Build</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">$0</div><div class="case-study__stat-label">Cost to Author</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">Live</div><div class="case-study__stat-label">Stripe + Ebook Delivery</div></div>
+            </div>
+          </div>
+          <h4 style="margin-top: var(--sp-2xl); margin-bottom: var(--sp-lg); color: var(--color-accent);">Full Deliverables</h4>
+          <table class="flow-table">
+            <thead><tr><th>Deliverable</th><th>Details</th><th>Market Rate</th></tr></thead>
+            <tbody>
+              <tr><td>Publishing Platform</td><td>Trilingual store with Stripe checkout</td><td class="highlight">$18,000</td></tr>
+              <tr><td>AI Audiobook</td><td>Gemini TTS narration in 3 languages</td><td class="highlight">$8,000</td></tr>
+              <tr><td>Book Trailers</td><td>Cinematic video trailers for each book</td><td class="highlight">$5,000</td></tr>
+              <tr><td>AI Author Avatar</td><td>Interactive AI version of the author</td><td class="highlight">$6,000</td></tr>
+              <tr><td>Merch Store</td><td>Printful integration with 10+ products</td><td class="highlight">$4,000</td></tr>
+              <tr><td>Brand Identity</td><td>Logo, typography, visual system</td><td class="highlight">$3,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Brenes Case Study -->
+      <div class="case-study" id="cs-brenes" style="margin-top: var(--sp-2xl); display:none;">
+        <div class="case-study__body">
+          <span class="case-study__badge">LaunchPad Partner #3</span>
+          <div class="grid-2" style="margin-top: var(--sp-xl);">
+            <div>
+              <h3 style="font-size: var(--fs-xl); margin-bottom: var(--sp-md);">Brenes Precision Dentistry -- Healthcare</h3>
+              <p style="color: var(--color-text-muted); line-height: 1.8;">A professional dental practice website for Lake Jeanette Family & Implant Dentistry. Appointment booking system, team profiles, service pages, SEO optimization, and a complete digital presence built in a single day.</p>
+              <a href="https://brenesprecisiondentistry.netlify.app" target="_blank" class="btn btn--primary" style="margin-top: var(--sp-xl);">Visit Live Site</a>
+            </div>
+            <div class="case-study__stat-grid">
+              <div class="case-study__stat"><div class="case-study__stat-value">6</div><div class="case-study__stat-label">Website Pages</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">SEO</div><div class="case-study__stat-label">Fully Optimized</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">$29K+</div><div class="case-study__stat-label">Total Value</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">1</div><div class="case-study__stat-label">Day to Build</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">$0</div><div class="case-study__stat-label">Cost to Practice</div></div>
+              <div class="case-study__stat"><div class="case-study__stat-value">Live</div><div class="case-study__stat-label">Appointment Booking</div></div>
+            </div>
+          </div>
+          <h4 style="margin-top: var(--sp-2xl); margin-bottom: var(--sp-lg); color: var(--color-accent);">Full Deliverables</h4>
+          <table class="flow-table">
+            <thead><tr><th>Deliverable</th><th>Details</th><th>Market Rate</th></tr></thead>
+            <tbody>
+              <tr><td>Practice Website</td><td>6-page responsive site with appointment booking</td><td class="highlight">$12,000</td></tr>
+              <tr><td>Brand Identity</td><td>Professional dental branding and typography</td><td class="highlight">$5,000</td></tr>
+              <tr><td>SEO Package</td><td>Local SEO, Google Business, structured data</td><td class="highlight">$4,000</td></tr>
+              <tr><td>Team Profiles</td><td>Professional team pages with credentials</td><td class="highlight">$2,000</td></tr>
+              <tr><td>Service Pages</td><td>Detailed service descriptions with CTAs</td><td class="highlight">$3,000</td></tr>
+              <tr><td>Booking System</td><td>Online appointment scheduling</td><td class="highlight">$3,000</td></tr>
             </tbody>
           </table>
         </div>
@@ -1060,8 +1135,210 @@
     </div>
   </section>
 
+  <!-- ═══ Impact Metrics ═══ -->
+  <section class="section" id="impact">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Our Impact</span>
+        <h2 class="section-title">The Numbers <span class="text-gradient">Speak</span></h2>
+      </div>
+      <div class="stat-bar reveal" style="margin-top: var(--sp-2xl);" id="impactCounters">
+        <div class="stat-bar__item">
+          <div class="stat-bar__value" data-target="3">0</div>
+          <div class="stat-bar__label">Businesses Launched</div>
+        </div>
+        <div class="stat-bar__item">
+          <div class="stat-bar__value" data-target="114" data-prefix="$" data-suffix="K+">$0K+</div>
+          <div class="stat-bar__label">Value Delivered</div>
+        </div>
+        <div class="stat-bar__item">
+          <div class="stat-bar__value" data-target="4">0</div>
+          <div class="stat-bar__label">Total Build Days</div>
+        </div>
+        <div class="stat-bar__item">
+          <div class="stat-bar__value" data-target="10">0</div>
+          <div class="stat-bar__label">Partners in Ecosystem</div>
+        </div>
+        <div class="stat-bar__item">
+          <div class="stat-bar__value" data-target="0" data-prefix="$">$0</div>
+          <div class="stat-bar__label">Cost to Entrepreneurs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Coaching Timeline ═══ -->
+  <section class="section section--dark" id="coaching">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">12-Month Coaching Program</span>
+        <h2 class="section-title">We Don't Just Build. <span class="text-gradient">We Stay</span></h2>
+        <p class="section-subtitle">Every LaunchPad entrepreneur gets a full year of hands-on coaching. Here's what that looks like.</p>
+      </div>
+
+      <div class="flow-cards stagger" style="margin-top: var(--sp-3xl);">
+        <div class="flow-card" style="border-top: 3px solid var(--color-accent);">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: var(--fs-2xl); color: var(--color-accent); margin-bottom: var(--sp-md);">Months 1-3</div>
+          <h4 class="flow-card__title">Foundation</h4>
+          <p class="flow-card__text">Learn your systems inside out. Weekly check-ins with your coach. Shadow existing operators. Master your website, analytics, and customer flow. Business communication fundamentals.</p>
+          <ul style="list-style:none; margin-top: var(--sp-md); font-size: var(--fs-xs); color: var(--color-text-muted);">
+            <li style="padding: var(--sp-xs) 0;">-- Weekly 1-on-1 coaching calls</li>
+            <li style="padding: var(--sp-xs) 0;">-- Website management training</li>
+            <li style="padding: var(--sp-xs) 0;">-- Analytics and reporting setup</li>
+            <li style="padding: var(--sp-xs) 0;">-- Customer service fundamentals</li>
+          </ul>
+        </div>
+
+        <div class="flow-card" style="border-top: 3px solid var(--color-secondary);">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: var(--fs-2xl); color: var(--color-secondary); margin-bottom: var(--sp-md);">Months 4-8</div>
+          <h4 class="flow-card__title">Growth</h4>
+          <p class="flow-card__text">Active operations with bi-weekly check-ins. Pricing optimization. Marketing strategy. Communication workshops: pitching, networking, social media presence. Revenue tracking and goal setting.</p>
+          <ul style="list-style:none; margin-top: var(--sp-md); font-size: var(--fs-xs); color: var(--color-text-muted);">
+            <li style="padding: var(--sp-xs) 0;">-- Bi-weekly coaching sessions</li>
+            <li style="padding: var(--sp-xs) 0;">-- Marketing and SEO workshops</li>
+            <li style="padding: var(--sp-xs) 0;">-- Elevator pitch development</li>
+            <li style="padding: var(--sp-xs) 0;">-- Revenue optimization</li>
+          </ul>
+        </div>
+
+        <div class="flow-card" style="border-top: 3px solid var(--color-primary);">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: var(--fs-2xl); color: var(--color-primary); margin-bottom: var(--sp-md);">Months 9-12</div>
+          <h4 class="flow-card__title">Independence</h4>
+          <p class="flow-card__text">Monthly check-ins as you scale independently. Advanced growth strategies. Public speaking and networking events. Graduation and transition to alumni network. You're ready to run it on your own.</p>
+          <ul style="list-style:none; margin-top: var(--sp-md); font-size: var(--fs-xs); color: var(--color-text-muted);">
+            <li style="padding: var(--sp-xs) 0;">-- Monthly strategy sessions</li>
+            <li style="padding: var(--sp-xs) 0;">-- Advanced growth planning</li>
+            <li style="padding: var(--sp-xs) 0;">-- Public speaking workshops</li>
+            <li style="padding: var(--sp-xs) 0;">-- LaunchPad graduation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Testimonials ═══ -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">What Partners Say</span>
+        <h2 class="section-title">Built for People. <span class="text-gradient">By People</span></h2>
+      </div>
+
+      <div class="grid-3 stagger" style="margin-top: var(--sp-2xl);">
+        <div class="info-card" style="background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.15);">
+          <p style="color: var(--color-text); line-height: 1.8; font-style: italic; margin-bottom: var(--sp-lg);">"I went from having an idea to having a fully operational business with a website, brand, and merch store -- in one day. I still can't believe this was free."</p>
+          <div style="display:flex; align-items:center; gap: var(--sp-md);">
+            <div style="width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg, var(--color-accent), var(--color-primary)); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--color-white);">G</div>
+            <div>
+              <div style="font-weight:700; color:var(--color-white);">Gregory Fulton</div>
+              <div style="font-size: var(--fs-xs); color: var(--color-text-muted);">Founder, Arlan LLC</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card" style="background: rgba(245, 166, 35, 0.06); border-color: rgba(245, 166, 35, 0.15);">
+          <p style="color: var(--color-text); line-height: 1.8; font-style: italic; margin-bottom: var(--sp-lg);">"They didn't just build me a website. They built me a publishing empire. Three languages, AI narration, book trailers, merch -- everything a traditional publisher charges six figures for."</p>
+          <div style="display:flex; align-items:center; gap: var(--sp-md);">
+            <div style="width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg, var(--color-secondary), #e6951e); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--color-bg);">D</div>
+            <div>
+              <div style="font-weight:700; color:var(--color-white);">C.D. Howell</div>
+              <div style="font-size: var(--fs-xs); color: var(--color-text-muted);">Author, Hood Hymns Publishing</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card" style="background: rgba(99, 102, 241, 0.06); border-color: rgba(99, 102, 241, 0.15);">
+          <p style="color: var(--color-text); line-height: 1.8; font-style: italic; margin-bottom: var(--sp-lg);">"The coaching program is what separates Think! Ventures from everything else. They don't just hand you the keys and leave. They teach you how to drive."</p>
+          <div style="display:flex; align-items:center; gap: var(--sp-md);">
+            <div style="width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg, #6366F1, #4F46E5); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--color-white);">C</div>
+            <div>
+              <div style="font-weight:700; color:var(--color-white);">Cadasia Levy</div>
+              <div style="font-size: var(--fs-xs); color: var(--color-text-muted);">Board Member, Think! Ventures</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="section section--dark" id="faq">
+    <div class="container" style="max-width: 800px;">
+      <div class="text-center">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Common <span class="text-gradient">Questions</span></h2>
+      </div>
+
+      <div style="margin-top: var(--sp-2xl);" id="faqAccordion">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Is this really free?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Yes. 100% free to the entrepreneur. Think! Ventures is funded by grants and donations. We use AI and open-source tools to keep costs near zero, so grant money goes further. You pay nothing to receive a complete business.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What's the catch?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">There is no catch. Once your business is profitable, you contribute 10% of net profits back to the Foundation. This money funds the next entrepreneur. Your success builds someone else's dream. If you're not profitable, you owe nothing.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Who qualifies for LaunchPad?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Anyone from an underserved community who has a viable business idea or wants to operate a Ready-Made Business. We prioritize people who face financial, technical, or access barriers to starting a business. No prior business experience required.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What do I need to get started?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Just an idea -- or pick a Ready-Made Business from our catalog. We handle everything else: website, brand, legal structure, e-commerce, business plan, and training. For Ready-Made Businesses, you may need basic equipment (varies by business type).</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How long does it take to launch?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">1-5 days for the complete digital business build. Our fastest launch was 1 day (Arlan LLC). The 12-month coaching program begins immediately after launch to ensure long-term success.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What is the 10% profit share?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Once your business is profitable, you contribute 10% of NET profits (after all expenses) back to the Foundation. This is not a royalty on revenue -- it only applies when you're actually making money. This cooperative model funds the next entrepreneur in the ecosystem.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I keep my business if I leave?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">For custom LaunchPad businesses: you own your customer relationships and can take your skills anywhere. For Ready-Made Businesses: the brand and website are owned by the Foundation, but your customer relationships are yours. 90 days notice, no exit penalties.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What is a Ready-Made Business?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">A fully built, market-researched business model that's ready for you to step into and operate. The brand, website, pricing, business plan, and systems are all pre-built. You claim a city, and we customize it for your market in 1-2 days. Think franchise -- without the franchise fees.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ Apply CTA ═══ -->
-  <section class="section section--dark" id="apply">
+  <section class="section" id="apply">
     <div class="container">
       <div class="cta-banner">
         <div class="apply-avatar-area">
@@ -1075,6 +1352,7 @@
         <div style="display: flex; gap: var(--sp-lg); justify-content: center; flex-wrap: wrap;">
           <a href="mailto:chris@thinkdesignplanning.com" class="btn btn--gold btn--lg">Apply to LaunchPad</a>
           <a href="launchpad.html" class="btn btn--outline btn--lg">Use the Free Tool</a>
+          <a href="donate.html" class="btn btn--primary btn--lg">Support the Mission</a>
         </div>
       </div>
     </div>
@@ -1186,6 +1464,77 @@
     }
   </style>
 
+  <style>
+    /* ═══ FAQ Accordion ═══ */
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-xl) 0;
+      background: none;
+      border: none;
+      color: var(--color-white);
+      font-family: var(--font-heading);
+      font-size: var(--fs-md);
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--color-accent); }
+    .faq-question svg { transition: transform 0.3s; flex-shrink: 0; margin-left: var(--sp-md); }
+    .faq-question.open svg { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      font-size: var(--fs-sm);
+    }
+    .faq-answer.open {
+      max-height: 300px;
+      padding-bottom: var(--sp-xl);
+    }
+    /* ═══ Franchise table green cells ═══ */
+    .flow-table td.green {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+    /* ═══ Filter chip for case studies ═══ */
+    .filter-chip {
+      padding: var(--sp-sm) var(--sp-lg);
+      border-radius: var(--border-radius-xl);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: var(--fs-sm);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+    .filter-chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .filter-chip.active {
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      color: var(--color-white);
+      border-color: var(--color-accent);
+    }
+    /* ═══ grid-3 ═══ */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-xl);
+    }
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+
   <!-- ═══ Scripts ═══ -->
   <script src="js/icons.js"></script>
   <script>
@@ -1212,13 +1561,12 @@
         const target = document.querySelector(a.getAttribute('href'));
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Close mobile nav if open
           document.getElementById('navLinks').classList.remove('open');
         }
       });
     });
 
-    // Persistent Bella guide — appears after scrolling past hero
+    // Persistent Bella guide
     const bellaFloat = document.getElementById('bellaFloat');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 500) {
@@ -1227,6 +1575,57 @@
         bellaFloat.classList.remove('visible');
       }
     });
+
+    // ── Case Study Tabs ──
+    function showCaseStudy(id, btn) {
+      document.querySelectorAll('[id^="cs-"]').forEach(el => el.style.display = 'none');
+      document.getElementById('cs-' + id).style.display = 'block';
+      document.querySelectorAll('#caseStudyTabs .filter-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // ── FAQ Toggle ──
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-question').forEach(q => {
+        q.classList.remove('open');
+        q.nextElementSibling.classList.remove('open');
+      });
+      // Open clicked one (if it was closed)
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
+
+    // ── Impact Counter Animation ──
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('[data-target]').forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const duration = 2000;
+            const start = performance.now();
+            function tick(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(target * eased);
+              el.textContent = prefix + current + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const counters = document.getElementById('impactCounters');
+    if (counters) counterObserver.observe(counters);
   </script>
 
   <!-- ═══ Email Capture Modal ═══ -->

@@ -1,4 +1,4 @@
-# Think! Ventures Foundation
+# Think Ventures
 ## 501(c)(3) Nonprofit Business Plan & Mission Statement
 
 ---
@@ -7,20 +7,23 @@
 
 | Field | Detail |
 |---|---|
-| **Legal Name** | Think! Ventures Foundation, Inc. |
+| **Legal Name** | Think Ventures |
 | **DBA** | Think! Ventures |
-| **Type** | 501(c)(3) Public Charity |
+| **Federal EIN** | **42-2912572** |
+| **Type** | 501(c)(3) Public Charity (pending determination) |
 | **State** | North Carolina |
-| **Founder** | Chris Harrison |
+| **Founder** | Chris Harrison (William Christopher Harrison) |
 | **Affiliation** | NC A&T State University (HBCU) |
 | **Parent Entity** | Think! Design & Planning, LLC (for-profit, technology partner) |
 | **Year Founded** | 2026 |
+| **NC Articles Filed** | June 1, 2026 |
+| **EIN Issued** | June 2, 2026 |
 
 ---
 
 ## Mission Statement
 
-> **Think! Ventures Foundation empowers underserved entrepreneurs — particularly those from HBCU communities, minority populations, and economically disadvantaged regions — by providing comprehensive digital business infrastructure, brand development, and e-commerce capabilities at zero cost. We transform dreams into functioning businesses in days, not months, using AI-powered tools and cooperative partnership models.**
+> **Think Ventures empowers underserved entrepreneurs — particularly those from HBCU communities, minority populations, and economically disadvantaged regions — by providing comprehensive digital business infrastructure, brand development, and e-commerce capabilities at zero cost. We transform dreams into functioning businesses in days, not months, using AI-powered tools and cooperative partnership models.**
 
 ### Vision Statement
 > A world where lack of capital, technical knowledge, or professional connections never prevents a great idea from becoming a thriving business.
@@ -129,13 +132,13 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 ### Board of Directors (Minimum 3 required by IRS)
 
-| Role | Recommended Profile |
-|---|---|
-| Chair | Chris Harrison — Founder, NC A&T faculty/researcher |
-| Vice Chair | HBCU faculty/community business leader |
-| Secretary/Treasurer | CPA, attorney, or financial professional |
-| At-Large | Successful entrepreneur from target community |
-| At-Large | Representative from partner organization |
+| Role | Name | Profile |
+|---|---|---|
+| **Chair / Executive Director** | **Chris Harrison** | Founder, NC A&T faculty/researcher |
+| **Vice Chair** | **Gregory Fulton** | Board Member #2 |
+| **Secretary/Treasurer** | **Damon Howell** | Board Member #3 |
+| At-Large (future) | TBD | CPA, attorney, or financial professional recommended |
+| At-Large (future) | TBD | Representative from partner organization |
 
 > **IRS Requirement:** At least 3 unrelated board members. No more than 49% can be "interested persons" (compensated by the organization).
 
@@ -207,7 +210,7 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    THINK! VENTURES FOUNDATION                    │
+│                       THINK VENTURES                            │
 │                        501(c)(3) Nonprofit                       │
 │                                                                  │
 │  • Applies for grants                                            │
@@ -323,7 +326,7 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 **Live site:** [arlen-llc.netlify.app](https://arlen-llc.netlify.app)
 
-This case study demonstrates that Think! Ventures can deliver **$40,000+ in professional business infrastructure in a single day** using AI-powered tools — making the grant dollars extraordinarily efficient.
+This case study demonstrates that Think Ventures can deliver **$40,000+ in professional business infrastructure in a single day** using AI-powered tools — making the grant dollars extraordinarily efficient.
 
 ---
 
@@ -370,10 +373,13 @@ The following language must appear in the Articles of Incorporation:
 
 ---
 
-> **Next Steps:**
-> 1. Identify and recruit 2 additional board members
-> 2. File NC Articles of Incorporation ($60)
-> 3. Apply for EIN (free, immediate)
-> 4. Submit IRS Form 1023-EZ ($275)
-> 5. Begin grant applications while awaiting determination
-> 6. Document Arlan LLC as formal case study
+> **Filing Status — Updated June 2, 2026**
+> 1. ✅ Board members recruited — **Gregory Fulton + Damon Howell confirmed**
+> 2. ✅ NC Articles of Incorporation — **Filed June 1, 2026 — $63 paid**
+> 3. ✅ EIN obtained — **June 2, 2026 — Think Ventures is federally recognized**
+> 4. ⬜ Open nonprofit bank account — **NEXT: Relay Financial or Bluevine**
+> 5. ⬜ Draft bylaws + hold organizational meeting with Gregory + Damon
+> 6. ⬜ Submit IRS Form 1023-EZ ($275) at pay.gov — starts 3–6 month clock
+> 7. ⬜ Begin Tier 1 grant applications (EDA, SBA PRIME, NC IDEA SEED)
+> 8. ✅ Arlan LLC case study documented
+> 9. ✅ Hood Hymns Publishing case study documented

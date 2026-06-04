@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | Think! Ventures</title>
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    .success-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--sp-2xl);
+    }
+    .success-card {
+      max-width: 500px;
+      padding: var(--sp-3xl);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+    }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--sp-xl);
+    }
+    .success-icon svg { width: 40px; height: 40px; fill: white; }
+    .success-bella {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-secondary);
+      margin: var(--sp-xl) auto 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-page">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <h1 style="font-family: var(--font-heading); color: var(--color-white); margin-bottom: var(--sp-md);">Order Confirmed!</h1>
+      <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--sp-lg);">Thank you for supporting the mission. Your order is being printed and will ship to your door in 3-7 business days. You just helped fund the next entrepreneur.</p>
+      <a href="/" class="btn btn--gold" style="margin-bottom: var(--sp-md);">Back to Home</a>
+      <br>
+      <a href="merch.html" class="btn btn--outline" style="margin-top: var(--sp-sm);">Shop More</a>
+      <img src="assets/images/bella-mascot.png" alt="Bella says thank you!" class="success-bella">
+      <p style="color: var(--color-secondary); font-style: italic; margin-top: var(--sp-sm); font-size: var(--fs-sm);">Bella says: You're officially part of the crew!</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -584,6 +584,264 @@
       text-align: center;
     }
 
+    /* ── XP + Level System ── */
+    .xp-container {
+      margin-bottom: var(--sp-xl);
+    }
+    .xp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--sp-sm);
+    }
+    .xp-level {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-sm);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      color: var(--color-secondary);
+    }
+    .xp-level-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .xp-level-icon svg { width: 18px; height: 18px; color: var(--color-secondary); }
+    .xp-amount {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: var(--fs-xs);
+      color: var(--color-text-muted);
+    }
+    .xp-bar-track {
+      width: 100%;
+      height: 10px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    .xp-bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+      transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      width: 0%;
+      position: relative;
+    }
+    .xp-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: xpShimmer 2s infinite;
+    }
+    @keyframes xpShimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .xp-next-level {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    /* ── Badge System ── */
+    .badge-container {
+      margin-bottom: var(--sp-xl);
+    }
+    .badge-container h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      color: var(--color-secondary);
+      margin-bottom: var(--sp-md);
+    }
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-md);
+    }
+    .badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+    }
+    .badge-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.04);
+      border: 2px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.15);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .badge-circle svg { width: 18px; height: 18px; }
+    .badge-circle.unlocked {
+      background: linear-gradient(135deg, var(--color-secondary), #e6951e);
+      border-color: var(--color-secondary);
+      color: var(--color-bg);
+      box-shadow: 0 0 16px rgba(245, 166, 35, 0.4);
+      animation: badgeUnlock 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes badgeUnlock {
+      0% { transform: scale(0.5); opacity: 0; box-shadow: 0 0 0 rgba(245, 166, 35, 0); }
+      50% { transform: scale(1.3); box-shadow: 0 0 30px rgba(245, 166, 35, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 0 16px rgba(245, 166, 35, 0.4); }
+    }
+    .badge-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      line-height: 1.2;
+      font-family: var(--font-heading);
+      letter-spacing: 0.3px;
+    }
+    .badge-circle.unlocked + .badge-label {
+      color: var(--color-secondary);
+    }
+
+    /* ── Confetti Canvas ── */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Ready-Made Card ── */
+    .option-card--readymade {
+      border-color: var(--color-secondary) !important;
+      background: rgba(245, 166, 35, 0.06) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .option-card--readymade::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-secondary), var(--color-accent), var(--color-secondary));
+    }
+    .option-card--readymade:hover {
+      border-color: var(--color-secondary) !important;
+      box-shadow: 0 0 30px rgba(245, 166, 35, 0.2);
+    }
+    .readymade-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-sm);
+      margin-top: var(--sp-md);
+      padding: var(--sp-sm) var(--sp-lg);
+      background: linear-gradient(135deg, var(--color-secondary), #e6951e);
+      color: var(--color-bg);
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+    .readymade-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(245, 166, 35, 0.4);
+      color: var(--color-bg);
+    }
+    .readymade-reveal {
+      margin-top: var(--sp-md);
+      padding: var(--sp-md);
+      background: rgba(245, 166, 35, 0.08);
+      border-radius: var(--border-radius-sm);
+      border: 1px solid rgba(245, 166, 35, 0.15);
+      display: none;
+    }
+    .readymade-reveal.active { display: block; animation: fadeIn 0.4s ease; }
+
+    /* ── Contact Form (Final Step) ── */
+    .contact-section {
+      margin-top: var(--sp-2xl);
+      padding: var(--sp-2xl);
+      background: linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(245,166,35,0.05) 100%);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+    }
+    .contact-section h3 {
+      font-family: var(--font-heading);
+      font-size: var(--fs-xl);
+      margin-bottom: var(--sp-sm);
+    }
+    .contact-section p {
+      color: var(--color-text-muted);
+      font-size: var(--fs-sm);
+      margin-bottom: var(--sp-xl);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-lg);
+    }
+    .submit-success {
+      text-align: center;
+      padding: var(--sp-2xl);
+      display: none;
+    }
+    .submit-success.visible { display: block; animation: fadeIn 0.4s ease; }
+    .submit-success h3 {
+      font-size: var(--fs-2xl);
+      color: var(--color-secondary);
+      margin-bottom: var(--sp-md);
+    }
+    .submit-success p {
+      color: var(--color-text-muted);
+      font-size: var(--fs-md);
+    }
+
+    /* ── Level-up toast ── */
+    .levelup-toast {
+      position: fixed;
+      top: 90px;
+      right: 20px;
+      padding: var(--sp-lg) var(--sp-xl);
+      background: rgba(7, 15, 26, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--color-secondary);
+      border-radius: var(--border-radius-md);
+      box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
+      z-index: 10000;
+      transform: translateX(120%);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: var(--font-heading);
+    }
+    .levelup-toast.visible { transform: translateX(0); }
+    .levelup-toast__title {
+      font-weight: 800;
+      font-size: var(--fs-base);
+      color: var(--color-secondary);
+      margin-bottom: 4px;
+    }
+    .levelup-toast__sub {
+      font-size: var(--fs-sm);
+      color: var(--color-text-muted);
+    }
+
     @media (max-width: 1024px) {
       .launchpad-layout { grid-template-columns: 1fr; }
       .lp-left {
@@ -604,6 +862,8 @@
       .lp-speech { margin-top: 0; }
       .lp-right { display: none; }
       .lp-center { max-height: none; }
+      .levelup-toast { right: 10px; left: 10px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .option-grid, .option-grid--2, .option-grid--entity { grid-template-columns: 1fr; }
@@ -611,10 +871,11 @@
       .stepper__label { font-size: 9px; }
       .stepper__circle { width: 32px; height: 32px; font-size: 12px; }
       .summary-bar__inner { flex-wrap: wrap; gap: var(--sp-md); }
+      .contact-grid { grid-template-columns: 1fr; }
     }
 
     @media print {
-      .nav, .summary-bar, .wizard__nav, .think-cta, .lp-left, .lp-right { display: none !important; }
+      .nav, .summary-bar, .wizard__nav, .think-cta, .lp-left, .lp-right, .xp-container, .badge-container, .contact-section, .levelup-toast, #confetti-canvas { display: none !important; }
       .launchpad-layout { grid-template-columns: 1fr; }
       .wizard__step { display: block !important; }
       .checklist-check { border-color: #333; }
@@ -645,6 +906,24 @@
       </div>
     </div>
   </nav>
+
+  <!-- ═══ Confetti Canvas ═══ -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ═══ Level-Up Toast ═══ -->
+  <div class="levelup-toast" id="levelup-toast">
+    <div class="levelup-toast__title" id="levelup-title">Level Up!</div>
+    <div class="levelup-toast__sub" id="levelup-sub">You reached a new rank</div>
+  </div>
+
+  <!-- ═══ Netlify Form Wrapper ═══ -->
+  <form name="launchpad-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="launchpad-form">
+    <input type="hidden" name="form-name" value="launchpad-application">
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+    <input type="hidden" name="selected-industry" id="form-industry">
+    <input type="hidden" name="selected-state" id="form-state">
+    <input type="hidden" name="selected-entity" id="form-entity">
+    <input type="hidden" name="business-name" id="form-biz-name">
 
   <!-- ═══ AVA 3-Column Layout ═══ -->
   <div class="launchpad-layout">
@@ -697,6 +976,21 @@
     <div class="wizard__step active" id="step-0">
       <h2 class="wizard__title">Choose Your Industry</h2>
       <p class="wizard__subtitle">Select the category that best describes your business.</p>
+
+      <!-- Ready-Made Option -->
+      <div class="option-card option-card--readymade" id="readymade-card" onclick="toggleReadyMade()" style="margin-bottom: var(--sp-xl); cursor: pointer;">
+        <span class="option-card__badge option-card__badge--simple">Fast Track</span>
+        <div class="option-card__icon" style="background: linear-gradient(135deg, var(--color-secondary) 0%, #e6951e 100%);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="option-card__title" style="margin-top: var(--sp-sm);">I Want a Ready-Made Business</div>
+        <div class="option-card__desc">Browse our catalog of pre-built, proven business models. Pick one and start operating.</div>
+        <div class="readymade-reveal" id="readymade-reveal">
+          <p style="color: var(--color-text); font-size: var(--fs-sm); margin-bottom: var(--sp-md); line-height: 1.6;">Skip the setup. Our ready-made businesses come with everything configured: entity, branding, website, merch store, and operations playbook. Just choose one and launch.</p>
+          <a href="index.html#ready-made" class="readymade-link">Browse Ready-Made Catalog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
       <div class="option-grid" id="industry-grid"></div>
       <div class="wizard__nav">
         <div></div>
@@ -761,16 +1055,49 @@
       <h3 style="margin-top: var(--sp-2xl); margin-bottom: var(--sp-sm); color: var(--color-accent); font-family: var(--font-heading);">Helpful Resources</h3>
       <div class="resource-grid" id="resources-container"></div>
 
+      <!-- Contact Info Capture -->
+      <div class="contact-section" id="contact-section">
+        <h3>Ready to Launch? Tell Us About You</h3>
+        <p>Submit your info and our team will reach out to help you start your business.</p>
+        <div class="contact-grid">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Your Name</label>
+            <input type="text" class="form-input" id="contact-name" name="contact-name" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email</label>
+            <input type="email" class="form-input" id="contact-email" name="contact-email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-phone">Phone</label>
+            <input type="tel" class="form-input" id="contact-phone" name="contact-phone" placeholder="(555) 123-4567">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-city">City</label>
+            <input type="text" class="form-input" id="contact-city" name="contact-city" placeholder="Your city">
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--sp-lg);">
+          <button type="submit" class="btn btn--gold btn--lg" id="submit-application">Submit My Application</button>
+        </div>
+      </div>
+
+      <!-- Submit Success -->
+      <div class="submit-success" id="submit-success">
+        <h3>Application Submitted</h3>
+        <p>Our team will review your roadmap and reach out within 24-48 hours. Welcome to Think! Ventures.</p>
+      </div>
+
       <!-- Think CTA -->
-      <div class="think-cta">
+      <div class="think-cta" id="think-cta-block">
         <h3 style="margin-bottom: var(--sp-sm);">Want Us to Do It All For You?</h3>
         <p style="color: var(--color-text-muted); margin-bottom: var(--sp-lg);">Apply to the LaunchPad program and Think! Ventures will build your entire business for free in 2-5 days.</p>
         <a href="mailto:chris@thinkdesignplanning.com" class="btn btn--gold">Apply to LaunchPad</a>
       </div>
 
       <div class="wizard__nav">
-        <button class="btn btn--outline" onclick="startOver()"><span class="icon-wrapper icon-wrapper--sm" data-icon="refresh"></span> Start Over</button>
-        <button class="btn btn--primary" onclick="window.print()"><span class="icon-wrapper icon-wrapper--sm" data-icon="printer"></span> Print Roadmap</button>
+        <button type="button" class="btn btn--outline" onclick="startOver()"><span class="icon-wrapper icon-wrapper--sm" data-icon="refresh"></span> Start Over</button>
+        <button type="button" class="btn btn--primary" onclick="window.print()"><span class="icon-wrapper icon-wrapper--sm" data-icon="printer"></span> Print Roadmap</button>
       </div>
     </div>
 
@@ -778,13 +1105,75 @@
 
     <!-- Right Panel: Info -->
     <aside class="lp-right" id="infoPanel">
-      <div class="info-card">
-        <h4>Why This Matters</h4>
-        <ul>
-          <li>Different industries have different licensing requirements</li>
-          <li>Your industry determines which permits you need</li>
-          <li>Insurance requirements vary by trade</li>
-        </ul>
+
+      <!-- XP Progress Bar -->
+      <div class="xp-container" id="xp-container">
+        <div class="xp-header">
+          <div class="xp-level">
+            <span class="xp-level-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+            <span id="xp-level-name">Explorer</span>
+          </div>
+          <span class="xp-amount" id="xp-amount">0 / 100 XP</span>
+        </div>
+        <div class="xp-bar-track">
+          <div class="xp-bar-fill" id="xp-bar-fill"></div>
+        </div>
+        <div class="xp-next-level" id="xp-next-level">Next: Dreamer</div>
+      </div>
+
+      <!-- Badge Grid -->
+      <div class="badge-container">
+        <h4>Achievements</h4>
+        <div class="badge-grid" id="badge-grid">
+          <div class="badge-item">
+            <div class="badge-circle" id="badge-0" title="First Step">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span class="badge-label">First Step</span>
+          </div>
+          <div class="badge-item">
+            <div class="badge-circle" id="badge-1" title="Industry Pro">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <span class="badge-label">Industry Pro</span>
+          </div>
+          <div class="badge-item">
+            <div class="badge-circle" id="badge-2" title="State Selected">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span class="badge-label">State Selected</span>
+          </div>
+          <div class="badge-item">
+            <div class="badge-circle" id="badge-3" title="Entity Expert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <span class="badge-label">Entity Expert</span>
+          </div>
+          <div class="badge-item">
+            <div class="badge-circle" id="badge-4" title="Fee Master">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <span class="badge-label">Fee Master</span>
+          </div>
+          <div class="badge-item">
+            <div class="badge-circle" id="badge-5" title="Launch Ready">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg>
+            </div>
+            <span class="badge-label">Launch Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Cards (dynamic) -->
+      <div id="info-cards-container">
+        <div class="info-card">
+          <h4>Why This Matters</h4>
+          <ul>
+            <li>Different industries have different licensing requirements</li>
+            <li>Your industry determines which permits you need</li>
+            <li>Insurance requirements vary by trade</li>
+          </ul>
+        </div>
       </div>
       <div class="info-bella">
         <img src="assets/images/bella-mascot.png" alt="Bella" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--color-secondary);">
@@ -793,6 +1182,7 @@
     </aside>
 
   </div>
+  </form><!-- end Netlify form -->
 
   <!-- Summary Bar -->
   <div class="summary-bar" id="summary-bar">
@@ -1073,9 +1463,9 @@
     ];
 
     function updateInfoPanel(step) {
-      const panel = document.getElementById('infoPanel');
-      if (!panel) return;
-      panel.innerHTML = (INFO_PANELS[step] || '') + `<div class="info-bella"><img src="assets/images/bella-mascot.png" alt="Bella" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--color-secondary);"><p style="color:var(--color-secondary);font-style:italic;font-size:var(--fs-xs);margin-top:var(--sp-sm);">You've got this!</p></div>`;
+      const container = document.getElementById('info-cards-container');
+      if (!container) return;
+      container.innerHTML = INFO_PANELS[step] || '';
     }
 
     function goToStep(step) {
@@ -1108,7 +1498,11 @@
       document.querySelector('.lp-center').scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function nextStep() { goToStep(currentStep + 1); }
+    function nextStep() {
+      // Award XP for completing the current step
+      if (window.gamification) window.gamification.completeStep(currentStep);
+      goToStep(currentStep + 1);
+    }
     function prevStep() { goToStep(currentStep - 1); }
 
     function startOver() {
@@ -1266,6 +1660,15 @@
       document.getElementById('total-fees').textContent = `$${totalFee}+`;
       document.getElementById('total-steps').textContent = totalItems;
       document.getElementById('completed-steps').textContent = `0 / ${totalItems}`;
+
+      // Update hidden form fields
+      document.getElementById('form-industry').value = selections.industry || '';
+      document.getElementById('form-state').value = selections.state || '';
+      document.getElementById('form-entity').value = selections.entity || '';
+      document.getElementById('form-biz-name').value = selections.name || '';
+
+      // Award XP for step 3 (Details) completion
+      if (window.gamification) window.gamification.completeStep(3);
 
       goToStep(4);
     }
@@ -1456,6 +1859,330 @@
       chatSend?.addEventListener('click', handleChat);
       chatInput?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') handleChat();
+      });
+    })();
+
+    // ═══ READY-MADE TOGGLE ═══
+    function toggleReadyMade() {
+      const reveal = document.getElementById('readymade-reveal');
+      const card = document.getElementById('readymade-card');
+      reveal.classList.toggle('active');
+      card.classList.toggle('selected');
+      // Deselect any industry if ready-made is toggled on
+      if (reveal.classList.contains('active')) {
+        document.querySelectorAll('[data-industry]').forEach(c => c.classList.remove('selected'));
+        selections.industry = null;
+        document.getElementById('btn-next-0').disabled = true;
+      }
+    }
+
+    // Override selectIndustry to close ready-made
+    const _origSelectIndustry = selectIndustry;
+    selectIndustry = function(key) {
+      document.getElementById('readymade-reveal').classList.remove('active');
+      document.getElementById('readymade-card').classList.remove('selected');
+      _origSelectIndustry(key);
+    };
+
+    // ═══ GAMIFICATION ENGINE ═══
+    (function() {
+      const LEVELS = [
+        { name: 'Explorer',            minXP: 0,    icon: 'star' },
+        { name: 'Dreamer',             minXP: 100,  icon: 'star' },
+        { name: 'Builder',             minXP: 250,  icon: 'star' },
+        { name: 'Founder',             minXP: 500,  icon: 'star' },
+        { name: 'LaunchPad Graduate',  minXP: 1000, icon: 'star' }
+      ];
+      const STEP_XP = [100, 150, 200, 200, 150, 200]; // XP per wizard step
+      const BADGE_NAMES = ['First Step', 'Industry Pro', 'State Selected', 'Entity Expert', 'Fee Master', 'Launch Ready'];
+      const MAX_XP = 1000;
+
+      // Load saved state
+      let xp = parseInt(localStorage.getItem('lp_xp') || '0');
+      let badges = JSON.parse(localStorage.getItem('lp_badges') || '[]');
+      let completedSteps = JSON.parse(localStorage.getItem('lp_completed_steps') || '[]');
+
+      function getLevel(xpVal) {
+        let lvl = LEVELS[0];
+        for (const l of LEVELS) {
+          if (xpVal >= l.minXP) lvl = l;
+        }
+        return lvl;
+      }
+
+      function getNextLevel(xpVal) {
+        for (const l of LEVELS) {
+          if (xpVal < l.minXP) return l;
+        }
+        return null;
+      }
+
+      function save() {
+        localStorage.setItem('lp_xp', xp.toString());
+        localStorage.setItem('lp_badges', JSON.stringify(badges));
+        localStorage.setItem('lp_completed_steps', JSON.stringify(completedSteps));
+      }
+
+      function updateUI() {
+        const level = getLevel(xp);
+        const nextLvl = getNextLevel(xp);
+
+        // XP bar
+        const pct = Math.min((xp / MAX_XP) * 100, 100);
+        const fill = document.getElementById('xp-bar-fill');
+        if (fill) fill.style.width = pct + '%';
+
+        // Level name
+        const nameEl = document.getElementById('xp-level-name');
+        if (nameEl) nameEl.textContent = level.name;
+
+        // XP amount
+        const amtEl = document.getElementById('xp-amount');
+        if (amtEl) {
+          if (nextLvl) {
+            amtEl.textContent = xp + ' / ' + nextLvl.minXP + ' XP';
+          } else {
+            amtEl.textContent = xp + ' XP (MAX)';
+          }
+        }
+
+        // Next level text
+        const nextEl = document.getElementById('xp-next-level');
+        if (nextEl) {
+          nextEl.textContent = nextLvl ? 'Next: ' + nextLvl.name : 'Maximum level reached';
+        }
+
+        // Update badges
+        badges.forEach(idx => {
+          const badge = document.getElementById('badge-' + idx);
+          if (badge && !badge.classList.contains('unlocked')) {
+            badge.classList.add('unlocked');
+          }
+        });
+      }
+
+      function showLevelUpToast(levelName) {
+        const toast = document.getElementById('levelup-toast');
+        const title = document.getElementById('levelup-title');
+        const sub = document.getElementById('levelup-sub');
+        if (!toast) return;
+        title.textContent = 'Level Up!';
+        sub.textContent = 'You are now: ' + levelName;
+        toast.classList.add('visible');
+        playBarkSound();
+        setTimeout(() => toast.classList.remove('visible'), 3000);
+      }
+
+      function unlockBadge(stepIdx) {
+        if (badges.includes(stepIdx)) return;
+        badges.push(stepIdx);
+        save();
+        const badge = document.getElementById('badge-' + stepIdx);
+        if (badge) {
+          badge.classList.add('unlocked');
+        }
+        playBarkSound();
+      }
+
+      function completeStep(stepIdx) {
+        if (completedSteps.includes(stepIdx)) return;
+
+        const prevLevel = getLevel(xp);
+        completedSteps.push(stepIdx);
+        xp = Math.min(xp + (STEP_XP[stepIdx] || 0), MAX_XP);
+        save();
+
+        const newLevel = getLevel(xp);
+        updateUI();
+
+        // Badge unlock
+        unlockBadge(stepIdx);
+
+        // Level up check
+        if (newLevel.name !== prevLevel.name) {
+          setTimeout(() => showLevelUpToast(newLevel.name), 600);
+        }
+
+        // Final step: confetti + final badge
+        if (stepIdx === 4 || stepIdx === 5) {
+          // Step 5 (index 4) = roadmap viewed, step 6 (index 5) = form submitted
+        }
+        if (completedSteps.length >= 5) {
+          setTimeout(() => fireConfetti(), 800);
+        }
+      }
+
+      // Expose globally
+      window.gamification = {
+        completeStep,
+        getXP: () => xp,
+        getBadges: () => badges,
+        reset: () => {
+          xp = 0; badges = []; completedSteps = [];
+          save(); updateUI();
+          document.querySelectorAll('.badge-circle').forEach(b => b.classList.remove('unlocked'));
+        }
+      };
+
+      // Init UI on load
+      updateUI();
+    })();
+
+    // ═══ BELLA BARK SOUND (Web Audio API) ═══
+    function playBarkSound() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = ctx.currentTime;
+
+        // Bark 1: short chirpy burst
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = 'square';
+        osc1.frequency.setValueAtTime(800, now);
+        osc1.frequency.exponentialRampToValueAtTime(400, now + 0.08);
+        gain1.gain.setValueAtTime(0.15, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.1);
+
+        // Bark 2: second chirp (slightly higher)
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'square';
+        osc2.frequency.setValueAtTime(900, now + 0.12);
+        osc2.frequency.exponentialRampToValueAtTime(500, now + 0.2);
+        gain2.gain.setValueAtTime(0.12, now + 0.12);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now + 0.12);
+        osc2.stop(now + 0.22);
+
+        // Clean up
+        setTimeout(() => ctx.close(), 500);
+      } catch(e) {
+        // Web Audio not available
+      }
+    }
+
+    // ═══ CONFETTI ENGINE ═══
+    function fireConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const COLORS = [
+        '#F5A623', '#FFD07A', '#E8941A',  // gold family
+        '#10B981', '#34D399', '#0D4F4F'   // emerald/teal family
+      ];
+      const COUNT = 150;
+
+      for (let i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 6 + 3,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * 3 + 2,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.2,
+          opacity: 1
+        });
+      }
+
+      const startTime = Date.now();
+      const DURATION = 3000;
+
+      function draw() {
+        const elapsed = Date.now() - startTime;
+        if (elapsed > DURATION + 1000) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          return;
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const fadeStart = DURATION * 0.7;
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.05; // gravity
+          p.rot += p.rotSpeed;
+
+          if (elapsed > fadeStart) {
+            p.opacity = Math.max(0, 1 - (elapsed - fadeStart) / (DURATION * 0.3 + 1000));
+          }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = p.opacity;
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+      playBarkSound();
+    }
+
+    // ═══ FORM SUBMISSION ═══
+    (function() {
+      const form = document.getElementById('launchpad-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validate contact fields
+        const name = document.getElementById('contact-name');
+        const email = document.getElementById('contact-email');
+        if (!name.value.trim() || !email.value.trim()) {
+          name.focus();
+          return;
+        }
+
+        // Update hidden fields one more time
+        document.getElementById('form-industry').value = selections.industry || '';
+        document.getElementById('form-state').value = selections.state || '';
+        document.getElementById('form-entity').value = selections.entity || '';
+        document.getElementById('form-biz-name').value = document.getElementById('biz-name')?.value || '';
+
+        const formData = new FormData(form);
+
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        })
+        .then(res => {
+          if (res.ok) {
+            // Show success
+            document.getElementById('contact-section').style.display = 'none';
+            document.getElementById('think-cta-block').style.display = 'none';
+            document.getElementById('submit-success').classList.add('visible');
+
+            // Award final badge + XP
+            if (window.gamification) {
+              window.gamification.completeStep(5);
+            }
+
+            fireConfetti();
+          }
+        })
+        .catch(err => {
+          console.error('Form submission error:', err);
+        });
       });
     })();
   </script>

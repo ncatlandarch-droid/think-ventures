@@ -1,0 +1,28 @@
+{
+  "name": "think!-ventures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncatlandarch-droid/think-ventures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ncatlandarch-droid/think-ventures/issues"
+  },
+  "homepage": "https://github.com/ncatlandarch-droid/think-ventures#readme",
+  "dependencies": {
+    "@google/genai": "^2.6.0",
+    "stripe": "^22.1.1"
+  }
+}
