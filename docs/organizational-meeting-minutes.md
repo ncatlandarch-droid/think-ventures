@@ -1,168 +1,233 @@
-# MINUTES OF THE ORGANIZATIONAL MEETING
-## Board of Directors of Think Ventures
+﻿# Think! Ventures
+
+## MINUTES OF THE ORGANIZATIONAL MEETING OF THE BOARD OF DIRECTORS
 
 ---
 
-**Date:** June 2, 2026
-**Time:** 12:45 PM (EST)
-**Location:** Held via video conference
-**Meeting Called By:** Chris Harrison, Founder and Incorporator
+**Date:** June 8, 2026
+
+**Time:** Called to order at the scheduled time
+
+**Location:** Virtual (Google Meet)
+
+**EIN:** 42-2912572
 
 ---
 
-## I. CALL TO ORDER
-
-Chris Harrison called the organizational meeting of the Board of Directors of Think Ventures to order at the time noted above.
-
----
-
-## II. DIRECTORS PRESENT
-
-The following individuals, constituting all directors of the corporation and a quorum of the Board, were present:
+### DIRECTORS PRESENT
 
 | Name | Role |
 |------|------|
-| **Chris Harrison** | Director / Chair |
-| **Gregory Fulton** | Director / Vice Chair |
-| **Damon Howell** | Director / Secretary-Treasurer |
+| William Christopher Harrison | Founder |
+| Damon Howell | Director |
+| Gregory Fulton | Director |
 
-All directors being present, the meeting proceeded without formal notice, all directors having waived notice of this organizational meeting by their presence.
-
----
-
-## III. CONFIRMATION OF INCORPORATION
-
-Chris Harrison reported that Think Ventures was incorporated as a nonprofit corporation in the State of North Carolina on June 1, 2026, under Invoice Number 24621276 filed with the NC Secretary of State.
-
-**RESOLVED**, that the Board of Directors hereby ratifies and confirms all acts taken by the Incorporator in connection with the organization and incorporation of Think Ventures.
+All three (3) members of the Board of Directors were present, constituting a quorum for the transaction of business.
 
 ---
 
-## IV. ADOPTION OF BYLAWS
+## 1. CALL TO ORDER
 
-Chris Harrison presented proposed Bylaws for the governance of the Foundation. The Bylaws were reviewed by all directors present.
-
-**MOTION:** Chris Harrison moved to adopt the Bylaws as presented.
-**SECOND:** Gregory Fulton seconded the motion.
-**VOTE:** 3 in favor, 0 opposed, 0 abstentions.
-
-**RESOLVED**, that the Bylaws presented at this meeting are hereby adopted as the Bylaws of Think Ventures and shall be inserted in the corporate records of the Corporation.
+William Christopher Harrison called the organizational meeting of the Board of Directors of Think! Ventures (the "Foundation") to order. Mr. Harrison noted that all three directors were present, constituting a quorum, and that the meeting could proceed with the transaction of business.
 
 ---
 
-## V. ELECTION OF OFFICERS
+## 2. WAIVER OF NOTICE
 
-Pursuant to the Bylaws, the Board proceeded to elect officers to serve until the next annual meeting or until their successors are duly elected.
+All directors present waived formal notice of the time, place, and purpose of this meeting and consented to the transaction of any and all business that may come before the meeting.
 
-**MOTION:** Damon Howell moved to elect the following slate of officers.
-**SECOND:** Gregory Fulton seconded the motion.
-**VOTE:** 3 in favor, 0 opposed, 0 abstentions.
+---
 
-**RESOLVED**, that the following persons are hereby elected to the offices set forth opposite their respective names:
+## 3. ARTICLES OF INCORPORATION
+
+The Board acknowledged that the Articles of Incorporation of Think! Ventures have been filed with the North Carolina Secretary of State.
+
+A copy of the Articles of Incorporation was presented to the Board for review.
+
+**MOTION:** A motion was made to ratify the Articles of Incorporation as filed. The motion was seconded.
+
+**VOTE:** The motion was approved unanimously (3-0).
+
+---
+
+## 4. ADOPTION OF BYLAWS
+
+The proposed Bylaws of Think! Ventures were presented to the Board for review. The directors reviewed and discussed the Bylaws in their entirety.
+
+**MOTION:** A motion was made to adopt the Bylaws as presented. The motion was seconded.
+
+**VOTE:** The motion was approved unanimously (3-0).
+
+**RESOLVED**, that the Bylaws presented to and reviewed by the Board are hereby adopted as the Bylaws of Think! Ventures, and that the Secretary is directed to insert a copy of the Bylaws in the corporate records of the Corporation.
+
+---
+
+## 5. ELECTION OF OFFICERS
+
+The Board proceeded to the election of officers of the Corporation. The following individuals were nominated and elected to serve in the offices indicated:
 
 | Office | Officer Elected |
 |--------|----------------|
-| **Chair / Executive Director** | **Chris Harrison** |
-| **Vice Chair** | **Gregory Fulton** |
-| **Secretary / Treasurer** | **Damon Howell** |
+| Board Chair / Executive Director | William Christopher Harrison |
+| Secretary | Damon Howell |
+| Treasurer | Gregory Fulton |
 
-Each officer accepted their respective office.
+**VOTE:** All officers were elected unanimously (3-0).
 
----
-
-## VI. ESTABLISHMENT OF FISCAL YEAR
-
-**RESOLVED**, that the fiscal year of the Foundation shall begin on January 1 and end on December 31 of each calendar year. The first fiscal year shall begin on the date of incorporation (June 1, 2026) and end on December 31, 2026.
+All terms of office shall begin immediately upon election and shall run for a period of one (1) year, or until their successors are duly elected and qualified.
 
 ---
 
-## VII. ADOPTION OF CONFLICT OF INTEREST POLICY
+## 6. FISCAL YEAR
 
-The Board reviewed the Conflict of Interest Policy included in Article VIII of the Bylaws.
+The Board considered and discussed the establishment of a fiscal year for the Corporation.
 
-**RESOLVED**, that the Conflict of Interest Policy as set forth in the Corporation's Bylaws is hereby adopted. Each director shall sign an annual Conflict of Interest Disclosure Statement.
+**RESOLVED**, that the fiscal year of Think! Ventures shall begin on January 1 and end on December 31 of each calendar year.
 
-The directors hereby acknowledge awareness of the conflict of interest policy with respect to the ongoing service relationship between the Foundation and Think! Design & Planning, LLC (owned by Chris Harrison), and confirm that any such contracts shall be approved at fair market value with Chris Harrison recusing from the vote.
-
----
-
-## VIII. AUTHORIZATION TO APPLY FOR 501(c)(3) TAX-EXEMPT STATUS
-
-**RESOLVED**, that the Foundation is authorized and directed to prepare and file with the Internal Revenue Service an application for recognition of exemption from federal income taxation under Section 501(c)(3) of the Internal Revenue Code (Form 1023-EZ or Form 1023, as appropriate).
-
-**FURTHER RESOLVED**, that Chris Harrison, as Chair and Executive Director, is authorized to execute and file all documents necessary to obtain recognition of tax-exempt status on behalf of Think Ventures.
+**VOTE:** The resolution was approved unanimously (3-0).
 
 ---
 
-## IX. AUTHORIZATION TO OPEN BANK ACCOUNT
+## 7. AUTHORIZATION TO OPEN BANK ACCOUNT
 
-**RESOLVED**, that the Corporation is authorized to open one or more bank accounts in the name of **Think Ventures** at a federally insured financial institution.
+The Board discussed the need to establish a bank account in the name of the Corporation for the purpose of receiving and disbursing funds in furtherance of the Corporation's mission.
 
-**FURTHER RESOLVED**, that Chris Harrison (Chair) and Damon Howell (Treasurer) are each authorized signatories on all Corporation bank accounts.
+**RESOLVED**, that William Christopher Harrison is hereby authorized to open a bank account in the name of Think! Ventures at a federally insured financial institution of his selection, and to execute all documents and agreements necessary to establish such account.
 
-**FURTHER RESOLVED**, that the EIN **42-2912572** shall be used for all banking and financial purposes.
+**RESOLVED FURTHER**, that the authorized signers on said bank account shall be:
 
----
+- **Primary Signer:** William Christopher Harrison
+- **Secondary Signer:** Gregory Fulton
 
-## X. AUTHORIZATION OF FOUNDING PROGRAMS
-
-**RESOLVED**, that the Board authorizes the launch of the following founding programs in furtherance of Think Ventures' charitable mission:
-
-1. **LaunchPad** — AI-powered business incubation for underserved entrepreneurs
-2. **MerchEngine** — E-commerce and print-on-demand infrastructure for partner businesses
-3. **Digital Equity Workshops** — Entrepreneurship education at HBCUs and community centers
-
-**FURTHER RESOLVED**, that the following businesses are recognized as founding LaunchPad partner case studies demonstrating the Foundation's proof of concept:
-- **Arlan, LLC** — Built June 2026
-- **Hood Hymns Publishing** — Built June 2026
+**VOTE:** The resolution was approved unanimously (3-0).
 
 ---
 
-## XI. ANNUAL FORM 990 FILING ACKNOWLEDGMENT
+## 8. TAX-EXEMPT STATUS
 
-The Board acknowledges the IRS requirement to file a Form 990 series return (990, 990-EZ, or 990-N) annually beginning with the fiscal year ending December 31, 2026, regardless of whether 501(c)(3) determination has been received.
+The Board discussed the application for recognition of tax-exempt status under Section 501(c)(3) of the Internal Revenue Code.
 
-**RESOLVED**, that Damon Howell, as Secretary/Treasurer, is responsible for ensuring timely annual filing of all required IRS information returns.
+**RESOLVED**, that William Christopher Harrison, in his capacity as Board Chair and Executive Director, is hereby authorized and directed to prepare and file IRS Form 1023-EZ (Streamlined Application for Recognition of Exemption Under Section 501(c)(3) of the Internal Revenue Code) on behalf of Think! Ventures.
+
+**RESOLVED FURTHER**, that the filing fee of Two Hundred Seventy-Five Dollars ($275.00) is hereby approved as a necessary and proper expense of the Corporation.
+
+**RESOLVED FURTHER**, that William Christopher Harrison is authorized to execute any and all documents, certificates, and instruments necessary to complete said filing.
+
+**VOTE:** The resolution was approved unanimously (3-0).
 
 ---
 
-## XII. ADJOURNMENT
+## 9. SERVICE AGREEMENT WITH THINK! DESIGN AND PLANNING, LLC
 
-There being no further business to come before the Board, the meeting was adjourned.
+The Board reviewed a proposed Service Agreement between Think! Ventures and Think! Design and Planning, LLC, a limited liability company owned by William Christopher Harrison.
+
+The Service Agreement provides for professional services to the Corporation including, but not limited to:
+
+- Web development
+- Brand design
+- Business coaching
+- Technology infrastructure
+
+William Christopher Harrison disclosed his ownership interest in Think! Design and Planning, LLC and recused himself from discussion and voting on this matter due to a conflict of interest. Mr. Harrison left the virtual meeting room during the vote.
+
+**MOTION:** A motion was made by Damon Howell to approve the Service Agreement with Think! Design and Planning, LLC as presented. The motion was seconded by Gregory Fulton.
+
+**VOTE:** The resolution was approved by majority vote (2-0, with 1 director recused).
+
+| Director | Vote |
+|----------|------|
+| Damon Howell | In Favor |
+| Gregory Fulton | In Favor |
+| William Christopher Harrison | Recused |
+
+William Christopher Harrison returned to the meeting following the vote.
+
+---
+
+## 10. CONFLICT OF INTEREST DISCLOSURES
+
+In accordance with the Corporation's commitment to transparency and good governance, each director made the following disclosures:
+
+**William Christopher Harrison** disclosed that he is the sole owner of Think! Design and Planning, LLC, which has entered into a Service Agreement with the Corporation as approved in Item 9 above.
+
+**Damon Howell** disclosed that his business, Hood Hymns Publishing, was built through the Corporation's LaunchPad program.
+
+**Gregory Fulton** disclosed no conflicts of interest.
+
+All disclosures were documented in writing and ordered to be filed with the corporate records of the Corporation.
+
+---
+
+## 11. COMPENSATION RESOLUTION
+
+The Board discussed the matter of director compensation and compensation related to the approved Service Agreement.
+
+**RESOLVED**, that no director of Think! Ventures shall receive compensation for service on the Board of Directors.
+
+**RESOLVED FURTHER**, that compensation to Think! Design and Planning, LLC for professional services rendered pursuant to the approved Service Agreement shall not exceed Sixty Thousand Dollars ($60,000.00) annually without further approval of the Board of Directors.
+
+William Christopher Harrison recused himself from discussion and voting on this matter due to a conflict of interest.
+
+**VOTE:** The resolution was approved by majority vote (2-0, with 1 director recused).
+
+| Director | Vote |
+|----------|------|
+| Damon Howell | In Favor |
+| Gregory Fulton | In Favor |
+| William Christopher Harrison | Recused |
+
+---
+
+## 12. ADJOURNMENT
+
+There being no further business to come before the Board, a motion was made and seconded to adjourn the meeting. The motion was approved unanimously, and the meeting was adjourned.
+
+---
+
+## SIGNATURES
+
+The undersigned directors of Think! Ventures hereby attest that the foregoing minutes are a true and accurate record of the proceedings of the Organizational Meeting of the Board of Directors held on June 8, 2026.
+
+&nbsp;
+
+---
+
+**William Christopher Harrison**
+Board Chair / Executive Director
+
+Date: _______________
+
+&nbsp;
+
+---
+
+**Damon Howell**
+Secretary
+
+Date: _______________
+
+&nbsp;
+
+---
+
+**Gregory Fulton**
+Treasurer
+
+Date: _______________
+
+&nbsp;
 
 ---
 
 ## CERTIFICATION
 
-The undersigned, being the duly elected Secretary/Treasurer of Think Ventures, hereby certifies that the foregoing are the true and correct minutes of the Organizational Meeting of the Board of Directors of Think Ventures, held on June 2, 2026, at 12:45 PM (EST) via video conference.
-
----
-
-**ADOPTED THIS 2nd DAY OF JUNE, 2026**&nbsp;&nbsp;&nbsp; Date: ___________
-**Damon Howell**, Secretary / Treasurer
-
----
-
-## ACKNOWLEDGMENT AND APPROVAL BY DIRECTORS
-
-The undersigned directors hereby acknowledge receipt of these minutes and confirm their accuracy.
+I, Damon Howell, Secretary of Think! Ventures, do hereby certify that the foregoing minutes are a true, correct, and complete record of the proceedings of the Organizational Meeting of the Board of Directors of Think! Ventures, held on June 8, 2026, and that the resolutions set forth herein were duly adopted at said meeting.
 
 &nbsp;
 
-_____________________________________ &nbsp;&nbsp;&nbsp; Date: ___________
-**Chris Harrison**, Chair / Executive Director
-
-&nbsp;
-
-_____________________________________ &nbsp;&nbsp;&nbsp; Date: ___________
-**Gregory Fulton**, Vice Chair
-
-&nbsp;
-
-_____________________________________ &nbsp;&nbsp;&nbsp; Date: ___________
-**Damon Howell**, Secretary / Treasurer
-
 ---
 
-*Think Ventures | EIN: 42-2912572 | Greensboro, NC 27455*
-*Articles of Incorporation filed: June 1, 2026 | Invoice #24621276*
+**Damon Howell, Secretary**
+Think! Ventures
+
+Date: _______________

@@ -145,7 +145,7 @@ for ph in slide.placeholders:
             p.font.name = "Outfit"
 
 txt(slide, 0.8, 3.8, 8, 0.6, "Your Business. Our Infrastructure. Let's Build.", 24, MUTED_TEXT)
-txt(slide, 0.8, 4.6, 8, 0.4, "Partnership Meeting  |  June 4, 2026  |  Greensboro, NC", 13, MUTED_TEXT)
+txt(slide, 0.8, 4.6, 8, 0.4, "Partnership Meeting  |  June 8, 2026  |  Greensboro, NC", 13, MUTED_TEXT)
 txt(slide, 0.8, 5.2, 8, 0.4, "Presented by Chris Harrison — Think! Ventures Foundation", 15, GOLD, True)
 bella(slide, 9.5, 2.8, 3.5)
 
@@ -337,13 +337,13 @@ txt(slide, 0.8, 0.9, 10, 0.6, "How Everyone Eats", 38, TEAL, True)
 # Visual money flow
 gold_card(slide, 0.8, 2.0, 11.5, 1.5)
 txt(slide, 1.3, 2.1, 5, 0.5, "Example: Year 2 Revenue = $163,500", 22, TEAL, True)
-txt(slide, 1.3, 2.7, 10, 0.5, "Here's exactly where every dollar goes — complete transparency.", 14, MUTED_TEXT)
+txt(slide, 1.3, 2.7, 10, 0.5, "Here's exactly where every dollar goes -- complete transparency.", 14, MUTED_TEXT)
 
 table(slide, 0.8, 3.8, 11.5, 3.2, [
     ["Expense", "% of Revenue", "Annual Amount", "Who Gets It"],
     ["Materials & Supplies", "25%", "$40,875", "Suppliers"],
     ["Operating Expenses (insurance, truck, tools)", "15%", "$24,525", "Business costs"],
-    ["Think! Ventures (10% of NET profit)", "10% of profit", "$9,810", "Foundation (funds next entrepreneur)"],
+    ["Co-op Share (10% of NET profit)", "10% of profit", "$9,810", "Co-op Pool (see next slide)"],
     ["YOUR NET TAKE-HOME", "50%", "$81,750", "Dylan's pocket"],
     ["Taxes (estimated)", "~15% of net", "$12,263", "IRS / State"],
     ["ACTUAL CASH IN YOUR POCKET", "", "$69,487", "YOU"],
@@ -355,14 +355,55 @@ notes(slide, """Let me break down exactly where the money goes. Year 2 example -
 
 That leaves about 98 thousand in NET profit.
 
-Think! Ventures takes 10 percent of that net profit -- that's 9,810 dollars. That money goes back to the Foundation to fund the next entrepreneur.
+10 percent of that net profit -- 9,810 dollars -- goes into the cooperative pool. But here's the thing -- that money doesn't just disappear. Almost half of it comes BACK to you as savings and dividends. I'll show you exactly how on the next slide.
 
-Your take-home: 81 thousand 750 dollars. After taxes, about 69 thousand in your pocket.
+Your take-home before co-op returns: 81 thousand 750 dollars. After taxes, about 69 thousand in your pocket. PLUS the co-op returns.
 
-And remember -- you paid ZERO to get started. No franchise fee. No website cost. No branding cost. You walked in with an idea and walked out with a 41-thousand-dollar digital business. For free.""")
+And remember -- you paid ZERO to get started. No franchise fee. No website cost. No branding cost.""")
 
 # ═══════════════════════════════════════════════════════════════
-# SLIDE 8: MULTI-MARKET SCALING
+# SLIDE 8: CO-OP DIVIDEND MODEL
+# ═══════════════════════════════════════════════════════════════
+slide = prs.slides.add_slide(LO_BLANK)
+
+txt(slide, 0.8, 0.4, 5, 0.4, "THE CO-OP ADVANTAGE", 14, GOLD, True)
+txt(slide, 0.8, 0.9, 10, 0.6, "Your 10% Comes Back to You", 38, TEAL, True)
+txt(slide, 0.8, 1.6, 10, 0.3, "Like REI, Ace Hardware, and Land O'Lakes -- a cooperative where members share in the success", 13, MUTED_TEXT)
+
+# How the 10% splits - 3 markets example: $29,610 total pool
+table(slide, 0.5, 2.2, 12.3, 2.5, [
+    ["Co-op Pool Allocation", "% of 10%", "Annual (3 Markets)", "What It Does"],
+    ["Think! Foundation (mission)", "40%", "$11,844", "Funds next 2-3 business launches"],
+    ["Operator Savings Fund", "20%", "$5,922 (~$1,974 each)", "Your emergency fund / nest egg"],
+    ["Annual Patronage Dividends", "20%", "$5,922 (~$1,974 each)", "Cash back at year-end"],
+    ["Growth Reinvestment", "20%", "$5,922", "Better tools, group insurance, marketing"],
+], col_widths=[3.0, 1.5, 3.5, 4.3])
+
+# Bottom: What Dylan ACTUALLY keeps
+gold_card(slide, 0.8, 5.2, 11.5, 1.8)
+txt(slide, 1.3, 5.3, 5, 0.5, "What Dylan ACTUALLY Keeps (Year 2)", 20, TEAL, True)
+
+table(slide, 1.3, 5.9, 10.5, 0.9, [
+    ["Take-Home Pay", "+ Savings Return", "+ Year-End Dividend", "= REAL TOTAL"],
+    ["$81,750", "+ $1,974", "+ $1,974", "$85,698"],
+], col_widths=[2.8, 2.5, 2.5, 2.7])
+
+notes(slide, """Here's what makes this different from just paying 10 percent and never seeing it again.
+
+We structure this as a cooperative -- like REI, Ace Hardware, or Land O'Lakes. The 10 percent goes into a shared co-op pool, and almost HALF of it comes back to you.
+
+40 percent of the pool -- about 12 thousand -- funds Think! Ventures Foundation. That's the mission money that launches the next 2-3 businesses.
+
+20 percent -- about 6 thousand -- goes into an Operator Savings Fund. That's YOUR money sitting in an account for emergencies, equipment upgrades, or a rainy day. About 2 thousand per operator per year.
+
+20 percent -- another 6 thousand -- comes back as Annual Patronage Dividends. Cash in your pocket at the end of the year. Like REI's annual member dividend. About 2 thousand per operator.
+
+20 percent -- the last 6 thousand -- goes into Growth Reinvestment. Better tools, group insurance rates, shared marketing. Things that benefit ALL operators.
+
+So what does Dylan actually keep? Not just the 81 thousand take-home -- add back the 2 thousand savings return and the 2 thousand dividend. Your real total is 85 thousand 698 dollars. The 10 percent isn't a fee -- it's an investment in a system that pays you back.""")
+
+# ═══════════════════════════════════════════════════════════════
+# SLIDE 9: MULTI-MARKET SCALING
 # ═══════════════════════════════════════════════════════════════
 slide = prs.slides.add_slide(LO_BLANK)
 
@@ -370,16 +411,16 @@ txt(slide, 0.8, 0.4, 5, 0.4, "SCALING THE FRANCHISE", 14, GOLD, True)
 txt(slide, 0.8, 0.9, 10, 0.6, "What 3 Markets Looks Like", 38, TEAL, True)
 
 table(slide, 0.8, 2.0, 11.5, 4.5, [
-    ["Market", "Operator", "Year 2 Gross", "Operator Take-Home", "Think! Share"],
-    ["Greensboro, NC", "Dylan", "$163,500", "$81,750", "$9,810"],
-    ["Asheville / Boone, NC", "Partner (TBD)", "$145,000", "$72,500", "$8,700"],
-    ["Tampa Bay, FL", "Partner (TBD)", "$185,000", "$92,500", "$11,100"],
+    ["Market", "Operator", "Year 2 Gross", "Take-Home + Co-op Returns", "Co-op Share"],
+    ["Greensboro, NC", "Dylan", "$163,500", "$85,698", "$9,810"],
+    ["Asheville / Boone, NC", "Partner (TBD)", "$145,000", "$76,448", "$8,700"],
+    ["Tampa Bay, FL", "Partner (TBD)", "$185,000", "$96,448", "$11,100"],
     ["", "", "", "", ""],
-    ["COMBINED", "3 operators", "$493,500", "$246,750 total", "$29,610"],
-], col_widths=[2.5, 2.0, 2.5, 2.5, 2.0])
+    ["COMBINED", "3 operators", "$493,500", "$258,594 total", "$29,610"],
+], col_widths=[2.5, 2.0, 2.5, 2.8, 1.7])
 
 txt(slide, 0.8, 6.6, 11, 0.5,
-    "Each market costs Think! Ventures ~$0 to clone. We duplicate the site in 1 day. Each operator runs independently.",
+    "Each market costs ~$0 to clone. Every operator earns dividends from the collective success of ALL markets.",
     14, MUTED_TEXT)
 
 bella(slide, 10.5, 4.5, 2.5)
@@ -388,11 +429,13 @@ notes(slide, """Now let's scale this. Three markets.
 
 Greensboro with Dylan. Asheville-Boone with a partner. Tampa Bay with a partner.
 
-Year 2 combined: 493 thousand in gross revenue across all three markets. Operators take home a combined 246 thousand. Think! Ventures receives about 29 thousand in cooperative profit share to fund more entrepreneurs.
+Year 2 combined: 493 thousand in gross revenue. Operators take home a combined 258 thousand INCLUDING their co-op savings and dividends.
 
-And here's the key: each market costs Think! Ventures essentially zero dollars to clone. We duplicate the website, localize it, and launch in one day. The operator handles local sales, installations, and client relationships. Think! handles all the technology.
+The co-op pool totals about 29 thousand. 12 thousand funds the mission. 12 thousand flows back to operators as savings and dividends. 6 thousand grows everyone's business.
 
-This is infinitely scalable. 3 markets, 5 markets, 10 markets. The technology cost stays near zero because AI builds everything.""")
+And the more markets we add, the bigger the pool, the bigger the dividends. When there's 10 markets, 20 markets -- every operator benefits from the collective success.
+
+Each market costs Think! essentially zero to clone. We duplicate the site in one day. The operator runs independently. The co-op ties everyone together.""")
 
 # ═══════════════════════════════════════════════════════════════
 # SLIDE 9: WHAT DYLAN & PARTNER DO

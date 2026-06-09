@@ -1,293 +1,345 @@
-# BYLAWS OF THINK VENTURES
-### A North Carolina Nonprofit Corporation
+# BYLAWS OF Think! Ventures
+
+**A North Carolina Nonprofit Corporation**
+**EIN: 42-2912572**
+
+Adopted by the Board of Directors on __________________, 2026
 
 ---
 
-*Adopted by the Board of Directors on _____________, 2026*
+## ARTICLE I -- NAME AND PURPOSE
 
-*EIN: 42-2912572*
+### Section 1.1 -- Name
 
----
+The name of this corporation shall be **Think! Ventures** (hereinafter referred to as the "Corporation"), a nonprofit corporation organized under the laws of the State of North Carolina.
 
-## ARTICLE I — NAME AND PRINCIPAL OFFICE
+### Section 1.2 -- Purpose
 
-**Section 1.1 — Name.**
-The name of this corporation is **Think Ventures** (the "Corporation"), a nonprofit corporation organized under the laws of the State of North Carolina. The Corporation operates under the trade name **Think! Ventures**.
+The Corporation is organized exclusively for charitable and educational purposes within the meaning of Section 501(c)(3) of the Internal Revenue Code of 1986, as amended (the "Code"). Specifically, the Corporation exists to eliminate barriers to entrepreneurship for underserved communities by:
 
-**Section 1.2 — Principal Office.**
-The principal office of the Corporation shall be located at 4306 Goldenrod Drive, Greensboro, North Carolina 27455. The Board of Directors may change the principal office location by resolution.
+(a) Building complete digital businesses at zero cost to the beneficiary;
 
-**Section 1.3 — Registered Agent.**
-The Corporation shall maintain a registered agent in the State of North Carolina as required by law. The registered agent may be changed by the Board of Directors.
+(b) Providing structured twelve (12) month coaching programs to equip entrepreneurs with the skills, knowledge, and confidence necessary to sustain and grow their ventures; and
 
----
+(c) Delivering business communication training designed to strengthen professional capacity and market readiness.
 
-## ARTICLE II — MISSION AND PURPOSE
+### Section 1.3 -- Tax-Exempt Status
 
-**Section 2.1 — Charitable Purpose.**
-Think Ventures is organized exclusively for charitable and educational purposes within the meaning of Section 501(c)(3) of the Internal Revenue Code, including but not limited to:
+the Corporation shall not carry on any activities not permitted to be carried on by a corporation exempt from federal income tax under Section 501(c)(3) of the Code, or by a corporation contributions to which are deductible under Section 170(c)(2) of the Code. No part of the net earnings of the Corporation shall inure to the benefit of, or be distributable to, its directors, officers, or other private persons, except that the Corporation shall be authorized and empowered to pay reasonable compensation for services rendered and to make payments and distributions in furtherance of the purposes set forth in Section 1.2 hereof.
 
-- Providing digital business infrastructure, entrepreneurship education, and economic development services to underserved communities;
-- Supporting minority entrepreneurs, veterans, first-generation business owners, and students of Historically Black Colleges and Universities (HBCUs);
-- Operating LaunchPad, MerchEngine, and Digital Equity Workshop programs that transform business ideas into functioning enterprises at zero cost to participants;
-- Conducting research and education related to AI-powered business development and digital equity.
+### Section 1.4 -- Political Activity
 
-**Section 2.2 — Limitations.**
-No part of the net earnings of the Corporation shall inure to the benefit of, or be distributable to, its directors, officers, or other private persons, except that the Corporation shall be authorized and empowered to pay reasonable compensation for services rendered and to make payments and distributions in furtherance of the purposes set forth in Section 2.1.
-
-No substantial part of the activities of the Corporation shall be the carrying on of propaganda or otherwise attempting to influence legislation, and the Corporation shall not participate in or intervene in any political campaign on behalf of or in opposition to any candidate for public office.
+No substantial part of the activities of the Corporation shall consist of carrying on propaganda or otherwise attempting to influence legislation, and the Corporation shall not participate in, or intervene in (including the publishing or distribution of statements), any political campaign on behalf of or in opposition to any candidate for public office.
 
 ---
 
-## ARTICLE III — BOARD OF DIRECTORS
+## ARTICLE II -- BOARD OF DIRECTORS
 
-**Section 3.1 — Authority.**
-The Board of Directors (the "Board") shall be the governing body of the Corporation and shall have authority over all affairs of the Corporation.
+### Section 2.1 -- General Powers
 
-**Section 3.2 — Number of Directors.**
-The Board shall consist of a minimum of three (3) and a maximum of fifteen (15) directors. The initial Board shall consist of three (3) directors.
+The affairs of the Corporation shall be managed by its Board of Directors (hereinafter referred to as the "Board"). The Board shall have full authority to conduct, manage, and direct the business and affairs of the Corporation in accordance with these Bylaws and applicable law.
 
-**Section 3.3 — Initial Board of Directors.**
-The initial Board of Directors shall be:
+### Section 2.2 -- Number and Composition
 
-| Name | Role |
-|------|------|
-| **Chris Harrison** | Chair / Executive Director |
-| **Gregory Fulton** | Vice Chair |
-| **Damon Howell** | Secretary / Treasurer |
+The Board shall consist of no fewer than three (3) directors. The number of directors may be increased by resolution of the Board, provided that any such increase shall require a majority vote of the then-serving directors.
 
-**Section 3.4 — Terms.**
-Directors shall serve staggered three-year terms as follows:
-- **Class I** (Chris Harrison): Term expires 2027
-- **Class II** (Gregory Fulton): Term expires 2028
-- **Class III** (Damon Howell): Term expires 2029
+### Section 2.3 -- Initial Directors
 
-Directors may serve an unlimited number of consecutive terms.
+The initial directors of the Corporation shall be:
 
-**Section 3.5 — Election of Directors.**
-Directors shall be elected by a majority vote of the current Board at any duly held meeting. Any person eighteen (18) years of age or older may be elected as a director.
+1. **William Christopher Harrison** -- Board Chair / Executive Director
+2. **Damon Howell** -- Secretary
+3. **Gregory Fulton** -- Treasurer
 
-**Section 3.6 — Resignation and Removal.**
-Any director may resign at any time by giving written notice to the Chair. A director may be removed for cause by a two-thirds (2/3) vote of the remaining directors.
+### Section 2.4 -- Terms of Office
 
-**Section 3.7 — Vacancies.**
-Any vacancy on the Board shall be filled by a majority vote of the remaining directors. A director elected to fill a vacancy shall serve the remainder of the unexpired term.
+(a) Each director shall serve a term of three (3) years, commencing on the date of election or appointment.
 
-**Section 3.8 — Compensation.**
-Directors shall serve without compensation for their service as directors. Directors may be reimbursed for reasonable out-of-pocket expenses incurred in the performance of their duties. Nothing in this section prevents the Corporation from compensating a director for services rendered in a non-director capacity, provided the compensation is reasonable and properly approved.
+(b) Following the initial terms, terms shall be staggered so that approximately one-third (1/3) of the Board is elected or re-appointed each year. The Board shall determine the initial staggering schedule by resolution.
 
----
+(c) A director may be re-elected for successive terms without limitation.
 
-## ARTICLE IV — MEETINGS OF THE BOARD
+(d) A director shall hold office until a successor has been duly elected and qualified, or until such director's earlier resignation, removal, or death.
 
-**Section 4.1 — Regular Meetings.**
-The Board shall hold a minimum of four (4) regular meetings per year, at least one per quarter. The Chair shall set the meeting schedule annually.
+### Section 2.5 -- Annual Meeting
 
-**Section 4.2 — Annual Meeting.**
-The Board shall hold an annual meeting each year for the purposes of reviewing the Corporation's activities, approving the budget, and conducting any other necessary business. The annual meeting shall be held no later than December 31 of each year.
+(a) The Board shall hold an annual meeting for the purpose of electing officers, receiving reports, and transacting such other business as may come before the Board.
 
-**Section 4.3 — Special Meetings.**
-Special meetings of the Board may be called by the Chair or by any two (2) directors. Notice of a special meeting shall be given at least 48 hours in advance.
+(b) The annual meeting shall be held at such date, time, and place as determined by the Board Chair, provided that written or electronic notice is given to each director not less than ten (10) days prior to the meeting.
 
-**Section 4.4 — Notice.**
-Notice of all Board meetings shall be provided to each director at least seven (7) days in advance by email, phone, or written notice. Notice may be waived in writing by any director.
+(c) Annual and regular meetings may be conducted in person, by telephone conference, by video conference, or by any other means of communication by which all participants can simultaneously hear and communicate with each other. Participation by such means shall constitute presence in person at the meeting.
 
-**Section 4.5 — Quorum.**
-A majority of the total number of directors then in office shall constitute a quorum for the transaction of business. No business shall be conducted without a quorum present.
+### Section 2.6 -- Special Meetings
 
-**Section 4.6 — Voting.**
-Each director shall have one vote. Actions of the Board require the affirmative vote of a majority of directors present at a meeting at which a quorum exists, unless otherwise specified in these Bylaws.
+Special meetings of the Board may be called by the Board Chair or by any two (2) directors. Notice of any special meeting shall be given to each director not less than five (5) days prior to the meeting and shall state the purpose or purposes for which the meeting is called.
 
-**Section 4.7 — Remote Participation.**
-Directors may participate in meetings by telephone, video conference, or other electronic means by which all participants can simultaneously hear each other. Such participation constitutes presence in person at the meeting.
+### Section 2.7 -- Quorum
 
-**Section 4.8 — Action Without a Meeting.**
-Any action required or permitted to be taken at a meeting of the Board may be taken without a meeting if all directors consent in writing (including email) to such action. Written consents shall be filed with the minutes.
+A majority of the directors then in office shall constitute a quorum for the transaction of business at any meeting of the Board. In the case of a three-member Board, a quorum shall consist of two (2) directors. The act of a majority of the directors present at a meeting at which a quorum is present shall be the act of the Board, except as otherwise provided by law or these Bylaws.
 
----
+### Section 2.8 -- Action Without a Meeting
 
-## ARTICLE V — OFFICERS
+Any action required or permitted to be taken at a meeting of the Board may be taken without a meeting if a written consent, setting forth the action so taken, is signed by all directors entitled to vote with respect to the subject matter thereof. Such written consent may be executed in counterparts, including by electronic signature, and shall have the same force and effect as a unanimous vote at a duly called meeting.
 
-**Section 5.1 — Officers.**
-The officers of the Foundation shall be:
-- **Chair** (also serving as Executive Director)
-- **Vice Chair**
-- **Secretary / Treasurer**
+### Section 2.9 -- Compensation
 
-Additional officer positions may be created by the Board as needed.
+Directors shall serve without compensation for their services as directors. Directors may be reimbursed for reasonable expenses incurred in the performance of their duties upon submission of appropriate documentation and approval by the Board.
 
-**Section 5.2 — Election and Terms.**
-Officers shall be elected by the Board at the annual meeting and shall serve one-year terms. Officers may be re-elected without limitation.
+### Section 2.10 -- Removal
 
-**Section 5.3 — Chair / Executive Director.**
-The Chair shall be the chief executive officer of the Foundation, shall preside at all meetings of the Board, shall oversee all programs and operations, and shall perform all duties incident to the office. **Chris Harrison** is hereby elected as the initial Chair.
+Any director may be removed from office, with or without cause, by an affirmative vote of two-thirds (2/3) of the remaining directors then in office. The director subject to removal shall be given reasonable notice of the proposed action and an opportunity to address the Board prior to any vote on removal.
 
-**Section 5.4 — Vice Chair.**
-The Vice Chair shall assist the Chair and shall perform the duties of the Chair in the Chair's absence or incapacity. **Gregory Fulton** is hereby elected as the initial Vice Chair.
+### Section 2.11 -- Vacancies
 
-**Section 5.5 — Secretary / Treasurer.**
-The Secretary/Treasurer shall:
-- Keep minutes of all Board meetings
-- Maintain the Foundation's official records and documents
-- Oversee financial accounts and records
-- Prepare or oversee preparation of annual financial reports and Form 990
-- Ensure compliance with all financial reporting requirements
+Any vacancy occurring on the Board, whether by reason of death, resignation, removal, or an increase in the number of directors, shall be filled by a majority vote of the remaining directors then in office, even if less than a quorum. A director elected to fill a vacancy shall serve for the unexpired term of the predecessor director.
 
-**Damon Howell** is hereby elected as the initial Secretary/Treasurer.
+### Section 2.12 -- Resignation
 
-**Section 5.6 — Removal of Officers.**
-Any officer may be removed by a two-thirds (2/3) vote of the Board whenever the Board judges such removal to be in the best interest of the Foundation.
+A director may resign at any time by delivering written or electronic notice to the Board Chair or the Secretary. Such resignation shall be effective upon receipt or at such later date as may be specified therein.
 
 ---
 
-## ARTICLE VI — COMMITTEES
+## ARTICLE III -- OFFICERS
 
-**Section 6.1 — Standing Committees.**
-The Board may establish standing committees as needed, including but not limited to:
-- Programs Committee
-- Finance Committee
-- Grants Committee
+### Section 3.1 -- Officers Designated
 
-**Section 6.2 — Committee Composition.**
-Each committee shall include at least one director. Committees may include non-directors as voting members, provided at least one director serves on each committee. No committee may exercise the authority of the full Board.
+The officers of the Corporation shall be a Board Chair/Executive Director, a Secretary, and a Treasurer. The Board may create additional officer positions as it deems necessary by resolution.
 
----
+### Section 3.2 -- Initial Officers
 
-## ARTICLE VII — FINANCIAL MANAGEMENT
+The initial officers of the Corporation shall be:
 
-**Section 7.1 — Fiscal Year.**
-The fiscal year of the Foundation shall begin on January 1 and end on December 31 of each year. The first fiscal year shall begin on the date of incorporation and end on December 31, 2026.
+| Office | Name |
+|---|---|
+| Board Chair / Executive Director | William Christopher Harrison |
+| Secretary | Damon Howell |
+| Treasurer | Gregory Fulton |
 
-**Section 7.2 — Bank Accounts.**
-The Corporation shall maintain one or more bank accounts in the name of Think Ventures. All accounts shall require the signature of the Chair or Treasurer for withdrawals above $500.
+### Section 3.3 -- Terms of Office
 
-**Section 7.3 — Expenditure Authority.**
-- Expenditures up to $500: Chair or Treasurer may approve
-- Expenditures $501–$5,000: Requires approval of Chair + one other officer
-- Expenditures over $5,000: Requires Board approval by majority vote
+Each officer shall serve a term of one (1) year or until a successor is duly elected and qualified. Officers may be re-elected for successive terms without limitation.
 
-**Section 7.4 — Annual Budget.**
-The Board shall approve an annual operating budget at or before the beginning of each fiscal year.
+### Section 3.4 -- Removal of Officers
 
-**Section 7.5 — Financial Records.**
-The Foundation shall maintain accurate financial records and books of account. Financial records shall be available for inspection by any director upon reasonable request.
+Any officer may be removed by the Board at any time, with or without cause, by a majority vote of the directors then in office.
 
-**Section 7.6 — Independent Contractor Arrangements.**
-The Corporation may contract with Think! Design & Planning, LLC for technology services at fair market rates. All such contracts must be:
-1. Approved by the Board with the interested party (Chris Harrison) recusing from the vote
-2. Priced at or below fair market value
-3. Documented and disclosed in the Corporation's annual Form 990
+### Section 3.5 -- Board Chair / Executive Director
 
----
+The Board Chair / Executive Director shall:
 
-## ARTICLE VIII — CONFLICT OF INTEREST POLICY
+(a) Preside over all meetings of the Board;
 
-**Section 8.1 — Purpose.**
-This policy is intended to protect the Corporation's interests when it is contemplating entering into a transaction or arrangement that might benefit the private interest of an officer or director of the Corporation.
+(b) Serve as the chief executive officer of the Corporation and manage the day-to-day operations of the Corporation;
 
-**Section 8.2 — Interested Persons.**
-Any director, officer, or member of a committee with Board-delegated powers who has a direct or indirect financial interest in a proposed transaction is an "interested person."
+(c) Execute contracts, agreements, and other instruments on behalf of the Corporation as authorized by the Board;
 
-**Section 8.3 — Disclosure.**
-Each interested person must disclose the existence of the financial interest to the Board before the Board considers the transaction. The disclosure shall be recorded in the Board minutes.
+(d) Provide strategic direction and ensure that the Corporation operates in accordance with its stated purpose and mission;
 
-**Section 8.4 — Recusal.**
-After disclosure, the interested person shall leave the meeting during the discussion and vote on the transaction. The remaining Board members shall determine whether the transaction is fair and reasonable to the Corporation.
+(e) Serve as the primary spokesperson and representative of the Corporation; and
 
-**Section 8.5 — Annual Disclosure Statement.**
-Each director and officer shall sign a Conflict of Interest Disclosure Statement annually, disclosing all potential conflicts. Signed statements shall be kept on file.
+(f) Perform such other duties as may be assigned by the Board from time to time.
 
----
+### Section 3.6 -- Secretary
 
-## ARTICLE IX — INDEMNIFICATION
+The Secretary shall:
 
-**Section 9.1 — Indemnification.**
-The Corporation shall indemnify any director or officer who was or is a party to any proceeding by reason of the fact that he or she is or was a director or officer of the Corporation, to the fullest extent permitted under North Carolina law, provided that the director or officer acted in good faith and in a manner reasonably believed to be in the best interests of the Corporation.
+(a) Keep or cause to be kept accurate minutes of all meetings of the Board;
 
-**Section 9.2 — Insurance.**
-The Foundation may purchase directors and officers (D&O) liability insurance at the Board's discretion.
+(b) Maintain the official records, documents, and correspondence of the Corporation;
 
----
+(c) Give or cause to be given all required notices of meetings;
 
-## ARTICLE X — COOPERATIVE PARTNER PROGRAM
+(d) Maintain a current register of the names, addresses, and contact information of all directors and officers; and
 
-**Section 10.1 — Partner Agreements.**
-The Corporation may enter into cooperative partnership agreements with businesses and entrepreneurs served through its programs. Such agreements may include a revenue-sharing provision not to exceed 10% of net profits, classified as program service revenue directly furthering the Corporation's charitable mission.
+(e) Perform such other duties as may be assigned by the Board Chair or the Board from time to time.
 
-**Section 10.2 — Board Approval.**
-All partnership agreements with revenue-sharing provisions shall require Board approval by majority vote.
+### Section 3.7 -- Treasurer
+
+The Treasurer shall:
+
+(a) Have custody of and be responsible for all funds and financial assets of the Corporation;
+
+(b) Maintain or cause to be maintained accurate financial books and records;
+
+(c) Sign or authorize the signing of checks, drafts, and orders for the payment of money on behalf of the Corporation;
+
+(d) Present financial reports to the Board at each regular meeting and at the annual meeting;
+
+(e) Ensure that an annual financial review is conducted and presented to the Board; and
+
+(f) Perform such other duties as may be assigned by the Board Chair or the Board from time to time.
 
 ---
 
-## ARTICLE XI — RECORDS AND REPORTS
+## ARTICLE IV -- CONFLICT OF INTEREST POLICY
 
-**Section 11.1 — Corporate Records.**
-The Corporation shall keep the following records:
-- Articles of Incorporation and all amendments
-- These Bylaws and all amendments
-- Minutes of all Board meetings
-- Financial records and annual reports
-- IRS determination letter (when received)
-- Form 990 filings
+### Section 4.1 -- Purpose
 
-**Section 11.2 — Annual Report.**
-The Corporation shall file all required annual reports with the State of North Carolina and the Internal Revenue Service, including Form 990, 990-EZ, or 990-N as required.
+The purpose of this Conflict of Interest Policy is to protect the Corporation's interest when it is contemplating entering into a transaction or arrangement that might benefit the private interest of a director or officer, or might result in a possible excess benefit transaction.
 
-**Section 11.3 — Public Inspection.**
-The Corporation shall make its Form 990, Form 1023 application, and IRS determination letter available for public inspection as required by law.
+### Section 4.2 -- Definitions
 
----
+(a) **Interested Person.** Any director or officer who has a direct or indirect financial interest, as defined below, is an interested person.
 
-## ARTICLE XII — AMENDMENTS
+(b) **Financial Interest.** A person has a financial interest if the person has, directly or indirectly, through business, investment, or family:
 
-**Section 12.1 — Amendment Process.**
-These Bylaws may be amended by a two-thirds (2/3) vote of the entire Board of Directors at any regular or special meeting, provided that:
-1. The proposed amendment was submitted in writing to all directors at least fourteen (14) days before the meeting, and
-2. A quorum is present at the meeting.
+   (i) An ownership or investment interest in any entity with which the Corporation has a transaction or arrangement;
 
-No amendment may be made that would cause the Corporation to cease to qualify as a tax-exempt organization under Section 501(c)(3) of the Internal Revenue Code.
+   (ii) A compensation arrangement with the Corporation or with any entity or individual with which the Corporation has a transaction or arrangement; or
 
----
+   (iii) A potential ownership or investment interest in, or compensation arrangement with, any entity or individual with which the Corporation is negotiating a transaction or arrangement.
 
-## ARTICLE XIII — DISSOLUTION
+### Section 4.3 -- Duty to Disclose
 
-**Section 13.1 — Dissolution.**
-The Corporation may be dissolved by a two-thirds (2/3) vote of the entire Board of Directors.
+Any director or officer who has an actual or potential conflict of interest in any matter before the Board shall promptly and fully disclose the nature and extent of such interest to the Board.
 
-**Section 13.2 — Distribution of Assets.**
-Upon dissolution of the Corporation, after payment of all liabilities, all remaining assets shall be distributed to one or more organizations that qualify as tax-exempt under Section 501(c)(3) of the Internal Revenue Code, or to a federal, state, or local government for a public purpose. No assets shall be distributed to any director, officer, or private individual.
+### Section 4.4 -- Recusal
 
----
+(a) An interested director or officer shall recuse himself or herself from any discussion and vote relating to the matter in which the conflict exists.
 
-## ARTICLE XIV — PARLIAMENTARY AUTHORITY
+(b) The recusal of any interested director or officer shall be documented in the minutes of the meeting at which the conflict was disclosed.
 
-In all matters not covered by these Bylaws, the Corporation shall be governed by the current edition of *Robert's Rules of Order*, to the extent consistent with these Bylaws and North Carolina law.
+(c) The remaining, disinterested directors shall determine by majority vote whether the transaction or arrangement is in the Corporation's best interest, is fair and reasonable to the Corporation, and whether to enter into the transaction or arrangement.
+
+### Section 4.5 -- Specific Disclosure: Damon Howell
+
+It is hereby acknowledged that Director Damon Howell is the owner and operator of Hood Hymns Publishing, a business that was built by the Corporation as part of its charitable mission. Director Howell shall recuse himself from any and all Board discussions, deliberations, and votes relating to Hood Hymns Publishing or any transaction, arrangement, or matter in which Hood Hymns Publishing has a direct or indirect interest.
+
+### Section 4.6 -- Annual Disclosure
+
+Each director and officer shall annually complete and sign a conflict of interest disclosure form identifying any relationships, positions, or circumstances in which the director or officer is involved that he or she believes could contribute to a conflict of interest. Such disclosure forms shall be reviewed by the Board and maintained in the Corporation's records.
+
+### Section 4.7 -- Violations
+
+If the Board has reasonable cause to believe that a director or officer has failed to disclose an actual or potential conflict of interest, it shall inform the individual of the basis for such belief and afford the individual an opportunity to explain the alleged failure to disclose. If, after hearing the response and making further investigation as warranted, the Board determines that the individual has failed to disclose an actual or potential conflict, the Board shall take appropriate corrective action.
 
 ---
 
-## ARTICLE XV — CERTIFICATION
+## ARTICLE V -- FISCAL YEAR
 
-These Bylaws were duly adopted by the Board of Directors of Think Ventures on the date indicated below.
+### Section 5.1 -- Fiscal Year
+
+The fiscal year of the Corporation shall begin on January 1 and end on December 31 of each calendar year.
 
 ---
 
-**ADOPTED THIS _____ DAY OF _____________, 2026**
+## ARTICLE VI -- FINANCIAL POLICIES
+
+### Section 6.1 -- Service Agreements with Related Parties
+
+(a) the Corporation may contract with Think! Design and Planning, LLC, or any other related party, for professional services including but not limited to website development, brand design, digital business construction, and coaching program delivery, provided that such contracts are executed pursuant to a Board-approved Service Agreement.
+
+(b) All contracts, agreements, or transactions between the Corporation and any related party, including any entity in which a director or officer has a financial interest, shall require prior approval by the Board with all interested parties recused from discussion and vote in accordance with Article IV of these Bylaws.
+
+(c) All related-party transactions shall be conducted at fair market value and shall be documented in writing.
+
+### Section 6.2 -- Financial Oversight
+
+(a) The Treasurer shall ensure that accurate and complete financial records are maintained at all times.
+
+(b) An annual financial review shall be prepared and presented to the Board no later than ninety (90) days following the close of each fiscal year.
+
+(c) The Board may, in its discretion, engage an independent certified public accountant to conduct an audit or review of the Corporation's financial statements.
+
+### Section 6.3 -- Banking and Disbursements
+
+(a) the Corporation shall maintain its funds in one or more accounts at a federally insured financial institution.
+
+(b) All checks, drafts, or orders for the payment of money in excess of five hundred dollars ($500.00) shall require the signature of the Treasurer and one additional officer, unless otherwise authorized by resolution of the Board.
+
+---
+
+## ARTICLE VII -- AMENDMENTS
+
+### Section 7.1 -- Amendments to Bylaws
+
+These Bylaws may be amended, altered, or repealed, and new bylaws may be adopted, by an affirmative vote of two-thirds (2/3) of the directors then in office at any regular or special meeting of the Board, provided that:
+
+(a) Written notice of the proposed amendment, including the text of the proposed change, shall be delivered to each director not less than ten (10) days prior to the meeting at which the amendment is to be considered; and
+
+(b) No amendment shall be adopted that is inconsistent with the Corporation's tax-exempt status under Section 501(c)(3) of the Code.
+
+---
+
+## ARTICLE VIII -- DISSOLUTION
+
+### Section 8.1 -- Dissolution
+
+Upon the dissolution of the Corporation, the Board shall, after paying or making provision for the payment of all liabilities of the Corporation, dispose of all of the assets of the Corporation exclusively for the purposes of the Corporation in such manner, or to such organization or organizations organized and operated exclusively for charitable, educational, religious, or scientific purposes as shall at the time qualify as an exempt organization or organizations under Section 501(c)(3) of the Code, as the Board shall determine.
+
+### Section 8.2 -- Prohibition on Private Inurement
+
+No part of the assets of the Corporation shall be distributed to any director, officer, or private individual upon dissolution. Any such assets not so disposed of shall be disposed of by a court of competent jurisdiction of the county in which the principal office of the Corporation is then located, exclusively for such purposes or to such organization or organizations as said court shall determine, which are organized and operated exclusively for charitable, educational, religious, or scientific purposes.
+
+---
+
+## ARTICLE IX -- INDEMNIFICATION
+
+### Section 9.1 -- Indemnification of Directors and Officers
+
+the Corporation shall indemnify each director and officer of the Corporation to the fullest extent permitted by the North Carolina Nonprofit Corporation Act, as amended from time to time. Such indemnification shall include, but not be limited to, indemnification against expenses (including attorneys' fees), judgments, fines, and amounts paid in settlement actually and reasonably incurred in connection with any threatened, pending, or completed action, suit, or proceeding, whether civil, criminal, administrative, or investigative, to which such director or officer is or was a party, or is threatened to be made a party, by reason of the fact that such person is or was a director or officer of the Corporation.
+
+### Section 9.2 -- Advancement of Expenses
+
+the Corporation may, at the discretion of the Board, advance expenses incurred by a director or officer in defending any action, suit, or proceeding prior to the final disposition thereof, upon receipt of an undertaking by such person to repay such amount if it is ultimately determined that such person is not entitled to be indemnified by the Corporation.
+
+### Section 9.3 -- Insurance
+
+the Corporation may purchase and maintain insurance on behalf of any director or officer against any liability asserted against or incurred by such person in such capacity, whether or not the Corporation would have the power to indemnify such person against such liability under the provisions of this Article.
+
+---
+
+## ARTICLE X -- MISCELLANEOUS PROVISIONS
+
+### Section 10.1 -- Books and Records
+
+the Corporation shall keep correct and complete books and records of account, minutes of all meetings of the Board, and a record of the names and addresses of all directors and officers. All books and records may be inspected by any director for any proper purpose at any reasonable time.
+
+### Section 10.2 -- Notices
+
+Unless otherwise provided herein, any notice required or permitted to be given under these Bylaws may be delivered personally, by United States mail, or by electronic mail to the last known address of the recipient as shown on the records of the Corporation.
+
+### Section 10.3 -- Governing Law
+
+These Bylaws shall be governed by and construed in accordance with the laws of the State of North Carolina and the applicable provisions of the Internal Revenue Code.
+
+### Section 10.4 -- Severability
+
+If any provision of these Bylaws is held to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+---
+
+## CERTIFICATION
+
+The undersigned, being the duly elected Secretary of Think! Ventures, hereby certifies that the foregoing Bylaws were duly adopted by the Board of Directors on the date set forth below.
+
+---
+
+**ADOPTED AND APPROVED** by the Board of Directors of Think! Ventures:
 
 &nbsp;
 
-_____________________________________ &nbsp;&nbsp;&nbsp; Date: ___________
-**Chris Harrison**, Chair / Executive Director
+**William Christopher Harrison**
+Board Chair / Executive Director
+
+Signature: ________________________________________
+
+Date: ____________________
 
 &nbsp;
 
-_____________________________________ &nbsp;&nbsp;&nbsp; Date: ___________
-**Gregory Fulton**, Vice Chair
+**Damon Howell**
+Secretary
+
+Signature: ________________________________________
+
+Date: ____________________
 
 &nbsp;
 
-_____________________________________ &nbsp;&nbsp;&nbsp; Date: ___________
-**Damon Howell**, Secretary / Treasurer
+**Gregory Fulton**
+Treasurer
 
----
+Signature: ________________________________________
 
-*Think Ventures | EIN: 42-2912572 | Greensboro, NC*
+Date: ____________________
