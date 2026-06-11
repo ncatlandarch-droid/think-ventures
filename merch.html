@@ -6,6 +6,7 @@
   <title>Merch Store | Think! Ventures Apparel</title>
   <meta name="description" content="Rep the mission. Every purchase supports entrepreneurs. Think! Ventures branded apparel and merchandise.">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
   <style>
     /* ═══ Merch Page Styles ═══ */
@@ -288,13 +289,15 @@
       </a>
       <div class="nav__links" id="navLinks">
         <a href="/" class="nav__link">Home</a>
-        <a href="/#explainer" class="nav__link">How It Works</a>
-        <a href="/#mission" class="nav__link">Mission</a>
         <a href="/#programs" class="nav__link">Programs</a>
-        <a href="/#partners" class="nav__link">Partners</a>
-        <a href="merch.html" class="nav__link" style="color:var(--color-accent);">Merch</a>
-        <a href="/#transparency" class="nav__link">Transparency</a>
-        <a href="launchpad.html" class="btn btn--primary">LaunchPad Tool</a>
+        <a href="/#ready-made" class="nav__link">Ready-Made</a>
+        <a href="partners.html" class="nav__link">Partners</a>
+        <span class="nav__link active">Merch</span>
+        <a href="donate.html" class="nav__link">Donate</a>
+        <a href="launchpad.html" class="nav__link">LaunchPad</a>
+        <div id="tv-nav-auth">
+          <button class="tv-nav-auth-btn" onclick="Auth.openModal('signin')">Sign In</button>
+        </div>
       </div>
       <div class="nav__hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
@@ -415,7 +418,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__bottom">
-        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation</span>
+        <span class="footer__copyright">&copy; 2026 Think! Ventures</span>
         <span class="footer__copyright"><a href="/" style="color: var(--color-text-muted);">Home</a> &middot; <a href="launchpad.html" style="color: var(--color-text-muted);">LaunchPad</a> &middot; <a href="merch.html" style="color: var(--color-text-muted);">Merch</a></span>
       </div>
     </div>
@@ -505,5 +508,13 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
   </script>
+
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+
 </body>
 </html>

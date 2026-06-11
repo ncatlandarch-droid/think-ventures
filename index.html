@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Think! Ventures Foundation — From Dream to Launch in Days</title>
-  <meta name="description" content="Think! Ventures Foundation is a 501(c)(3) nonprofit that builds complete businesses for underserved entrepreneurs in 2-5 days at zero cost. LaunchPad, MerchEngine, Digital Equity, and AI Research.">
+  <title>Think! Ventures — From Dream to Launch in Days</title>
+  <meta name="description" content="Think! Ventures is a 501(c)(3) nonprofit that builds complete businesses for underserved entrepreneurs in 2-5 days at zero cost. LaunchPad, MerchEngine, Digital Equity, and AI Research.">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
   <style>
     /* ── Page-Specific Styles ── */
@@ -309,13 +310,16 @@
         <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
       </a>
       <div class="nav__links" id="navLinks">
-        <a href="#explainer" class="nav__link">How It Works</a>
-        <a href="#mission" class="nav__link">Mission</a>
-        <a href="#programs" class="nav__link">Programs</a>
-        <a href="#ready-made" class="nav__link">Ready-Made</a>
+        <span class="nav__link active">Home</span>
+        <a href="/#programs" class="nav__link">Programs</a>
+        <a href="/#ready-made" class="nav__link">Ready-Made</a>
         <a href="partners.html" class="nav__link">Partners</a>
         <a href="merch.html" class="nav__link">Merch</a>
-        <a href="launchpad.html" class="btn btn--primary">LaunchPad Tool</a>
+        <a href="donate.html" class="nav__link">Donate</a>
+        <a href="launchpad.html" class="nav__link">LaunchPad</a>
+        <div id="tv-nav-auth">
+          <button class="tv-nav-auth-btn" onclick="Auth.openModal('signin')">Sign In</button>
+        </div>
       </div>
       <div class="nav__hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
@@ -422,7 +426,7 @@
           </div>
           <div class="eco-node eco-node--gold">
             <div class="eco-node__icon"><span class="icon-wrapper icon-wrapper--lg" data-icon="seedling"></span></div>
-            <div class="eco-node__title">Think! Ventures Foundation</div>
+            <div class="eco-node__title">Think! Ventures</div>
             <div class="eco-node__sub">501(c)(3) Grant-Funded Nonprofit</div>
           </div>
         </div>
@@ -943,7 +947,7 @@
       <div class="grid-2 reveal" style="margin-top: var(--sp-3xl);">
         <div class="hybrid-card">
           <span class="hybrid-card__tag hybrid-card__tag--green">Nonprofit</span>
-          <h3 class="card__title">Think! Ventures Foundation</h3>
+          <h3 class="card__title">Think! Ventures</h3>
           <p class="card__text">Applies for and receives grants. Manages partner relationships and workshop programs. Distributes funds for services.</p>
           <ul class="hybrid-list">
             <li><span class="icon-wrapper icon-wrapper--sm" data-icon="check"></span> 501(c)(3) tax-exempt status</li>
@@ -1367,7 +1371,7 @@
             <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
             <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
           </a>
-          <p class="footer__description">Think! Ventures Foundation is a 501(c)(3) nonprofit building complete businesses for underserved entrepreneurs at zero cost. Powered by Think! Design & Planning, LLC.</p>
+          <p class="footer__description">Think! Ventures is a 501(c)(3) nonprofit building complete businesses for underserved entrepreneurs at zero cost. Powered by Think! Design & Planning, LLC.</p>
         </div>
         <div>
           <h4 class="footer__heading">Programs</h4>
@@ -1394,7 +1398,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation. All rights reserved.</span>
+        <span class="footer__copyright">&copy; 2026 Think! Ventures. All rights reserved.</span>
         <span class="footer__copyright">A 501(c)(3) Public Charity</span>
       </div>
     </div>
@@ -1829,6 +1833,13 @@
       });
     })();
   </script>
+
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
 
 </body>
 </html>

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Think! Ventures Foundation — Accounting Dashboard</title>
-  <meta name="description" content="Internal nonprofit accounting dashboard for Think! Ventures Foundation. Password protected.">
+  <title>Think! Ventures — Accounting Dashboard</title>
+  <meta name="description" content="Internal nonprofit accounting dashboard for Think! Ventures. Password protected.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
   <style>
     /* ── Password Gate ── */
@@ -780,14 +781,17 @@
 </head>
 <body>
 
-  <!-- ═══ Password Gate ═══ -->
+  <!-- ═══ Firebase Auth Gate ═══ -->
   <div class="auth-gate" id="authGate">
     <div class="auth-card">
       <div class="auth-card__logo">THINK! <span>VENTURES</span></div>
-      <p class="auth-card__sub">Accounting Dashboard -- Authorized Access Only</p>
-      <form id="authForm" onsubmit="return handleAuth(event)">
-        <input type="password" class="auth-card__input" id="authInput" placeholder="Enter password" autocomplete="off" autofocus>
-        <button type="submit" class="auth-card__btn">Authenticate</button>
+      <p class="auth-card__sub">Accounting Dashboard -- Admin Access Only</p>
+      <form id="authForm" onsubmit="return handleAdminAuth(event)">
+        <div style="margin-bottom: var(--sp-md);">
+          <input type="email" class="auth-card__input" id="authEmail" placeholder="Admin email" autocomplete="email" autofocus style="margin-bottom: var(--sp-md);">
+          <input type="password" class="auth-card__input" id="authPassword" placeholder="Password" autocomplete="current-password">
+        </div>
+        <button type="submit" class="auth-card__btn" id="authSubmitBtn">Sign In</button>
         <div class="auth-error" id="authError"></div>
       </form>
     </div>
@@ -814,7 +818,7 @@
 
   <!-- ═══ Print Header ═══ -->
   <div class="print-header">
-    <h1>Think! Ventures Foundation -- Financial Report</h1>
+    <h1>Think! Ventures -- Financial Report</h1>
     <p>EIN: 42-2912572 | Generated <span id="printDate"></span></p>
   </div>
 
@@ -825,7 +829,7 @@
       <!-- Header -->
       <div class="dash__header">
         <h1 class="dash__title">Accounting <span class="text-gradient">Dashboard</span></h1>
-        <p class="dash__subtitle">Think! Ventures Foundation -- Nonprofit Financial Tracking</p>
+        <p class="dash__subtitle">Think! Ventures -- Nonprofit Financial Tracking</p>
       </div>
 
       <!-- Stat Cards -->
@@ -1035,18 +1039,21 @@
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+
   <script>
     /* ═══════════════════════════════════════════
        THINK! VENTURES ACCOUNTING DASHBOARD
        Pure vanilla JS — no libraries
     ═══════════════════════════════════════════ */
 
-    const STORAGE_KEY = 'tv_accounting_data';
-    const AUTH_KEY = 'tv_auth';
-    const PASS = 'thinkventures2026';
-
     const INCOME_CATS = ['Donation', 'Grant', 'Profit Share', 'Service Fee', 'Other Income'];
     const EXPENSE_CATS = ['Software/Tools', 'Professional Services', 'Filing Fees', 'Marketing', 'Operations', 'Coaching', 'Other Expense'];
+    const STORAGE_KEY = 'tv_accounting_data';
 
     const STARTER_DATA = [
       { id: 's1', date: '2026-06-01', type: 'Expense', category: 'Filing Fees', description: 'NC Articles of Incorporation', amount: 60.00, createdAt: '2026-06-01T00:00:00Z' },
@@ -1058,32 +1065,64 @@
     let currentSort = { col: 'date', dir: 'desc' };
     let currentType = 'Expense';
 
-    /* ── Auth ── */
-    function handleAuth(e) {
+    /* ── Firebase Admin Auth ── */
+    async function handleAdminAuth(e) {
       e.preventDefault();
-      const input = document.getElementById('authInput');
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value;
       const errEl = document.getElementById('authError');
-      if (input.value === PASS) {
-        sessionStorage.setItem(AUTH_KEY, '1');
-        document.getElementById('authGate').classList.add('hidden');
-        initDashboard();
-      } else {
-        input.classList.add('error');
-        errEl.textContent = 'Incorrect password. Please try again.';
-        setTimeout(() => input.classList.remove('error'), 500);
-        input.value = '';
-        input.focus();
+      const btn = document.getElementById('authSubmitBtn');
+
+      btn.textContent = 'Signing in...';
+      btn.disabled = true;
+      errEl.textContent = '';
+
+      try {
+        const cred = await auth.signInWithEmailAndPassword(email, password);
+        // Check admin role in Firestore
+        const userDoc = await db.collection('users').doc(cred.user.uid).get();
+        const role = userDoc.exists ? userDoc.data().role : null;
+
+        if (role === 'admin') {
+          document.getElementById('authGate').classList.add('hidden');
+          initDashboard();
+        } else {
+          await auth.signOut();
+          errEl.textContent = 'Access denied. Admin credentials required.';
+          btn.textContent = 'Sign In';
+          btn.disabled = false;
+        }
+      } catch (err) {
+        const friendlyErrors = {
+          'auth/user-not-found': 'No account found with this email.',
+          'auth/wrong-password': 'Incorrect password.',
+          'auth/invalid-credential': 'Invalid email or password.',
+          'auth/too-many-requests': 'Too many attempts. Wait a moment.',
+          'auth/invalid-email': 'Please enter a valid email.'
+        };
+        errEl.textContent = friendlyErrors[err.code] || 'Authentication failed.';
+        document.getElementById('authPassword').value = '';
+        btn.textContent = 'Sign In';
+        btn.disabled = false;
       }
       return false;
     }
 
     function checkAuth() {
-      if (sessionStorage.getItem(AUTH_KEY) === '1') {
-        document.getElementById('authGate').classList.add('hidden');
-        initDashboard();
-      } else {
-        document.getElementById('authInput').focus();
-      }
+      // Check if Firebase auth already has a session
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          const userDoc = await db.collection('users').doc(user.uid).get();
+          const role = userDoc.exists ? userDoc.data().role : null;
+          if (role === 'admin') {
+            document.getElementById('authGate').classList.add('hidden');
+            initDashboard();
+            return;
+          }
+        }
+        // Not authenticated or not admin -- show login
+        document.getElementById('authEmail').focus();
+      });
     }
 
     /* ── Init ── */

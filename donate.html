@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate — Think! Ventures Foundation | Fuel the Next Launch</title>
-  <meta name="description" content="Support Think! Ventures Foundation, a 501(c)(3) nonprofit that builds complete businesses for underserved entrepreneurs at zero cost. Every dollar is tax-deductible.">
+  <title>Donate — Think! Ventures | Fuel the Next Launch</title>
+  <meta name="description" content="Support Think! Ventures, a 501(c)(3) nonprofit that builds complete businesses for underserved entrepreneurs at zero cost. Every dollar is tax-deductible.">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
   <style>
     /* ── Donate Page Styles ── */
@@ -450,13 +451,16 @@
         <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
       </a>
       <div class="nav__links" id="navLinks">
-        <a href="index.html#explainer" class="nav__link">How It Works</a>
-        <a href="index.html#mission" class="nav__link">Mission</a>
-        <a href="index.html#programs" class="nav__link">Programs</a>
-        <a href="index.html#ready-made" class="nav__link">Ready-Made</a>
+        <a href="/" class="nav__link">Home</a>
+        <a href="/#programs" class="nav__link">Programs</a>
+        <a href="/#ready-made" class="nav__link">Ready-Made</a>
         <a href="partners.html" class="nav__link">Partners</a>
         <a href="merch.html" class="nav__link">Merch</a>
-        <a href="launchpad.html" class="btn btn--primary">LaunchPad Tool</a>
+        <span class="nav__link active">Donate</span>
+        <a href="launchpad.html" class="nav__link">LaunchPad</a>
+        <div id="tv-nav-auth">
+          <button class="tv-nav-auth-btn" onclick="Auth.openModal('signin')">Sign In</button>
+        </div>
       </div>
       <div class="nav__hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
@@ -473,7 +477,7 @@
         <h1 class="donate-hero__title">Fuel the <span class="text-gradient">Next Launch</span></h1>
         <p class="donate-hero__subtitle">Every dollar you give builds a complete business for someone who could never afford one. Tax-deductible. Transparent. Life-changing.</p>
         <div class="ein-badge">
-          <strong>Think! Ventures Foundation</strong> is a 501(c)(3) public charity.<br>
+          <strong>Think! Ventures</strong> is a 501(c)(3) public charity.<br>
           EIN: 42-2912572. All donations are tax-deductible.
         </div>
       </div>
@@ -708,7 +712,7 @@
             <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
             <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
           </a>
-          <p class="footer__description">Think! Ventures Foundation is a 501(c)(3) nonprofit building complete businesses for underserved entrepreneurs at zero cost. Powered by Think! Design & Planning, LLC.</p>
+          <p class="footer__description">Think! Ventures is a 501(c)(3) nonprofit building complete businesses for underserved entrepreneurs at zero cost. Powered by Think! Design & Planning, LLC.</p>
         </div>
         <div>
           <h4 class="footer__heading">Programs</h4>
@@ -736,7 +740,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation. All rights reserved.</span>
+        <span class="footer__copyright">&copy; 2026 Think! Ventures. All rights reserved.</span>
         <span class="footer__copyright">A 501(c)(3) Public Charity | EIN: 42-2912572</span>
       </div>
     </div>
@@ -784,7 +788,7 @@
         return;
       }
       amount = '$' + parseFloat(amount).toFixed(2);
-      const subject = encodeURIComponent('Donation: ' + amount + ' to Think! Ventures Foundation');
+      const subject = encodeURIComponent('Donation: ' + amount + ' to Think! Ventures');
       window.location.href = 'mailto:chris@thinkdesignplanning.com?subject=' + subject;
     }
 
@@ -798,6 +802,13 @@
       }
     });
   </script>
+
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
 
 </body>
 </html>

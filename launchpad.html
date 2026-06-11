@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LaunchPad Business Formation Tool | Think! Ventures</title>
-  <meta name="description" content="Free interactive business formation wizard. Get every form, fee, and step customized to your industry and state. Powered by Think! Ventures Foundation.">
+  <meta name="description" content="Free interactive business formation wizard. Get every form, fee, and step customized to your industry and state. Powered by Think! Ventures.">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
   <style>
     /* ═══ AVA 3-Column Layout ═══ */
@@ -893,13 +894,15 @@
       </a>
       <div class="nav__links" id="navLinks">
         <a href="/" class="nav__link">Home</a>
-        <a href="/#explainer" class="nav__link">How It Works</a>
-        <a href="/#mission" class="nav__link">Mission</a>
         <a href="/#programs" class="nav__link">Programs</a>
-        <a href="/#partners" class="nav__link">Partners</a>
+        <a href="/#ready-made" class="nav__link">Ready-Made</a>
+        <a href="partners.html" class="nav__link">Partners</a>
         <a href="merch.html" class="nav__link">Merch</a>
-        <a href="/#transparency" class="nav__link">Transparency</a>
-        <a href="launchpad.html" class="nav__link" style="color:var(--color-accent);">LaunchPad Tool</a>
+        <a href="donate.html" class="nav__link">Donate</a>
+        <span class="nav__link active">LaunchPad</span>
+        <div id="tv-nav-auth">
+          <button class="tv-nav-auth-btn" onclick="Auth.openModal('signin')">Sign In</button>
+        </div>
       </div>
       <div class="nav__hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
@@ -1210,7 +1213,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__bottom">
-        <span class="footer__copyright">&copy; 2026 Think! Ventures Foundation</span>
+        <span class="footer__copyright">&copy; 2026 Think! Ventures</span>
         <span class="footer__copyright"><a href="/" style="color: var(--color-text-muted);">Back to Home</a></span>
       </div>
     </div>
@@ -1459,7 +1462,7 @@
       `<div class="info-card"><h4>State Facts</h4><ul><li>Filing fees vary by state</li><li>NC: $125 LLC filing fee</li><li>FL: $125 LLC filing fee</li><li>Processing: 3-10 business days</li><li>Some states require registered agents</li></ul></div>`,
       `<div class="info-card"><h4>LLC vs Sole Prop</h4><ul><li>LLC protects personal assets from lawsuits</li><li>Sole Prop is simpler but riskier</li><li>LLC has tax flexibility</li><li>Most small businesses choose LLC</li></ul></div><div class="info-card"><h4>Need a Nonprofit?</h4><ul><li>501(c)(3) for charitable missions</li><li>Tax-exempt donations</li><li>Requires a board of directors</li></ul></div>`,
       `<div class="info-card"><h4>Naming Tips</h4><ul><li>Check availability in your state</li><li>Search USPTO trademark database</li><li>Grab the .com domain early</li><li>Make it memorable and easy to spell</li><li>Avoid names too similar to competitors</li></ul></div>`,
-      `<div class="info-card"><h4>Your Value</h4><div class="info-stat">$41,000+</div><p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Total value of services you're receiving at zero cost through Think! Ventures Foundation.</p></div><div class="info-card"><h4>What's Included</h4><ul><li>Business formation documents</li><li>Full website (8+ pages)</li><li>Merch store with 8 products</li><li>SEO optimization</li><li>Digital presence setup</li><li>Ongoing support</li></ul></div>`,
+      `<div class="info-card"><h4>Your Value</h4><div class="info-stat">$41,000+</div><p style="color:var(--color-text-muted);font-size:var(--fs-sm);">Total value of services you're receiving at zero cost through Think! Ventures.</p></div><div class="info-card"><h4>What's Included</h4><ul><li>Business formation documents</li><li>Full website (8+ pages)</li><li>Merch store with 8 products</li><li>SEO optimization</li><li>Digital presence setup</li><li>Ongoing support</li></ul></div>`,
     ];
 
     function updateInfoPanel(step) {
@@ -1850,7 +1853,7 @@
         } else {
           // Live AI response via secure serverless proxy
           if (guideText) guideText.textContent = 'Hmm, let me think about that...';
-          const prompt = `You are Bella, a friendly golden doodle dog who is the mascot for Think! Ventures Foundation, a nonprofit that builds businesses for free. Answer this question briefly, warmly, and helpfully in 1-2 sentences: "${chatInput.value || input}"`;
+          const prompt = `You are Bella, a friendly golden doodle dog who is the mascot for Think! Ventures, a nonprofit that builds businesses for free. Answer this question briefly, warmly, and helpfully in 1-2 sentences: "${chatInput.value || input}"`;
           audioQueue.push({ text: prompt });
           processQueue();
         }
@@ -2186,6 +2189,13 @@
       });
     })();
   </script>
+
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
 
 </body>
 </html>
