@@ -490,7 +490,7 @@
   </section>
 
   <!-- ═══ Donation Tiers ═══ -->
-  <!-- TODO: Replace mailto links with Stripe Payment Links when account is ready -->
+  <!-- Donations powered by Zeffy (0% fees for nonprofits) -->
   <section class="section section--dark" id="donate-tiers">
     <div class="container">
       <div class="text-center">
@@ -505,35 +505,35 @@
         <div class="tier-card">
           <div class="tier-card__amount">$25</div>
           <p class="tier-card__desc">Covers domain registration and hosting for one business for a full year.</p>
-          <a href="mailto:chris@thinkdesignplanning.com?subject=Donation%3A%20%2425%20to%20Think!%20Ventures%20Foundation" class="tier-card__btn">Donate $25</a>
+          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $25</a>
         </div>
 
         <!-- $50 -->
         <div class="tier-card">
           <div class="tier-card__amount">$50</div>
           <p class="tier-card__desc">Funds complete brand identity design -- logo, colors, typography -- for one entrepreneur.</p>
-          <a href="mailto:chris@thinkdesignplanning.com?subject=Donation%3A%20%2450%20to%20Think!%20Ventures%20Foundation" class="tier-card__btn">Donate $50</a>
+          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $50</a>
         </div>
 
         <!-- $100 -->
         <div class="tier-card">
           <div class="tier-card__amount">$100</div>
           <p class="tier-card__desc">Covers full e-commerce setup with Stripe payment processing for one business.</p>
-          <a href="mailto:chris@thinkdesignplanning.com?subject=Donation%3A%20%24100%20to%20Think!%20Ventures%20Foundation" class="tier-card__btn">Donate $100</a>
+          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $100</a>
         </div>
 
         <!-- $250 -->
         <div class="tier-card">
           <div class="tier-card__amount">$250</div>
           <p class="tier-card__desc">Funds a complete professional website build for one business -- 8+ pages, mobile-ready, SEO-optimized.</p>
-          <a href="mailto:chris@thinkdesignplanning.com?subject=Donation%3A%20%24250%20to%20Think!%20Ventures%20Foundation" class="tier-card__btn">Donate $250</a>
+          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $250</a>
         </div>
 
         <!-- $500 -->
         <div class="tier-card">
           <div class="tier-card__amount">$500</div>
           <p class="tier-card__desc">Sponsors six months of one-on-one coaching sessions for one entrepreneur.</p>
-          <a href="mailto:chris@thinkdesignplanning.com?subject=Donation%3A%20%24500%20to%20Think!%20Ventures%20Foundation" class="tier-card__btn">Donate $500</a>
+          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $500</a>
         </div>
 
         <!-- $1,000 — Featured -->
@@ -541,7 +541,7 @@
           <div class="tier-card__badge">Full Launch Sponsor</div>
           <div class="tier-card__amount">$1,000</div>
           <p class="tier-card__desc">Funds a complete LaunchPad launch -- one full business from zero to live. Website, brand, e-commerce, coaching, everything.</p>
-          <a href="mailto:chris@thinkdesignplanning.com?subject=Donation%3A%20%241%2C000%20to%20Think!%20Ventures%20Foundation" class="tier-card__btn">Donate $1,000</a>
+          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $1,000</a>
         </div>
 
         <!-- Custom Amount -->
@@ -792,9 +792,7 @@
         setTimeout(() => { input.style.borderColor = ''; }, 1500);
         return;
       }
-      amount = '$' + parseFloat(amount).toFixed(2);
-      const subject = encodeURIComponent('Donation: ' + amount + ' to Think! Ventures');
-      window.location.href = 'mailto:chris@thinkdesignplanning.com?subject=' + subject;
+      window.open('https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur', '_blank');
     }
 
     // ── Nav scroll shrink ──
