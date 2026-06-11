@@ -300,6 +300,54 @@
     .option-grid--2 { grid-template-columns: repeat(3, 1fr); }
     .option-grid--entity { grid-template-columns: repeat(2, 1fr); }
 
+    /* ── State Selector Grid (51 entries) ── */
+    .option-grid--states { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-md); }
+    .state-search-wrap { margin-bottom: var(--sp-lg); position: relative; }
+    .state-search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-text-muted); pointer-events: none; }
+    .state-search {
+      width: 100%; padding: var(--sp-md) var(--sp-md) var(--sp-md) 42px;
+      background: var(--color-bg-card); border: 2px solid var(--color-border);
+      border-radius: var(--border-radius-md); color: var(--color-white);
+      font-family: var(--font-body); font-size: var(--fs-sm);
+      transition: var(--transition-base); outline: none;
+    }
+    .state-search:focus { border-color: var(--color-accent); }
+    .state-search::placeholder { color: var(--color-text-muted); }
+    .state-section-label {
+      grid-column: 1 / -1; font-family: var(--font-heading);
+      font-weight: 700; font-size: var(--fs-xs); color: var(--color-accent);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: var(--sp-sm) 0; border-bottom: 1px solid var(--color-border);
+      margin-bottom: var(--sp-xs);
+    }
+    .state-card {
+      padding: var(--sp-md); background: var(--color-bg-card);
+      border: 2px solid var(--color-border); border-radius: var(--border-radius-md);
+      cursor: pointer; transition: var(--transition-base); text-align: left;
+      display: flex; align-items: center; gap: var(--sp-sm);
+    }
+    .state-card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+    .state-card.selected { border-color: var(--color-secondary); background: rgba(245, 166, 35, 0.08); box-shadow: 0 0 20px rgba(245, 166, 35, 0.12); }
+    .state-card__icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%); border-radius: var(--border-radius-sm); color: var(--color-white); flex-shrink: 0; }
+    .state-card__icon svg { width: 16px; height: 16px; }
+    .state-card__info { flex: 1; min-width: 0; }
+    .state-card__name { font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-sm); color: var(--color-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .state-card__fee { font-size: 11px; color: var(--color-secondary); font-weight: 600; }
+    .state-card--featured {
+      grid-column: 1 / -1; padding: var(--sp-lg);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(245, 166, 35, 0.06));
+      border-color: var(--color-accent);
+    }
+    .state-card--featured .state-card__icon { width: 44px; height: 44px; }
+    .state-card--featured .state-card__icon svg { width: 22px; height: 22px; }
+    .state-card--featured .state-card__name { font-size: var(--fs-base); }
+    .state-card--featured .state-card__desc { font-size: var(--fs-sm); color: var(--color-text-muted); margin-top: 2px; }
+    .state-featured-badge { display: inline-block; padding: 2px 8px; border-radius: var(--border-radius-xl); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: var(--color-accent); color: var(--color-bg); margin-left: var(--sp-sm); vertical-align: middle; }
+    .state-no-results { grid-column: 1 / -1; text-align: center; padding: var(--sp-2xl); color: var(--color-text-muted); font-size: var(--fs-sm); }
+    @media (max-width: 1024px) { .option-grid--states { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .option-grid--states { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .option-grid--states { grid-template-columns: 1fr; } }
+
     .option-card {
       padding: var(--sp-xl);
       background: var(--color-bg-card);
@@ -868,6 +916,7 @@
     }
     @media (max-width: 768px) {
       .option-grid, .option-grid--2, .option-grid--entity { grid-template-columns: 1fr; }
+      .option-grid--states { grid-template-columns: repeat(2, 1fr); }
       .resource-grid { grid-template-columns: 1fr; }
       .stepper__label { font-size: 9px; }
       .stepper__circle { width: 32px; height: 32px; font-size: 12px; }
@@ -1010,7 +1059,11 @@
     <div class="wizard__step" id="step-1">
       <h2 class="wizard__title">Where Will You Operate?</h2>
       <p class="wizard__subtitle">Filing requirements and fees vary by state.</p>
-      <div class="option-grid option-grid--2" id="state-grid"></div>
+      <div class="state-search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="state-search" id="state-search" placeholder="Search states..." autocomplete="off">
+      </div>
+      <div class="option-grid option-grid--states" id="state-grid"></div>
       <div class="wizard__nav">
         <button class="btn btn--outline" onclick="prevStep()"><span class="icon-wrapper icon-wrapper--sm" data-icon="arrow-left"></span> Back</button>
         <button class="btn btn--primary" onclick="nextStep()" id="btn-next-1" disabled>Choose Entity Type <span class="icon-wrapper icon-wrapper--sm" data-icon="arrow-right"></span></button>
@@ -1357,9 +1410,57 @@
     };
 
     const STATES = {
-      'nc': { title: 'North Carolina', icon: 'state-nc', desc: 'Our home state. Best local resources.', llcFee: 125, corpFee: 125, nonprofitFee: 60, sosLink: 'https://www.sosnc.gov', sosText: 'NC Secretary of State' },
-      'fl': { title: 'Florida', icon: 'state-fl', desc: 'Popular for no state income tax.', llcFee: 125, corpFee: 70, nonprofitFee: 35, sosLink: 'https://dos.fl.gov/sunbiz', sosText: 'FL Sunbiz' },
-      'other': { title: 'Other State', icon: 'state-other', desc: 'We can guide you anywhere.', llcFee: 100, corpFee: 100, nonprofitFee: 50, sosLink: '', sosText: '' }
+      'nc': { title: 'North Carolina', icon: 'state-nc', desc: 'Our home state. Best local resources.', llcFee: 125, corpFee: 125, nonprofitFee: 60, sosLink: 'https://www.sosnc.gov', sosText: 'NC Secretary of State', featured: true },
+      'al': { title: 'Alabama', icon: 'state-generic', desc: 'Low filing fees, fast processing.', llcFee: 200, corpFee: 200, nonprofitFee: 200, sosLink: 'https://www.sos.alabama.gov/business-entities', sosText: 'AL Secretary of State' },
+      'ak': { title: 'Alaska', icon: 'state-generic', desc: 'No state income or sales tax.', llcFee: 250, corpFee: 250, nonprofitFee: 50, sosLink: 'https://www.commerce.alaska.gov/cbp/main/search/entities', sosText: 'AK Division of Corporations' },
+      'az': { title: 'Arizona', icon: 'state-generic', desc: 'Very low LLC filing fee.', llcFee: 50, corpFee: 60, nonprofitFee: 40, sosLink: 'https://ecorp.azcc.gov/EntitySearch/Index', sosText: 'AZ Corporation Commission' },
+      'ar': { title: 'Arkansas', icon: 'state-generic', desc: 'Low-cost filings, fast turnaround.', llcFee: 45, corpFee: 50, nonprofitFee: 50, sosLink: 'https://www.sos.arkansas.gov/corps/search_all.php', sosText: 'AR Secretary of State' },
+      'ca': { title: 'California', icon: 'state-generic', desc: 'Largest market. $800 franchise tax.', llcFee: 70, corpFee: 100, nonprofitFee: 30, sosLink: 'https://bizfileonline.sos.ca.gov/search/business', sosText: 'CA Secretary of State' },
+      'co': { title: 'Colorado', icon: 'state-generic', desc: 'Low fees, $10 annual report.', llcFee: 50, corpFee: 50, nonprofitFee: 50, sosLink: 'https://www.sos.state.co.us/biz/BusinessEntityCriteriaExt.do', sosText: 'CO Secretary of State' },
+      'ct': { title: 'Connecticut', icon: 'state-generic', desc: 'Strong consumer market.', llcFee: 120, corpFee: 250, nonprofitFee: 50, sosLink: 'https://service.ct.gov/business/s/onlinebusinesssearch', sosText: 'CT Secretary of State' },
+      'de': { title: 'Delaware', icon: 'state-generic', desc: 'Top choice for corporations.', llcFee: 90, corpFee: 89, nonprofitFee: 89, sosLink: 'https://icis.corp.delaware.gov/ecorp/entitysearch/namesearch.aspx', sosText: 'DE Division of Corporations' },
+      'dc': { title: 'District of Columbia', icon: 'state-generic', desc: 'Federal contracting hub.', llcFee: 99, corpFee: 220, nonprofitFee: 80, sosLink: 'https://corponline.dcra.dc.gov/Home.aspx', sosText: 'DC Dept. of Licensing' },
+      'fl': { title: 'Florida', icon: 'state-generic', desc: 'No state income tax.', llcFee: 125, corpFee: 70, nonprofitFee: 35, sosLink: 'https://dos.fl.gov/sunbiz/search/', sosText: 'FL Sunbiz' },
+      'ga': { title: 'Georgia', icon: 'state-generic', desc: 'Growing business hub.', llcFee: 100, corpFee: 100, nonprofitFee: 100, sosLink: 'https://ecorp.sos.ga.gov/BusinessSearch', sosText: 'GA Secretary of State' },
+      'hi': { title: 'Hawaii', icon: 'state-generic', desc: 'Low fees, tourism economy.', llcFee: 50, corpFee: 50, nonprofitFee: 25, sosLink: 'https://hbe.ehawaii.gov/documents/search.html', sosText: 'HI DCCA' },
+      'id': { title: 'Idaho', icon: 'state-generic', desc: 'No annual report fees.', llcFee: 100, corpFee: 100, nonprofitFee: 30, sosLink: 'https://sosbiz.idaho.gov/search/business', sosText: 'ID Secretary of State' },
+      'il': { title: 'Illinois', icon: 'state-generic', desc: 'Major Midwest market.', llcFee: 150, corpFee: 150, nonprofitFee: 50, sosLink: 'https://www.ilsos.gov/corporatellc/', sosText: 'IL Secretary of State' },
+      'in': { title: 'Indiana', icon: 'state-generic', desc: 'Fast 3-5 day processing.', llcFee: 95, corpFee: 95, nonprofitFee: 30, sosLink: 'https://bsd.sos.in.gov/publicbusinesssearch', sosText: 'IN Secretary of State' },
+      'ia': { title: 'Iowa', icon: 'state-generic', desc: 'Low fees, business-friendly.', llcFee: 50, corpFee: 50, nonprofitFee: 20, sosLink: 'https://sos.iowa.gov/search/business/(S(0))/search.aspx', sosText: 'IA Secretary of State' },
+      'ks': { title: 'Kansas', icon: 'state-generic', desc: 'Central location, moderate fees.', llcFee: 165, corpFee: 90, nonprofitFee: 20, sosLink: 'https://www.sos.ks.gov/business/business-entities.html', sosText: 'KS Secretary of State' },
+      'ky': { title: 'Kentucky', icon: 'state-generic', desc: 'Very low $40 LLC fee.', llcFee: 40, corpFee: 50, nonprofitFee: 8, sosLink: 'https://web.sos.ky.gov/bussearchnew/search', sosText: 'KY Secretary of State' },
+      'la': { title: 'Louisiana', icon: 'state-generic', desc: 'Affordable filings.', llcFee: 100, corpFee: 75, nonprofitFee: 75, sosLink: 'https://coraweb.sos.la.gov/commercialsearch/CommercialSearchAnon.aspx', sosText: 'LA Secretary of State' },
+      'me': { title: 'Maine', icon: 'state-generic', desc: 'Small business friendly.', llcFee: 175, corpFee: 145, nonprofitFee: 40, sosLink: 'https://icrs.informe.org/nei-sos-icrs/ICRS?MainPage=x', sosText: 'ME Secretary of State' },
+      'md': { title: 'Maryland', icon: 'state-generic', desc: 'Near D.C., strong economy.', llcFee: 100, corpFee: 120, nonprofitFee: 100, sosLink: 'https://egov.maryland.gov/BusinessExpress/EntitySearch', sosText: 'MD SDAT' },
+      'ma': { title: 'Massachusetts', icon: 'state-generic', desc: 'Innovation hub. Higher fees.', llcFee: 500, corpFee: 275, nonprofitFee: 35, sosLink: 'https://corp.sec.state.ma.us/corpweb/CorpSearch/CorpSearch.aspx', sosText: 'MA Secretary of the Commonwealth' },
+      'mi': { title: 'Michigan', icon: 'state-generic', desc: 'Low $50 LLC filing.', llcFee: 50, corpFee: 60, nonprofitFee: 20, sosLink: 'https://cofs.lara.state.mi.us/corpweb/CorpSearch/CorpSearch.aspx', sosText: 'MI LARA' },
+      'mn': { title: 'Minnesota', icon: 'state-generic', desc: 'Free annual renewals.', llcFee: 155, corpFee: 155, nonprofitFee: 70, sosLink: 'https://mblsportal.sos.state.mn.us/Business/Search', sosText: 'MN Secretary of State' },
+      'ms': { title: 'Mississippi', icon: 'state-generic', desc: 'Low $50 filing fee.', llcFee: 50, corpFee: 50, nonprofitFee: 50, sosLink: 'https://corp.sos.ms.gov/corp/portal/c/page/corpBusinessIdSearch/portal.aspx', sosText: 'MS Secretary of State' },
+      'mo': { title: 'Missouri', icon: 'state-generic', desc: 'Low fees, no annual report fee.', llcFee: 50, corpFee: 58, nonprofitFee: 25, sosLink: 'https://bsd.sos.mo.gov/BusinessEntity/BESearch.aspx', sosText: 'MO Secretary of State' },
+      'mt': { title: 'Montana', icon: 'state-generic', desc: 'No sales tax. Low fees.', llcFee: 70, corpFee: 70, nonprofitFee: 20, sosLink: 'https://biz.sosmt.gov/search', sosText: 'MT Secretary of State' },
+      'ne': { title: 'Nebraska', icon: 'state-generic', desc: 'Affordable, fast processing.', llcFee: 105, corpFee: 60, nonprofitFee: 10, sosLink: 'https://www.nebraska.gov/sos/corp/corpsearch.cgi', sosText: 'NE Secretary of State' },
+      'nv': { title: 'Nevada', icon: 'state-generic', desc: 'No state income tax.', llcFee: 75, corpFee: 75, nonprofitFee: 50, sosLink: 'https://esos.nv.gov/EntitySearch/OnlineEntitySearch', sosText: 'NV Secretary of State' },
+      'nh': { title: 'New Hampshire', icon: 'state-generic', desc: 'No income or sales tax.', llcFee: 100, corpFee: 100, nonprofitFee: 25, sosLink: 'https://quickstart.sos.nh.gov/online/BusinessInquire', sosText: 'NH Secretary of State' },
+      'nj': { title: 'New Jersey', icon: 'state-generic', desc: 'Dense market, fast filing.', llcFee: 125, corpFee: 125, nonprofitFee: 75, sosLink: 'https://www.njportal.com/DOR/BusinessNameSearch', sosText: 'NJ Division of Revenue' },
+      'nm': { title: 'New Mexico', icon: 'state-generic', desc: 'Low $50 LLC fee.', llcFee: 50, corpFee: 100, nonprofitFee: 25, sosLink: 'https://portal.sos.state.nm.us/BFS/online/CorporationBusinessSearch', sosText: 'NM Secretary of State' },
+      'ny': { title: 'New York', icon: 'state-generic', desc: 'Massive market. Publishing req.', llcFee: 200, corpFee: 125, nonprofitFee: 75, sosLink: 'https://www.dos.ny.gov/corps/bus_entity_search.html', sosText: 'NY Department of State' },
+      'nd': { title: 'North Dakota', icon: 'state-generic', desc: 'Business-friendly regulations.', llcFee: 135, corpFee: 100, nonprofitFee: 40, sosLink: 'https://firststop.sos.nd.gov/search/business', sosText: 'ND Secretary of State' },
+      'oh': { title: 'Ohio', icon: 'state-generic', desc: 'No annual report required.', llcFee: 99, corpFee: 99, nonprofitFee: 99, sosLink: 'https://businesssearch.ohiosos.gov/', sosText: 'OH Secretary of State' },
+      'ok': { title: 'Oklahoma', icon: 'state-generic', desc: 'Low-cost state filings.', llcFee: 100, corpFee: 50, nonprofitFee: 25, sosLink: 'https://www.sos.ok.gov/business/corp/records.aspx', sosText: 'OK Secretary of State' },
+      'or': { title: 'Oregon', icon: 'state-generic', desc: 'No sales tax.', llcFee: 100, corpFee: 100, nonprofitFee: 50, sosLink: 'https://sos.oregon.gov/business/pages/find.aspx', sosText: 'OR Secretary of State' },
+      'pa': { title: 'Pennsylvania', icon: 'state-generic', desc: 'Large market, moderate fees.', llcFee: 125, corpFee: 125, nonprofitFee: 125, sosLink: 'https://www.corporations.pa.gov/search/corpsearch', sosText: 'PA Department of State' },
+      'ri': { title: 'Rhode Island', icon: 'state-generic', desc: 'Small but strategic.', llcFee: 150, corpFee: 230, nonprofitFee: 35, sosLink: 'https://business.sos.ri.gov/CorpWeb/CorpSearch/CorpSearch.aspx', sosText: 'RI Secretary of State' },
+      'sc': { title: 'South Carolina', icon: 'state-generic', desc: 'Business-friendly climate.', llcFee: 110, corpFee: 135, nonprofitFee: 25, sosLink: 'https://businessfilings.sc.gov/businessfiling', sosText: 'SC Secretary of State' },
+      'sd': { title: 'South Dakota', icon: 'state-generic', desc: 'No state income tax.', llcFee: 150, corpFee: 150, nonprofitFee: 30, sosLink: 'https://sosenterprise.sd.gov/BusinessServices/Business/FilingSearch.aspx', sosText: 'SD Secretary of State' },
+      'tn': { title: 'Tennessee', icon: 'state-generic', desc: 'No state income tax.', llcFee: 300, corpFee: 100, nonprofitFee: 100, sosLink: 'https://tnbear.tn.gov/ECommerce/FilingSearch.aspx', sosText: 'TN Secretary of State' },
+      'tx': { title: 'Texas', icon: 'state-generic', desc: 'No state income tax. Huge market.', llcFee: 300, corpFee: 300, nonprofitFee: 25, sosLink: 'https://www.sos.state.tx.us/corp/sosda/index.shtml', sosText: 'TX Secretary of State' },
+      'ut': { title: 'Utah', icon: 'state-generic', desc: 'Low $54 LLC fee.', llcFee: 54, corpFee: 70, nonprofitFee: 30, sosLink: 'https://secure.utah.gov/bes/', sosText: 'UT Corporations Division' },
+      'vt': { title: 'Vermont', icon: 'state-generic', desc: 'Small business culture.', llcFee: 125, corpFee: 125, nonprofitFee: 75, sosLink: 'https://bizfilings.vermont.gov/online/BusinessInquire', sosText: 'VT Secretary of State' },
+      'va': { title: 'Virginia', icon: 'state-generic', desc: 'Fast 3-5 day processing.', llcFee: 100, corpFee: 75, nonprofitFee: 75, sosLink: 'https://www.scc.virginia.gov/pages/Business-Entity-Search', sosText: 'VA State Corporation Commission' },
+      'wa': { title: 'Washington', icon: 'state-generic', desc: 'No state income tax.', llcFee: 200, corpFee: 180, nonprofitFee: 30, sosLink: 'https://ccfs.sos.wa.gov/#/', sosText: 'WA Secretary of State' },
+      'wv': { title: 'West Virginia', icon: 'state-generic', desc: 'Low-cost filing options.', llcFee: 100, corpFee: 50, nonprofitFee: 25, sosLink: 'https://apps.wv.gov/SOS/BusinessEntitySearch/', sosText: 'WV Secretary of State' },
+      'wi': { title: 'Wisconsin', icon: 'state-generic', desc: 'Moderate fees, stable economy.', llcFee: 130, corpFee: 100, nonprofitFee: 35, sosLink: 'https://www.wdfi.org/apps/CorpSearch/Search.aspx', sosText: 'WI DFI' },
+      'wy': { title: 'Wyoming', icon: 'state-generic', desc: 'No state income tax. Low fees.', llcFee: 100, corpFee: 100, nonprofitFee: 25, sosLink: 'https://wyobiz.wyo.gov/Business/FilingSearch.aspx', sosText: 'WY Secretary of State' }
     };
 
     const ENTITIES = [
@@ -1400,17 +1501,72 @@
       `).join('');
     }
 
-    function renderStates() {
+    function renderStates(filter) {
       const grid = document.getElementById('state-grid');
-      grid.innerHTML = Object.entries(STATES).map(([key, st]) => `
-        <div class="option-card" data-state="${key}" onclick="selectState('${key}')">
-          <div class="option-card__icon">${ICONS[st.icon] || ''}</div>
-          <div class="option-card__title">${st.title}</div>
-          <div class="option-card__desc">${st.desc}</div>
-          <div class="option-card__fee">LLC Filing: $${st.llcFee}</div>
-        </div>
-      `).join('');
+      const query = (filter || '').toLowerCase().trim();
+
+      // Separate NC (featured) from the rest, then sort alphabetically
+      const entries = Object.entries(STATES);
+      const featured = entries.filter(([k, s]) => s.featured);
+      const rest = entries.filter(([k, s]) => !s.featured)
+        .sort((a, b) => a[1].title.localeCompare(b[1].title));
+
+      // Apply search filter
+      const matchFn = ([k, s]) => {
+        if (!query) return true;
+        return s.title.toLowerCase().includes(query) || k.includes(query);
+      };
+      const filteredFeatured = featured.filter(matchFn);
+      const filteredRest = rest.filter(matchFn);
+
+      if (filteredFeatured.length === 0 && filteredRest.length === 0) {
+        grid.innerHTML = '<div class="state-no-results">No states match your search.</div>';
+        return;
+      }
+
+      let html = '';
+
+      // Featured section (NC)
+      if (filteredFeatured.length > 0) {
+        html += '<div class="state-section-label">Featured</div>';
+        html += filteredFeatured.map(([key, st]) => `
+          <div class="state-card state-card--featured ${selections.state === key ? 'selected' : ''}" data-state="${key}" onclick="selectState('${key}')">
+            <div class="state-card__icon">${ICONS[st.icon] || ''}</div>
+            <div class="state-card__info">
+              <div class="state-card__name">${st.title} <span class="state-featured-badge">Home State</span></div>
+              <div class="state-card__desc">${st.desc}</div>
+            </div>
+            <div class="state-card__fee">LLC $${st.llcFee}</div>
+          </div>
+        `).join('');
+      }
+
+      // All States section
+      if (filteredRest.length > 0) {
+        html += '<div class="state-section-label">All States' + (query ? ' (filtered)' : '') + '</div>';
+        html += filteredRest.map(([key, st]) => `
+          <div class="state-card ${selections.state === key ? 'selected' : ''}" data-state="${key}" onclick="selectState('${key}')">
+            <div class="state-card__icon">${ICONS[st.icon] || ''}</div>
+            <div class="state-card__info">
+              <div class="state-card__name">${st.title}</div>
+            </div>
+            <div class="state-card__fee">$${st.llcFee}</div>
+          </div>
+        `).join('');
+      }
+
+      grid.innerHTML = html;
     }
+
+    // Wire up state search filtering
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('state-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          renderStates(this.value);
+        });
+      }
+    });
 
     function renderEntities() {
       const grid = document.getElementById('entity-grid');
@@ -1520,6 +1676,9 @@
       selections.name = '';
       selections.desc = '';
       document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.state-card').forEach(c => c.classList.remove('selected'));
+      const stateSearch = document.getElementById('state-search');
+      if (stateSearch) { stateSearch.value = ''; renderStates(); }
       document.getElementById('biz-name').value = '';
       document.getElementById('biz-desc').value = '';
       document.getElementById('btn-next-0').disabled = true;
