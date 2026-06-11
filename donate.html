@@ -496,65 +496,55 @@
       <div class="text-center">
         <span class="section-label">Choose Your Impact</span>
         <h2 class="section-title">Every Dollar <span class="text-gradient">Builds a Business</span></h2>
-        <p class="section-subtitle">Select an amount and see exactly what your donation funds. Every tier drives a real, measurable outcome.</p>
+        <p class="section-subtitle">See what your donation funds. Then use the secure form below to give -- 100% goes to our mission.</p>
       </div>
 
       <div class="tier-grid stagger" style="margin-top: var(--sp-3xl);">
 
         <!-- $25 -->
-        <div class="tier-card">
+        <div class="tier-card" onclick="document.getElementById('zeffy-embed').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="tier-card__amount">$25</div>
           <p class="tier-card__desc">Covers domain registration and hosting for one business for a full year.</p>
-          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $25</a>
-        </div>
-
-        <!-- $50 -->
-        <div class="tier-card">
-          <div class="tier-card__amount">$50</div>
-          <p class="tier-card__desc">Funds complete brand identity design -- logo, colors, typography -- for one entrepreneur.</p>
-          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $50</a>
         </div>
 
         <!-- $100 -->
-        <div class="tier-card">
+        <div class="tier-card" onclick="document.getElementById('zeffy-embed').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="tier-card__amount">$100</div>
           <p class="tier-card__desc">Covers full e-commerce setup with Stripe payment processing for one business.</p>
-          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $100</a>
         </div>
 
         <!-- $250 -->
-        <div class="tier-card">
+        <div class="tier-card" onclick="document.getElementById('zeffy-embed').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="tier-card__amount">$250</div>
           <p class="tier-card__desc">Funds a complete professional website build for one business -- 8+ pages, mobile-ready, SEO-optimized.</p>
-          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $250</a>
-        </div>
-
-        <!-- $500 -->
-        <div class="tier-card">
-          <div class="tier-card__amount">$500</div>
-          <p class="tier-card__desc">Sponsors six months of one-on-one coaching sessions for one entrepreneur.</p>
-          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $500</a>
         </div>
 
         <!-- $1,000 — Featured -->
-        <div class="tier-card tier-card--featured">
+        <div class="tier-card tier-card--featured" onclick="document.getElementById('zeffy-embed').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <div class="tier-card__badge">Full Launch Sponsor</div>
           <div class="tier-card__amount">$1,000</div>
           <p class="tier-card__desc">Funds a complete LaunchPad launch -- one full business from zero to live. Website, brand, e-commerce, coaching, everything.</p>
-          <a href="https://zeffy.com/en-US/donation-form/support-think-ventures-empowering-entrepreneur" target="_blank" class="tier-card__btn">Donate $1,000</a>
-        </div>
-
-        <!-- Custom Amount -->
-        <div class="tier-card custom-tier">
-          <div class="tier-card__amount">Custom Amount</div>
-          <p class="tier-card__desc">Give any amount. Every dollar fuels the next launch.</p>
-          <div class="custom-tier__row">
-            <input type="text" id="customAmount" class="custom-tier__input" placeholder="Enter amount" inputmode="numeric">
-          </div>
-          <a href="#" id="customDonateBtn" class="tier-card__btn" onclick="handleCustomDonate(event)">Donate</a>
         </div>
 
       </div>
+
+      <!-- ── Embedded Zeffy Payment Form ── -->
+      <div id="zeffy-embed" style="margin-top: var(--sp-3xl); scroll-margin-top: 100px;">
+        <div class="text-center" style="margin-bottom: var(--sp-xl);">
+          <h3 style="font-family: var(--font-heading); font-size: var(--fs-2xl); font-weight: 700; color: var(--color-white);">Secure Donation</h3>
+          <p style="color: var(--color-text-muted); font-size: var(--fs-sm);">Powered by Zeffy -- 100% of your donation goes to Think! Ventures. Zero platform fees.</p>
+        </div>
+        <div style="max-width: 640px; margin: 0 auto; border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.4); border: 1px solid var(--color-border);">
+          <iframe
+            title="Donation form powered by Zeffy"
+            src="https://www.zeffy.com/en-US/embed/donation-form/support-think-ventures-empowering-entrepreneur"
+            style="width: 100%; min-height: 700px; border: none; background: #fff; border-radius: var(--border-radius-lg);"
+            allowpaymentrequest
+            allow="payment">
+          </iframe>
+        </div>
+      </div>
+
     </div>
   </section>
 
