@@ -488,6 +488,192 @@
     }, 600 + Math.random() * 400);
   }
 
+  // ═══ SMART-FILL: Auto-fill after State Selection ══════════════
+
+  /**
+   * Entity display names for the verification card.
+   */
+  var ENTITY_DISPLAY = {
+    'llc': 'LLC (Limited Liability Company)',
+    'sole': 'Sole Proprietorship',
+    'scorp': 'S-Corporation',
+    'nonprofit': '501(c)(3) Nonprofit'
+  };
+
+  /**
+   * Check if Bella has enough info to smart-fill the remaining steps.
+   * Called from the overridden nextStep when leaving Step 1 (state).
+   */
+  function canSmartFill() {
+    return !!(window._bellaDescription && window._bellaEntitySuggestion);
+  }
+
+  /**
+   * Execute the smart-fill: auto-select entity, pre-fill description,
+   * build the verification summary, and jump to Step 3.
+   */
+  function doSmartFill() {
+    var entityType = window._bellaEntitySuggestion || 'llc';
+    var description = window._bellaDescription || '';
+
+    // 1. Auto-select entity in the wizard (triggers the internal state)
+    if (typeof window.selectEntity === 'function') {
+      window.selectEntity(entityType);
+    }
+
+    // 2. Pre-fill description field
+    var descField = document.getElementById('biz-desc');
+    if (descField && description) {
+      descField.value = description;
+    }
+
+    // 3. Build the verification summary at the top of Step 3
+    buildVerificationSummary();
+
+    // 4. Jump to Step 3 (skip Step 2 entity selection)
+    if (typeof window.goToStep === 'function') {
+      // Award XP for both skipped steps
+      if (window.gamification) {
+        window.gamification.completeStep(1);  // state step
+        window.gamification.completeStep(2);  // entity step (auto-filled)
+      }
+      window.goToStep(3);
+    }
+  }
+
+  /**
+   * Build and inject the Bella verification summary card at the top of Step 3.
+   */
+  function buildVerificationSummary() {
+    var step3 = document.getElementById('step-3');
+    if (!step3) return;
+
+    // Remove any existing verification summary
+    var existing = document.getElementById('bella-verify-summary');
+    if (existing) existing.remove();
+
+    // Gather all the data
+    var industry = window.selections ? window.selections.industry : null;
+    var state = window.selections ? window.selections.state : null;
+    var entityType = window._bellaEntitySuggestion || 'llc';
+    var description = window._bellaDescription || '';
+    var entitySuggestion = ENTITY_SUGGESTIONS[industry] || {};
+
+    var industryName = INDUSTRY_NAMES[industry] || industry || 'Not selected';
+    var stateName = 'Not selected';
+    if (state && window.STATES && window.STATES[state]) {
+      stateName = window.STATES[state].title;
+    }
+    var entityName = ENTITY_DISPLAY[entityType] || entityType;
+
+    // Build the summary HTML
+    var html = '';
+    html += '<div class="bella-verify" id="bella-verify-summary">';
+    html += '  <div class="bella-verify__header">';
+    html += '    <img src="assets/images/bella-mascot.png" alt="Bella" class="bella-verify__avatar">';
+    html += '    <div>';
+    html += '      <h3 class="bella-verify__title">Bella\'s Recommendation</h3>';
+    html += '      <p class="bella-verify__subtitle">I filled everything out based on your business idea. Review and edit anything below, then generate your roadmap.</p>';
+    html += '    </div>';
+    html += '  </div>';
+
+    // Summary cards
+    html += '  <div class="bella-verify__grid">';
+
+    // Industry
+    html += '    <div class="bella-verify__card">';
+    html += '      <div class="bella-verify__label">Industry</div>';
+    html += '      <div class="bella-verify__value">' + escHtml(industryName) + '</div>';
+    html += '      <button class="bella-verify__change" onclick="bellaChangeStep(0)">Change</button>';
+    html += '    </div>';
+
+    // State
+    html += '    <div class="bella-verify__card">';
+    html += '      <div class="bella-verify__label">State</div>';
+    html += '      <div class="bella-verify__value">' + escHtml(stateName) + '</div>';
+    html += '      <button class="bella-verify__change" onclick="bellaChangeStep(1)">Change</button>';
+    html += '    </div>';
+
+    // Entity
+    html += '    <div class="bella-verify__card">';
+    html += '      <div class="bella-verify__label">Business Structure</div>';
+    html += '      <div class="bella-verify__value">' + escHtml(entityName) + '</div>';
+    if (entitySuggestion.reason) {
+      html += '      <div class="bella-verify__reason">' + escHtml(entitySuggestion.reason) + '</div>';
+    }
+    html += '      <button class="bella-verify__change" onclick="bellaChangeStep(2)">Change</button>';
+    html += '    </div>';
+
+    // Description
+    html += '    <div class="bella-verify__card bella-verify__card--wide">';
+    html += '      <div class="bella-verify__label">Your Business Idea</div>';
+    html += '      <div class="bella-verify__value bella-verify__value--desc">' + escHtml(description) + '</div>';
+    html += '    </div>';
+
+    html += '  </div>'; // end grid
+    html += '</div>'; // end bella-verify
+
+    // Insert at the top of Step 3, after the title/subtitle
+    var subtitle = step3.querySelector('.wizard__subtitle');
+    if (subtitle) {
+      subtitle.insertAdjacentHTML('afterend', html);
+    } else {
+      step3.insertAdjacentHTML('afterbegin', html);
+    }
+
+    // Update the step 3 title to reflect verification mode
+    var title = step3.querySelector('.wizard__title');
+    if (title) title.textContent = 'Review and Confirm';
+    var sub = step3.querySelector('.wizard__subtitle');
+    if (sub) sub.textContent = 'Bella pre-filled your details. Edit anything below, then generate your roadmap.';
+  }
+
+  /**
+   * Navigate back to a specific step when user clicks "Change" on the verification card.
+   */
+  window.bellaChangeStep = function(step) {
+    if (typeof window.goToStep === 'function') {
+      window.goToStep(step);
+    }
+  };
+
+  /**
+   * Simple HTML escaper.
+   */
+  function escHtml(str) {
+    if (!str) return '';
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ═══ HOOK INTO WIZARD NAVIGATION ═════════════════════════════
+
+  /**
+   * Override the wizard's nextStep to intercept the state->entity transition.
+   * If Bella has recommendations, skip entity selection and jump to verification.
+   */
+  function hookNextStep() {
+    // Store the original nextStep
+    var originalNextStep = window.nextStep;
+
+    window.nextStep = function() {
+      // If we're on Step 1 (state) and Bella can smart-fill, do it
+      if (window.currentStep === 1 && canSmartFill()) {
+        doSmartFill();
+        return;
+      }
+
+      // Otherwise, use the original flow
+      if (typeof originalNextStep === 'function') {
+        originalNextStep();
+      }
+    };
+
+    // Expose goToStep, selectEntity, and STATES globally if not already
+    // (they should be, but ensure the smart-fill can access them)
+  }
+
   // ═══ PRE-FILL INTEGRATION ════════════════════════════════════
 
   /**
@@ -523,7 +709,9 @@
     setTimeout(function () {
       initBellaAdvisor();
       watchForDescriptionField();
+      hookNextStep();
     }, 200);
   });
 
 })();
+

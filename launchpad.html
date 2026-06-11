@@ -1094,6 +1094,105 @@
       .bella-advisor__bubble { border-radius: var(--border-radius-lg); }
       .bella-advisor__chips { justify-content: center; }
     }
+
+    /* ═══ Bella Verification Summary ═══ */
+    .bella-verify {
+      margin-bottom: var(--sp-2xl);
+      padding: var(--sp-xl);
+      background: rgba(245, 166, 35, 0.05);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: var(--border-radius-lg);
+      animation: fadeIn 0.5s ease;
+    }
+    .bella-verify__header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-lg);
+      margin-bottom: var(--sp-xl);
+    }
+    .bella-verify__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .bella-verify__title {
+      margin: 0 0 var(--sp-xs);
+      font-family: var(--font-heading);
+      font-size: var(--fs-lg);
+      color: var(--color-secondary);
+    }
+    .bella-verify__subtitle {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: var(--fs-sm);
+      line-height: 1.6;
+    }
+    .bella-verify__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-md);
+    }
+    .bella-verify__card {
+      padding: var(--sp-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      position: relative;
+    }
+    .bella-verify__card--wide {
+      grid-column: 1 / -1;
+    }
+    .bella-verify__label {
+      font-size: var(--fs-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--sp-xs);
+      font-weight: 600;
+    }
+    .bella-verify__value {
+      font-size: var(--fs-base);
+      color: var(--color-white);
+      font-weight: 600;
+      font-family: var(--font-heading);
+    }
+    .bella-verify__value--desc {
+      font-weight: 400;
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--color-text);
+    }
+    .bella-verify__reason {
+      font-size: var(--fs-xs);
+      color: var(--color-accent);
+      margin-top: var(--sp-xs);
+      line-height: 1.5;
+    }
+    .bella-verify__change {
+      position: absolute;
+      top: var(--sp-md);
+      right: var(--sp-md);
+      padding: 4px 12px;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      color: var(--color-text-muted);
+      font-size: var(--fs-xs);
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: var(--transition-fast);
+    }
+    .bella-verify__change:hover {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+    }
+    @media (max-width: 768px) {
+      .bella-verify__grid { grid-template-columns: 1fr; }
+      .bella-verify__header { flex-direction: column; align-items: center; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -1639,6 +1738,10 @@
     // ═══ STATE ═══
     let currentStep = 0;
     const selections = { industry: null, state: null, entity: null, name: '', desc: '' };
+    // Expose to window for bella-advisor.js smart-fill
+    window.currentStep = currentStep;
+    window.selections = selections;
+    window.STATES = STATES;
 
     // ═══ INIT ═══
     function init() {
@@ -1798,6 +1901,7 @@
 
     function goToStep(step) {
       currentStep = step;
+      window.currentStep = step; // sync for bella-advisor.js
       document.querySelectorAll('.wizard__step').forEach(s => s.classList.remove('active'));
       document.getElementById(`step-${step}`).classList.add('active');
 
