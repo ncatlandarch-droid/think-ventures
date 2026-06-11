@@ -21,6 +21,6 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 // Admin email(s) -- users with these emails get admin role on first login
-const ADMIN_EMAILS = ['chris@think-ventures.com'];
+const ADMIN_EMAILS = ['chris@think-ventures.org'];
 
 console.log('[Firebase] Initialized for Think! Ventures');
