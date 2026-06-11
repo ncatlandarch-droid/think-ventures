@@ -930,6 +930,170 @@
       .wizard__step { display: block !important; }
       .checklist-check { border-color: #333; }
     }
+
+    /* ═══ Bella Advisor (Conversational Step 0) ═══ */
+    .bella-advisor {
+      margin-bottom: var(--sp-xl);
+    }
+    .bella-advisor__intro {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-lg);
+      margin-bottom: var(--sp-xl);
+    }
+    .bella-advisor__avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .bella-advisor__bubble {
+      flex: 1;
+      padding: var(--sp-lg) var(--sp-xl);
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-lg);
+      color: var(--color-text);
+      font-size: var(--fs-sm);
+      line-height: 1.7;
+      min-height: 60px;
+      transition: all 0.3s ease;
+    }
+    .bella-advisor__bubble--active {
+      border-color: var(--color-accent);
+      background: rgba(16, 185, 129, 0.06);
+    }
+    .bella-advisor__greeting {
+      margin: 0;
+      color: var(--color-text);
+    }
+    .bella-advisor__response {
+      margin: 0;
+      color: var(--color-text);
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .bella-advisor__typing {
+      display: flex;
+      gap: 6px;
+      padding: var(--sp-sm) 0;
+    }
+    .bella-advisor__typing span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      animation: typingDot 1.2s infinite;
+    }
+    .bella-advisor__typing span:nth-child(2) { animation-delay: 0.2s; }
+    .bella-advisor__typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingDot {
+      0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+      30% { opacity: 1; transform: scale(1.1); }
+    }
+    .bella-advisor__input-wrap {
+      display: flex;
+      gap: var(--sp-sm);
+      margin-bottom: var(--sp-lg);
+    }
+    .bella-advisor__input {
+      flex: 1;
+      padding: var(--sp-md) var(--sp-xl);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      outline: none;
+      transition: var(--transition-fast);
+    }
+    .bella-advisor__input::placeholder {
+      color: var(--color-text-muted);
+    }
+    .bella-advisor__input:focus {
+      border-color: var(--color-secondary);
+      box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.15);
+    }
+    .bella-advisor__send {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-secondary) 0%, #e6951e 100%);
+      border: none;
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .bella-advisor__send:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(245, 166, 35, 0.3);
+    }
+    .bella-advisor__send svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-bg);
+    }
+    .bella-advisor__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-sm);
+      align-items: center;
+    }
+    .bella-advisor__chips-label {
+      font-size: var(--fs-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-right: var(--sp-xs);
+    }
+    .bella-advisor__chip {
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      color: var(--color-text-muted);
+      font-size: var(--fs-xs);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-family: var(--font-body);
+    }
+    .bella-advisor__chip:hover {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+      background: rgba(245, 166, 35, 0.08);
+    }
+    .bella-advisor__divider {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-lg);
+      margin: var(--sp-2xl) 0 var(--sp-xl);
+      color: var(--color-text-muted);
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .bella-advisor__divider::before,
+    .bella-advisor__divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+    @media (max-width: 768px) {
+      .bella-advisor__intro { flex-direction: column; align-items: center; text-align: center; }
+      .bella-advisor__bubble { border-radius: var(--border-radius-lg); }
+      .bella-advisor__chips { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -992,7 +1156,7 @@
       </div>
       <h3 class="lp-name">Bella</h3>
       <p class="lp-role">Your Launch Guide</p>
-      <div class="lp-speech" id="guideText">Let's start with the basics. What kind of business are you building?</div>
+      <div class="lp-speech" id="guideText">Tell me about the business you want to start! Type your idea in the box and I will figure out the best category, entity type, and requirements for you.</div>
       <div class="lp-chat-input">
         <input type="text" id="bellaChatInput" placeholder="Ask Bella anything..." autocomplete="off">
         <button id="bellaChatSend" aria-label="Send">
@@ -1031,8 +1195,8 @@
 
     <!-- Step 1: Industry -->
     <div class="wizard__step active" id="step-0">
-      <h2 class="wizard__title">Choose Your Industry</h2>
-      <p class="wizard__subtitle">Select the category that best describes your business.</p>
+      <h2 class="wizard__title">Tell Bella About Your Dream</h2>
+      <p class="wizard__subtitle">Describe your business idea and Bella will figure out the rest. Or pick a category below.</p>
 
       <!-- Ready-Made Option -->
       <div class="option-card option-card--readymade" id="readymade-card" onclick="toggleReadyMade()" style="margin-bottom: var(--sp-xl); cursor: pointer;">
@@ -2358,6 +2522,7 @@
   <script src="js/doc-generator.js"></script>
   <script src="js/launchpad-extras.js"></script>
   <script src="js/launchpad-tier2.js"></script>
+  <script src="js/bella-advisor.js"></script>
 
   <!-- Firebase Auth -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
