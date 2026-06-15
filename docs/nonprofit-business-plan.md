@@ -1,5 +1,5 @@
-# Think Ventures
-## 501(c)(3) Nonprofit Business Plan & Mission Statement
+# Think! Ventures
+## 501(c)(3) Nonprofit Business Plan
 
 ---
 
@@ -7,23 +7,25 @@
 
 | Field | Detail |
 |---|---|
-| **Legal Name** | Think Ventures |
-| **DBA** | Think! Ventures |
+| **Legal Name** | Think! Ventures |
 | **Federal EIN** | **42-2912572** |
-| **Type** | 501(c)(3) Public Charity (pending determination) |
+| **Type** | 501(c)(3) Public Charity (pending IRS determination) |
 | **State** | North Carolina |
-| **Founder** | Chris Harrison (William Christopher Harrison) |
-| **Affiliation** | NC A&T State University (HBCU) |
-| **Parent Entity** | Think! Design & Planning, LLC (for-profit, technology partner) |
-| **Year Founded** | 2026 |
-| **NC Articles Filed** | June 1, 2026 |
+| **NC SOS ID** | 3311699 |
+| **Status** | Current - Active (NC Secretary of State) |
+| **Date Formed** | June 15, 2026 |
 | **EIN Issued** | June 2, 2026 |
+| **Founder** | William Christopher Harrison |
+| **Affiliation** | NC A&T State University (HBCU) |
+| **Technology Partner** | Think! Design & Planning, LLC (for-profit) |
+| **Website** | [think-ventures.org](https://think-ventures.org) |
+| **Admin Contact** | chris@think-ventures.org |
 
 ---
 
 ## Mission Statement
 
-> **Think Ventures empowers underserved entrepreneurs — particularly those from HBCU communities, minority populations, and economically disadvantaged regions — by providing comprehensive digital business infrastructure, brand development, and e-commerce capabilities at zero cost. We transform dreams into functioning businesses in days, not months, using AI-powered tools and cooperative partnership models.**
+> **Think! Ventures empowers underserved entrepreneurs -- particularly those from HBCU communities, minority populations, and economically disadvantaged regions -- by providing comprehensive digital business infrastructure, AI-powered launch guidance, and ongoing support at zero cost. We build self-service tools that enable entrepreneurs to form, launch, and grow their businesses independently, creating a self-sustaining cycle of entrepreneurship.**
 
 ### Vision Statement
 > A world where lack of capital, technical knowledge, or professional connections never prevents a great idea from becoming a thriving business.
@@ -39,12 +41,13 @@
 
 | Barrier | Impact | Think! Ventures Solution |
 |---|---|---|
-| Professional website costs $5,000–$25,000 | 72% of small businesses delay launching | AI-powered build in 1–2 days, $0 cost |
-| Brand identity costs $3,000–$15,000 | New businesses look unprofessional, lose credibility | Full brand package (logo, mascot, palette) in 1 day |
-| Business plan costs $2,000–$10,000 | Entrepreneurs can't apply for loans or grants | AI-researched plan in 1 day |
-| E-commerce setup costs $1,000–$3,000 | No online revenue channel | Stripe + merch store same day |
-| LLC formation costs $500–$1,500 in legal fees | Entrepreneurs operate without legal protection | Guided filing, $60 NC state fee only |
-| **Total traditional cost** | **$11,500–$54,500** | **$0 to the entrepreneur** |
+| Professional website costs $5,000-$25,000 | 72% of small businesses delay launching | AI-powered build in 1-2 days, $0 cost |
+| Brand identity costs $3,000-$15,000 | New businesses look unprofessional | Full brand package in 1 day |
+| Business plan costs $2,000-$10,000 | Can't apply for loans or grants | AI-researched plan, auto-generated |
+| E-commerce setup costs $1,000-$3,000 | No online revenue channel | Stripe + merch store same day |
+| LLC formation costs $500-$1,500 in legal fees | No legal protection | Guided self-service filing, state fee only |
+| Business coaching costs $200-$500/hour | No expert guidance | Bella AI advisor + SCORE/SBA integration |
+| **Total traditional cost** | **$11,500-$54,500** | **$0 to the entrepreneur** |
 
 ### Who We Serve
 - **HBCU students and alumni** with business ideas but no capital
@@ -59,43 +62,52 @@
 
 ```
 INPUTS                  ACTIVITIES               OUTPUTS                 OUTCOMES                IMPACT
-─────────────          ──────────────           ─────────────           ─────────────           ─────────────
-Grant funding    →     AI-powered brand    →    Businesses launched  →  Revenue generated   →   Wealth creation
-Volunteer mentors →    Website development →    Jobs created         →  Financial literacy  →   Community
-Tech infrastructure →  Business planning   →    Digital storefronts →  Tax base growth     →   development
-HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Entrepreneur        →   Closing the
-                       Mentorship program  →    Operating agreements →  confidence          →   wealth gap
+-----                   ----------               -------                 --------                ------
+Grant funding      ->   LaunchPad self-service -> Businesses formed    -> Revenue generated   -> Wealth creation
+Donated capital    ->   Bella AI advisor       -> Digital storefronts  -> Financial literacy  -> Community
+Tech platform      ->   Dashboard tracking     -> Documents generated  -> Entrepreneur          development
+SCORE/SBA network  ->   Support agent network  -> Mentors matched      -> confidence          -> Closing the
+HBCU partnerships  ->   Give-back collection   -> Funding recycled     -> Self-sustaining       wealth gap
 ```
 
 ---
 
 ## Programs & Services
 
-### Program 1: LaunchPad (Core Incubation)
-**Purpose:** Transform an idea into a fully operational digital business in 2–5 days.
+### Program 1: LaunchPad (Core Self-Service Platform)
+**Purpose:** Enable any entrepreneur to form and launch a business through AI-guided, step-by-step self-service tools.
 
-**Deliverables per participant (at zero cost):**
-- Market research and competitive analysis
-- Complete business plan (bank/grant-ready)
-- Professional brand identity (logo, color palette, typography)
-- 6+ page premium website with hosting
-- E-commerce/merch store with Stripe integration
-- AI-powered mascot/assistant for customer engagement
-- LLC formation guidance and document templates
-- Operating agreement template
+**Platform Features:**
+- **Bella AI Advisor** -- Conversational AI guide that walks users through business formation one question at a time, explains recommendations, and auto-fills forms
+- **50-State Compliance Engine** -- Filing requirements, fees, timelines, and SOS links for all 50 states + DC
+- **Document Generator** -- Auto-generates business plans, articles of incorporation, bylaws, operating agreements, and EIN application guides
+- **Smart Classification** -- Users describe their business idea in plain language; AI classifies industry, recommends entity type, and explains why
+- **Verification-First Flow** -- AI pre-fills all answers; user reviews and confirms (reversed from traditional form-filling)
 
-**Value created per participant:** $13,000–$58,000
+**Value created per participant:** $13,000-$58,000
 
-**Annual target:** 10–20 businesses (Year 1), scaling to 50+ by Year 3
+**Cost to the entrepreneur:** $0 (state filing fees only)
 
 ---
 
-### Program 2: MerchEngine (E-Commerce Accelerator)
+### Program 2: Entrepreneur Dashboard (Ongoing Support)
+**Purpose:** Persistent workspace where entrepreneurs track progress, store documents, and access resources after completing the LaunchPad wizard.
+
+**Features:**
+- **Persistent Checklist** -- Industry, state, and entity-specific steps that save to cloud when checked off
+- **Document Vault** -- Upload and store Articles of Incorporation, EIN letter, business license, insurance certificates, operating agreements, bank statements
+- **Level System** -- Explorer > Builder > Founder > Operator progression based on completion
+- **Resource Panel** -- Automatically matched to industry and state: SCORE mentors, SBA SBDCs, state SOS links, IRS resources
+- **Give-Back Tracker** -- Shows graduated contribution schedule and pay-it-forward impact
+
+---
+
+### Program 3: MerchEngine (E-Commerce Accelerator)
 **Purpose:** Give every partner business a revenue-generating merch line with zero inventory risk.
 
 **How it works:**
-1. Foundation designs branded merchandise (tees, hoodies, hats, polos)
-2. Print-on-demand fulfillment (no inventory costs)
+1. Foundation designs branded merchandise using consistent brand assets
+2. Print-on-demand fulfillment via Printful (no inventory costs)
 3. Stripe payment processing with automated tracking
 4. Revenue flows directly to the entrepreneur
 
@@ -103,7 +115,7 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 ---
 
-### Program 3: Digital Equity Workshops
+### Program 4: Digital Equity Workshops
 **Purpose:** Teach digital literacy and entrepreneurship skills at HBCUs and community centers.
 
 **Curriculum:**
@@ -117,7 +129,7 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 ---
 
-### Program 4: AI Business Research Lab
+### Program 5: AI Business Research Lab
 **Purpose:** Provide free AI-powered market research, grant identification, and business intelligence to underserved entrepreneurs.
 
 **Tools used:**
@@ -128,58 +140,197 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 ---
 
+## Self-Service Philosophy
+
+Think! Ventures operates on the principle that **the best way to help people is to give them tools to help themselves.** The platform is designed so that:
+
+1. **Users do as much as possible independently** -- The LaunchPad wizard and Bella AI guide them through every decision without needing a human advisor
+2. **Support agents are the concierge layer** -- For entrepreneurs who need hands-on help, industry-matched support agents provide personalized guidance
+3. **Free services are aggregated, not duplicated** -- Rather than building a support network from scratch, we connect entrepreneurs to existing free resources (SCORE, SBA, community colleges) through the Dashboard
+4. **This keeps costs low and makes the model scalable** -- AI handles the guidance; humans handle the exceptions
+
+---
+
+## Support Agent Network
+
+### Model
+- **Automatic matching** based on industry -- an entrepreneur starting a food business gets matched with a food service advisor
+- **1099 contractors** engaged through Think! Design and Planning, LLC
+- **Integration with existing free services** eliminates the need for a large paid staff
+
+### Integrated Resources
+
+| Resource | What They Provide | Integration |
+|---|---|---|
+| **SCORE** | Free volunteer mentors, industry-specific | Direct links in Dashboard |
+| **SBA SBDC** | Free business counseling | NC has 6 regional centers |
+| **NC IDEA** | NC-specific grants and mentoring | Partnership referrals |
+| **Local Chambers** | Networking, local resources | Linked by city/state |
+| **Community Colleges** | Free business courses | NC Community College system |
+
+### Think! Ventures is the Hub
+We aggregate these resources into a single dashboard matched to each entrepreneur's industry and state. The support agent is the concierge who connects all the pieces.
+
+---
+
 ## Organizational Structure
 
-### Board of Directors (Minimum 3 required by IRS)
+### Board of Directors
 
 | Role | Name | Profile |
 |---|---|---|
-| **Chair / Executive Director** | **Chris Harrison** | Founder, NC A&T faculty/researcher |
-| **Vice Chair** | **Gregory Fulton** | Board Member #2 |
-| **Secretary/Treasurer** | **Damon Howell** | Board Member #3 |
-| At-Large (future) | TBD | CPA, attorney, or financial professional recommended |
+| **Board Chair / Executive Director** | **William Christopher Harrison** | Founder, NC A&T faculty/researcher |
+| **Secretary** | **Damon Howell** | Board Member, Hood Hymns Publishing founder |
+| **Treasurer** | **Gregory Fulton** | Board Member, financial oversight |
+| At-Large (future) | TBD | CPA, attorney, or financial professional |
 | At-Large (future) | TBD | Representative from partner organization |
 
 > **IRS Requirement:** At least 3 unrelated board members. No more than 49% can be "interested persons" (compensated by the organization).
 
+### Conflict of Interest Disclosures (Documented June 8, 2026)
+- William Christopher Harrison: Owns Think! Design and Planning, LLC (technology contractor)
+- Damon Howell: Hood Hymns Publishing was built through the LaunchPad program
+- Gregory Fulton: No conflicts disclosed
+
 ### Staff (Year 1)
+
 | Role | Type | Responsibility |
 |---|---|---|
 | Executive Director | Part-time (Founder) | Strategy, partnerships, program delivery |
-| Program Coordinator | Volunteer/Intern | Participant intake, tracking, follow-up |
-| Technology Lead | Contracted (Think! Design) | Website builds, AI tools, e-commerce setup |
+| Support Agents | 1099 Contractors | Industry-matched entrepreneur support |
+| Technology Services | Contracted (Think! Design) | Platform development, AI tools, maintenance |
 
 ---
 
-## Revenue Model (Nonprofit)
+## Revenue Model
 
-### How We Fund Operations
+### Graduated Give-Back Model (Program Service Revenue)
+
+Rather than a flat percentage, Think! Ventures uses a graduated model with a sunset and cap to prevent resentment and ensure a clear finish line:
+
+| Year | Contribution Rate | Annual Cap | Rationale |
+|---|---|---|---|
+| **Year 1** | 10% of net profits | $5,000 | Highest support period |
+| **Year 2** | 7% of net profits | $5,000 | Reduced as business stabilizes |
+| **Year 3** | 5% of net profits | $5,000 | Final mandatory year |
+| **Year 4+** | Voluntary | None | Graduate status, pay-it-forward model |
+
+> **Why the cap:** A business making $500K/year should not feel penalized for success. The $5,000 cap means their effective rate decreases as they grow. Once they've given back the value they received, they graduate.
+
+> **IRS Classification:** Graduated contributions are classified as "program service revenue" (related business income), not unrelated business income, because they directly further the charitable mission of funding future entrepreneurs.
+
+### Revenue Sources
 
 | Revenue Source | Year 1 | Year 2 | Year 3 |
 |---|---|---|---|
-| **Federal grants** (EDA, MBDA, SBA PRIME) | $25,000–$75,000 | $50,000–$150,000 | $100,000–$300,000 |
-| **State grants** (NC IDEA, NC Commerce) | $10,000–$25,000 | $25,000–$50,000 | $50,000–$100,000 |
-| **Foundation grants** (Kauffman, Google.org) | $5,000–$15,000 | $15,000–$50,000 | $25,000–$75,000 |
-| **HBCU partnership grants** (HBCUFI, Black Ambition) | $10,000–$25,000 | $20,000–$50,000 | $30,000–$75,000 |
-| **Corporate sponsorships** | $0 | $5,000–$15,000 | $10,000–$30,000 |
-| **Individual donations** | $1,000–$5,000 | $5,000–$15,000 | $10,000–$25,000 |
-| **Workshop fees** (sliding scale) | $2,000–$5,000 | $5,000–$15,000 | $10,000–$25,000 |
-| **Program service fees** (10% cooperative) | $5,000–$15,000 | $20,000–$50,000 | $50,000–$120,000 |
-| **TOTAL** | **$58,000–$165,000** | **$145,000–$395,000** | **$285,000–$750,000** |
-
-> **Note:** The 10% cooperative profit share from partner businesses is classified as "program service revenue" (related business income) — not unrelated business income — because it directly furthers the charitable mission.
+| **Individual donations** (Zeffy, tax-deductible) | $2,000-$10,000 | $10,000-$30,000 | $25,000-$75,000 |
+| **Graduated give-back** (program service revenue) | $5,000-$15,000 | $20,000-$50,000 | $50,000-$120,000 |
+| **Service agreement** (Think! Design & Planning) | $20,000-$40,000 | $40,000-$60,000 | $60,000-$80,000 |
+| **Merch sales** (Printful) | $1,000-$3,000 | $5,000-$15,000 | $10,000-$25,000 |
+| **Federal grants** (EDA, MBDA, SBA PRIME) | $0-$25,000 | $25,000-$100,000 | $50,000-$250,000 |
+| **State grants** (NC IDEA, NC Commerce) | $0-$10,000 | $10,000-$50,000 | $25,000-$100,000 |
+| **Foundation grants** (Kauffman, Google.org) | $0-$5,000 | $10,000-$25,000 | $25,000-$50,000 |
+| **Workshop fees** (sliding scale) | $1,000-$3,000 | $5,000-$15,000 | $10,000-$25,000 |
+| **TOTAL** | **$29,000-$111,000** | **$125,000-$345,000** | **$255,000-$725,000** |
 
 ---
 
-## Grant Targets — Priority Applications
+## Technology Platform
 
-### Tier 1: High Fit (Apply Immediately)
+### Architecture
+
+```
+                    think-ventures.org (Netlify)
+                            |
+        ----------------------------------------
+        |           |           |           |
+    LaunchPad   Dashboard   Donate      Merch
+    (Wizard)    (Tracking)  (Zeffy)     (Printful)
+        |           |
+        ---------------------
+        |                   |
+    Firebase Auth     Firestore DB
+    (User accounts)   (Applications,
+                       Checklists,
+                       Documents)
+```
+
+### Technology Stack
+- **Frontend:** Vanilla HTML/CSS/JS (zero framework dependencies)
+- **Backend:** Firebase Auth + Firestore (serverless)
+- **File Storage:** Firebase Storage (document vault)
+- **AI:** Gemini API (Bella advisor, TTS)
+- **Donations:** Zeffy (zero-fee nonprofit platform)
+- **Merch:** Printful (print-on-demand, no inventory)
+- **Hosting:** Netlify (free tier, auto-deploy from GitHub)
+- **Version Control:** GitHub (ncatlandarch-droid/think-ventures)
+
+### Key Components
+
+| Component | Purpose | File(s) |
+|---|---|---|
+| LaunchPad Wizard | 5-step business formation guide | launchpad.html |
+| Bella AI Advisor | Conversational classification + smart-fill | js/bella-advisor.js, js/bella-conversation.js |
+| Entrepreneur Dashboard | Persistent tracking workspace | dashboard.html, js/dashboard.js |
+| Document Generator | Auto-generate formation documents | js/doc-generator.js |
+| Compliance Engine | 50-state filing data | js/doc-generator.js (STATE_DATA) |
+| Save/Resume System | Auto-save wizard progress to Firestore | js/launchpad-save.js |
+| Auth System | Sign up/in/out with modal UI | js/auth.js |
+| Gamification | XP, levels, badges for wizard completion | js/launchpad-extras.js |
+| Admin Dashboard | Applicant tracking for staff | accounting.html, js/admin-applicants.js |
+
+---
+
+## The Hybrid Structure: How Nonprofit + For-Profit Work Together
+
+```
++------------------------------------------------------------------+
+|                       THINK! VENTURES                             |
+|                        501(c)(3) Nonprofit                        |
+|                                                                   |
+|  - Owns the LaunchPad platform and all entrepreneur tools         |
+|  - Recruits and serves entrepreneurs at zero cost                 |
+|  - Collects donations (tax-deductible) via Zeffy                  |
+|  - Collects graduated give-back from launched businesses          |
+|  - Applies for grants, measures social impact                     |
+|  - Matches entrepreneurs with support agents                     |
+|  - Issues tax-deductible donation receipts                        |
+|                                                                   |
+|              +-------------------------------+                    |
+|              |   CONTRACTED SERVICES          |                    |
+|              |   (Board-approved, fair market) |                    |
+|              +---------------+---------------+                    |
+|                              |                                    |
++------------------------------+------------------------------------+
+                               |
+                               v
++------------------------------------------------------------------+
+|               THINK! DESIGN & PLANNING, LLC                       |
+|                      For-Profit Company                           |
+|                                                                   |
+|  - Provides technology services per Service Agreement TVF-001     |
+|  - Rates: $3,500/build, $150/mo maintenance, $5,000/AI tool      |
+|  - Annual cap: $60,000 without further Board approval             |
+|  - Employs 1099 support agents for entrepreneur services          |
+|  - Also serves direct clients independently                      |
+|  - Maintains AI infrastructure (Gemini, AVA, MCP tools)           |
+|                                                                   |
++------------------------------------------------------------------+
+```
+
+> **IRS Compliance Note:** The Foundation contracts with Think! Design & Planning for technology services at fair market rates. The Board approved this arrangement on June 8, 2026 (2-0 vote, Harrison recused). Rates are at or below market, the relationship is disclosed in Form 990, and documented conflict-of-interest policies are in place.
+
+---
+
+## Grant Targets -- Priority Applications
+
+### Tier 1: High Fit (Apply Immediately After 501(c)(3) Determination)
 
 | Grant | Agency | Amount | Fit |
 |---|---|---|---|
-| **Build to Scale (B2S)** | EDA | $100K–$1.5M | Startup ecosystem building, business incubation |
-| **PRIME (Program for Investment in Micro-Entrepreneurs)** | SBA | $50K–$250K | Training and TA for disadvantaged micro-entrepreneurs |
-| **Minority Business Development Grants** | MBDA | $50K–$300K | Minority business technical assistance |
+| **Build to Scale (B2S)** | EDA | $100K-$1.5M | Startup ecosystem building, business incubation |
+| **PRIME** | SBA | $50K-$250K | Training and TA for disadvantaged micro-entrepreneurs |
+| **Minority Business Development** | MBDA | $50K-$300K | Minority business technical assistance |
 | **NC IDEA SEED** | NC IDEA Foundation | $50K | NC-based startups and entrepreneurship programs |
 | **HBCU Founders Initiative** | HBCUFI | Varies | HBCU-affiliated tech entrepreneurship |
 | **Black Ambition Prize** | Black Ambition | Up to $1M | Underrepresented entrepreneurs |
@@ -188,7 +339,7 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 | Grant | Agency | Amount | Fit |
 |---|---|---|---|
-| **Public Works & EAA** | EDA | $100K–$3M | Business incubator infrastructure |
+| **Public Works & EAA** | EDA | $100K-$3M | Business incubator infrastructure |
 | **Nex Cubed HBCU Accelerator** | Nex Cubed | $120K+ | HBCU-led startups |
 | **NAACP Powershift Grant** | NAACP | $25K | Black-owned business support |
 | **Galaxy Grants** | Hidden Star | $2,950/quarter | Minority/women-owned businesses |
@@ -199,134 +350,95 @@ HBCU partnerships →    E-commerce setup    →    Merch stores live   →  Ent
 
 | Grant | Agency | Amount | Fit |
 |---|---|---|---|
-| **Tech Hubs** | EDA | $500K–$75M | Regional technology and innovation |
+| **Tech Hubs** | EDA | $500K-$75M | Regional technology and innovation |
 | **Digital Equity Grants** | NTIA | Varies | Digital inclusion and infrastructure |
-| **Rural Business Development** | USDA | $10K–$500K | Rural business technical assistance |
-| **Venture for THEM** | Venture for THEM | Varies | HBCU entrepreneur accelerator |
+| **Rural Business Development** | USDA | $10K-$500K | Rural business technical assistance |
 
 ---
 
-## The Hybrid Structure: How Nonprofit + For-Profit Work Together
+## Impact Metrics
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                       THINK VENTURES                            │
-│                        501(c)(3) Nonprofit                       │
-│                                                                  │
-│  • Applies for grants                                            │
-│  • Recruits entrepreneurs                                        │
-│  • Runs workshops and programs                                   │
-│  • Measures social impact                                        │
-│  • Issues tax-deductible donation receipts                       │
-│  • Owns the cooperative partnership agreements                   │
-│                                                                  │
-│              ┌──────────────────────────────┐                    │
-│              │   CONTRACTED SERVICES         │                    │
-│              │   (Fair Market Value)          │                    │
-│              └──────────┬───────────────────┘                    │
-│                         │                                        │
-└─────────────────────────┼────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────────┐
-│               THINK! DESIGN & PLANNING, LLC                      │
-│                      For-Profit Company                          │
-│                                                                  │
-│  • Provides technology services (website builds, AI tools)       │
-│  • Paid at fair market value by the Foundation                   │
-│  • Also takes direct service clients independently               │
-│  • Owns proprietary tech (AVA, Gemini integrations)              │
-│  • Maintains MCP infrastructure and AI tools                     │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-```
+### Actual Results (Through June 15, 2026)
 
-> **IRS Compliance Note:** The Foundation can contract with Think! Design & Planning for technology services at fair market rates. This is standard practice for nonprofit/for-profit hybrids. The key is that: (1) rates are at or below market, (2) the relationship is disclosed in Form 990, and (3) the board approves the arrangement with documented conflict-of-interest policies.
-
----
-
-## 501(c)(3) Filing Roadmap — North Carolina
-
-### Step 1: Incorporate in NC (Week 1)
-- [ ] Recruit 3+ unrelated board members
-- [ ] Draft Articles of Incorporation (Form N-01)
-  - Include IRS-required charitable purpose language
-  - Include dissolution clause
-  - Include political activity restriction
-- [ ] File with NC Secretary of State — **$60 fee**
-- [ ] Appoint registered agent (NC physical address required)
-
-### Step 2: Organizational Documents (Week 1–2)
-- [ ] Draft bylaws (not filed, but required by IRS)
-- [ ] Hold organizational meeting
-- [ ] Adopt bylaws and elect officers
-- [ ] Pass resolution to pursue 501(c)(3) status
-- [ ] Draft conflict of interest policy
-
-### Step 3: Federal EIN (Week 2)
-- [ ] Apply online at IRS.gov — **Free, immediate**
-- [ ] Open nonprofit bank account with EIN
-
-### Step 4: IRS 501(c)(3) Application (Week 2–4)
-- [ ] Determine eligibility for Form 1023-EZ vs. Form 1023
-  - 1023-EZ: projected gross receipts ≤ $50,000/year — **$275 fee**
-  - 1023: projected gross receipts > $50,000/year — **$600 fee**
-- [ ] Prepare 3-year financial projections
-- [ ] Submit application via Pay.gov
-- [ ] Expected processing: 3–6 months
-
-### Step 5: NC State Compliance (Month 2–3)
-- [ ] Apply for NC state tax exemption (NC Dept. of Revenue)
-- [ ] Register for Charitable Solicitation License (if donations > $25,000)
-- [ ] Set up annual Form 990 filing calendar
-
-### Total Startup Costs
-
-| Item | Cost |
+| Metric | Result |
 |---|---|
-| NC Articles of Incorporation | $60 |
-| IRS Form 1023-EZ | $275 |
-| *OR* IRS Form 1023 | $600 |
-| Legal review (optional, recommended) | $500–$1,500 |
-| **Total (minimum)** | **$335** |
-| **Total (recommended)** | **$835–$2,100** |
+| **Total business value delivered** | **$114,000+** |
+| **Total tool costs** | **Under $1,500** |
+| **Multiplier effect** | **$38 in tools = $38,000 in business value** |
+| **Businesses launched** | 3 (Arlan LLC, Hood Hymns Publishing, Brenes Precision Dentistry) |
+| **States with compliance data** | 50 + DC |
+| **Industries supported** | 9 |
+| **Entity types supported** | 4 (LLC, S-Corp, Nonprofit, Sole Proprietorship) |
 
----
-
-## Impact Metrics (How We Measure Success)
+### Targets
 
 | Metric | Year 1 Target | Year 3 Target |
 |---|---|---|
-| Businesses launched | 10–20 | 50+ |
-| Jobs created (direct + indirect) | 15–30 | 75–150 |
-| Revenue generated for partners | $50,000–$150,000 | $500,000–$1.5M |
-| Workshop participants | 50–100 | 300–500 |
-| HBCU students served | 20–40 | 100–200 |
-| Digital storefronts created | 10–20 | 50+ |
-| Grants secured | 2–3 | 5–10 |
-| Counties served in NC | 3–5 | 10–15 |
+| Businesses launched | 10-20 | 50+ |
+| Jobs created (direct + indirect) | 15-30 | 75-150 |
+| Revenue generated for partners | $50,000-$150,000 | $500,000-$1.5M |
+| Workshop participants | 50-100 | 300-500 |
+| HBCU students served | 20-40 | 100-200 |
+| Support agents active | 3-5 | 15-25 |
+| Grants secured | 2-3 | 5-10 |
+| Counties served in NC | 3-5 | 10-15 |
 
 ---
 
-## Proof of Concept: Arlan LLC
+## Proof of Concept: Case Studies
 
-> **Case Study — Built in 1 Day, May 25, 2026**
+### Case Study 1: Arlan LLC -- Home Services
+> Built in 1 Day, May 25, 2026
 
-| Deliverable | Status | Value |
-|---|---|---|
-| Full market research & business plan | ✅ Complete | $5,000 |
-| Professional brand identity (logo, mascot, palette) | ✅ Complete | $8,000 |
-| 8-page premium website with animations | ✅ Complete | $15,000 |
-| E-commerce merch store (8 products) | ✅ Complete | $3,000 |
-| Stripe payment integration (live) | ✅ Complete | $2,000 |
-| AI-powered mascot assistant with TTS | ✅ Complete | $5,000 |
-| 3D drone experience page | ✅ Complete | $3,000 |
-| Netlify deployment (live) | ✅ Complete | $500 |
-| **Total value created** | **1 day** | **$41,500** |
+| Deliverable | Value |
+|---|---|
+| Full market research & business plan | $5,000 |
+| Professional brand identity (logo, mascot, palette) | $8,000 |
+| 8-page premium website with animations | $15,000 |
+| E-commerce merch store (8 products) | $3,000 |
+| Stripe payment integration (live) | $2,000 |
+| AI-powered mascot assistant with TTS | $5,000 |
+| 3D drone experience page | $3,000 |
+| Netlify deployment (live) | $500 |
+| **Total value created** | **$41,500** |
 
 **Live site:** [arlen-llc.netlify.app](https://arlen-llc.netlify.app)
 
-This case study demonstrates that Think Ventures can deliver **$40,000+ in professional business infrastructure in a single day** using AI-powered tools — making the grant dollars extraordinarily efficient.
+---
+
+### Case Study 2: Hood Hymns Publishing -- Literary Publishing
+> Built May-June 2026
+
+| Deliverable | Value |
+|---|---|
+| Trilingual publishing platform (EN/ES/ZH) | $15,000 |
+| AI narration engine with Gemini TTS | $8,000 |
+| Cinematic book trailers | $5,000 |
+| Merch store with Printful integration | $3,000 |
+| E-book PDF generation pipeline | $5,000 |
+| Stripe payment processing | $2,000 |
+| Professional brand identity | $6,000 |
+| **Total value created** | **$44,000+** |
+
+**Founder:** Damon Howell (Think! Ventures Board Secretary)
+
+---
+
+### Case Study 3: Brenes Precision Dentistry -- Healthcare
+> Built May-June 2026
+
+| Deliverable | Value |
+|---|---|
+| Professional healthcare website | $12,000 |
+| Brand identity and design system | $6,000 |
+| Patient-facing digital infrastructure | $5,000 |
+| SEO and digital presence setup | $3,000 |
+| Deployment and hosting | $3,000 |
+| **Total value created** | **$29,000+** |
+
+---
+
+> These case studies demonstrate that Think! Ventures can deliver **$29,000-$44,000 in professional business infrastructure** per entrepreneur using AI-powered tools, at a cost of under $500 per build.
 
 ---
 
@@ -334,13 +446,15 @@ This case study demonstrates that Think Ventures can deliver **$40,000+ in profe
 
 | Factor | Traditional Incubator | Think! Ventures |
 |---|---|---|
-| Time to launch | 3–12 months | 2–5 days |
-| Cost to entrepreneur | $5,000–$50,000 | $0 |
-| Technology stack | Basic website builder | AI-powered premium builds |
-| Revenue model | Equity stake (10–30%) | 10% profit share (cooperative) |
-| Scalability | Limited by staff | AI-amplified, nearly unlimited |
+| Time to launch | 3-12 months | 2-5 days |
+| Cost to entrepreneur | $5,000-$50,000 | $0 |
+| Technology stack | Basic website builder | AI-powered premium builds + self-service tools |
+| Revenue model | Equity stake (10-30%) | Graduated give-back (10%/7%/5%), capped at $5K, sunsets after 3 years |
+| Ongoing support | Office hours, limited | Persistent dashboard + AI advisor + matched support agent |
+| Scalability | Limited by staff | AI-amplified, self-service platform |
 | HBCU focus | Rare | Core mission |
 | Digital infrastructure | Referral to agencies | Built in-house, same day |
+| Compliance data | Manual research | 50-state automated engine |
 
 ---
 
@@ -349,19 +463,37 @@ This case study demonstrates that Think Ventures can deliver **$40,000+ in profe
 | Partner | Type | Role |
 |---|---|---|
 | **NC A&T State University** | HBCU | Entrepreneur pipeline, research, credibility |
-| **Open Future Coalition** | Cooperative network | Governance templates, data infrastructure |
+| **SCORE** | Mentorship | Free volunteer mentors matched by industry |
+| **SBA SBDC** | Government | Free business counseling, 6 NC regional centers |
 | **Stripe** | Payment platform | E-commerce infrastructure for partners |
 | **Netlify** | Hosting | Free-tier deployment for partner sites |
 | **Google / Gemini** | AI platform | AI-powered research, design, development |
 | **Printful** | Print-on-demand | Zero-inventory merch fulfillment |
+| **Zeffy** | Donation platform | Zero-fee nonprofit donation processing |
+| **Firebase** | Backend | Authentication, database, file storage |
 | **NC Small Business Center** | State resource | Counseling, workshops, grant connections |
 | **Greensboro Chamber of Commerce** | Local business | Networking, referrals, credibility |
 
 ---
 
+## Partner Businesses (Active)
+
+| Business | Industry | Status | Value Delivered |
+|---|---|---|---|
+| Arlan LLC | Home Services | LaunchPad Partner #1 | $41,500+ |
+| Hood Hymns Publishing | Literary Publishing | LaunchPad Partner #2 | $44,000+ |
+| Brenes Precision Dentistry | Healthcare | LaunchPad Partner #3 | $29,000+ |
+| Brothers Function Group | Entertainment | Partner | Active |
+| DJ's Masterpiece Studio | Creative Production | Partner | Active |
+| Mae's Story Bloom | Children's Education | Partner | Active |
+| ReThinking The Leaf | Agrotherapy | Partner | Active |
+| NC Small Farm Platform | AgTech | Partner | Active |
+
+---
+
 ## Appendix: IRS-Required Charitable Purpose Language
 
-The following language must appear in the Articles of Incorporation:
+The following language appears in the Articles of Incorporation:
 
 > *"This corporation is organized exclusively for charitable and educational purposes within the meaning of Section 501(c)(3) of the Internal Revenue Code, including but not limited to: providing digital business infrastructure, entrepreneurship education, and economic development services to underserved communities, minority entrepreneurs, and students of Historically Black Colleges and Universities."*
 
@@ -373,13 +505,34 @@ The following language must appear in the Articles of Incorporation:
 
 ---
 
-> **Filing Status — Updated June 2, 2026**
-> 1. ✅ Board members recruited — **Gregory Fulton + Damon Howell confirmed**
-> 2. ✅ NC Articles of Incorporation — **Filed June 1, 2026 — $63 paid**
-> 3. ✅ EIN obtained — **June 2, 2026 — Think Ventures is federally recognized**
-> 4. ⬜ Open nonprofit bank account — **NEXT: Relay Financial or Bluevine**
-> 5. ⬜ Draft bylaws + hold organizational meeting with Gregory + Damon
-> 6. ⬜ Submit IRS Form 1023-EZ ($275) at pay.gov — starts 3–6 month clock
-> 7. ⬜ Begin Tier 1 grant applications (EDA, SBA PRIME, NC IDEA SEED)
-> 8. ✅ Arlan LLC case study documented
-> 9. ✅ Hood Hymns Publishing case study documented
+## Filing Status -- Updated June 15, 2026
+
+| Milestone | Status | Date |
+|---|---|---|
+| Board members recruited | COMPLETE | May 2026 |
+| NC Articles of Incorporation | APPROVED (SOS ID 3311699) | June 15, 2026 |
+| Federal EIN obtained | COMPLETE (42-2912572) | June 2, 2026 |
+| Organizational meeting held | COMPLETE (Minutes documented) | June 8, 2026 |
+| Bylaws adopted | COMPLETE | June 8, 2026 |
+| Service agreement approved | COMPLETE (TVF-001) | June 8, 2026 |
+| Conflict of interest disclosures | COMPLETE | June 8, 2026 |
+| Bank account (Relay) | PENDING VERIFICATION | -- |
+| IRS Form 1023-EZ (501(c)(3)) | NOT YET FILED ($275 fee) | -- |
+| NC state tax exemption | PENDING (requires 501(c)(3) letter) | -- |
+| Charitable solicitation license | PENDING (requires 501(c)(3) letter) | -- |
+| Arlan LLC case study | DOCUMENTED | May 25, 2026 |
+| Hood Hymns Publishing case study | DOCUMENTED | June 2026 |
+| Brenes Precision Dentistry case study | DOCUMENTED | June 2026 |
+| Entrepreneur Dashboard | LIVE | June 15, 2026 |
+| LaunchPad self-service wizard | LIVE | June 2026 |
+| Bella conversational AI | LIVE | June 2026 |
+| Zeffy donation platform | LIVE | June 2026 |
+
+---
+
+> **Next Priority Actions:**
+> 1. Upload certified Articles of Incorporation to Relay (received June 15, 2026)
+> 2. File IRS Form 1023-EZ at pay.gov ($275)
+> 3. Begin Tier 1 grant applications after 501(c)(3) determination
+> 4. Recruit first 3-5 industry-matched support agents
+> 5. Launch Printful merch store with brand-consistent designs
