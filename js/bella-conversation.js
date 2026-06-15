@@ -937,88 +937,372 @@
   function askBusinessIdea() {
     conversationStep = 0;
     syncStepper(0);
-    updateGuideText('Tell me about the business you want to start! I will figure out the best category for you.');
+    updateGuideText('Tell me about the business you want to start! I will help you shape your idea.');
 
     var msg =
       '<p>Hey there! I am Bella, your launch guide at Think! Ventures. ' +
-      'I am here to help you figure out exactly what you need to start your business.</p>' +
-      '<p>First things first -- tell me about the business you want to start. What is your idea?</p>';
+      'I am here to help you build a clear, strong business concept before we handle any paperwork.</p>' +
+      '<p>So tell me -- what kind of business are you thinking about starting? Even a rough idea is fine, ' +
+      'we will sharpen it together.</p>';
 
     addBellaMessage(msg, function () {
       renderTextInput(
-        'e.g. I want to install Christmas lights and garage doors...',
+        'e.g. I want to start a cleaning company, I want to open a bakery...',
         handleBusinessIdea
       );
     });
   }
+
+  // ── Discovery Phase Sub-Question Maps ──────────────────────────
+
+  var SERVICE_TYPE_CHIPS = {
+    'home-services': [
+      'Residential cleaning (homes, apartments)',
+      'Commercial cleaning (offices, businesses)',
+      'Specialty cleaning (carpet, windows, pressure washing)',
+      'Installation and repair (lights, doors, fixtures)',
+      'Maintenance and handyman services',
+      'Landscaping and outdoor services'
+    ],
+    'construction': [
+      'General contracting (full builds, renovations)',
+      'Specialty trade (roofing, concrete, electrical)',
+      'Residential construction',
+      'Commercial construction',
+      'Remodeling and renovation',
+      'Specialty installations (fencing, decks, signs)'
+    ],
+    'food-beverage': [
+      'Food truck or mobile kitchen',
+      'Restaurant or cafe',
+      'Catering and events',
+      'Baking and specialty foods',
+      'Meal prep and delivery',
+      'Beverages (coffee, juice, bar)'
+    ],
+    'health-beauty': [
+      'Hair salon or barbershop',
+      'Spa or skincare services',
+      'Nail or lash services',
+      'Personal training or fitness',
+      'Massage or wellness therapy',
+      'Makeup and beauty services'
+    ],
+    'professional': [
+      'Business consulting or coaching',
+      'Marketing or advertising agency',
+      'Accounting or bookkeeping',
+      'Legal or paralegal services',
+      'Real estate services',
+      'Virtual assistant or admin support'
+    ],
+    'retail': [
+      'Online store (e-commerce)',
+      'Physical retail or boutique',
+      'Handmade or artisan products',
+      'Resale, thrift, or vintage',
+      'Clothing or fashion brand',
+      'Specialty products (candles, crafts, jewelry)'
+    ],
+    'creative': [
+      'Graphic or web design',
+      'Photography or videography',
+      'Music production or DJ services',
+      'Content creation or social media',
+      'Event planning',
+      'Printing or custom products'
+    ],
+    'tech': [
+      'Software development or SaaS',
+      'Web development',
+      'IT support or managed services',
+      'App development',
+      'Cybersecurity or data services',
+      'Tech consulting'
+    ],
+    'education': [
+      'Tutoring or academic support',
+      'Music, art, or dance lessons',
+      'Professional training or workshops',
+      'Daycare or childcare',
+      'Online courses or coaching',
+      'Test prep or college prep'
+    ]
+  };
+
+  var CUSTOMER_CHIPS = [
+    'Individual consumers (homeowners, families)',
+    'Businesses and offices',
+    'Property managers and landlords',
+    'Other businesses (B2B)',
+    'Government or public sector',
+    'A mix of consumers and businesses'
+  ];
+
+  // ── Discovery Phase: Flesh Out the Idea ─────────────────────
 
   function handleBusinessIdea(text) {
     addUserMessage(text);
     chatData.userIdea = text;
     clearInputArea();
 
-    // Classify
+    // Do a preliminary classification to guide follow-ups
     var results = classifyBusiness(text);
-
-    if (results.length === 0) {
-      // No match -- ask to pick manually
-      addBellaMessage(
-        '<p>Interesting! I was not quite able to narrow that down to a specific category, but no worries. ' +
-        'Which of these industries best describes your business?</p>',
-        function () { showAllIndustryChips(); }
-      );
-      return;
+    if (results.length > 0) {
+      chatData._prelimIndustry = results[0].industry;
     }
 
-    var top = results[0];
-    var industryName = INDUSTRY_NAMES[top.industry] || top.industry;
-    var industryDesc = INDUSTRY_DESCRIPTIONS[top.industry] || '';
+    // Discovery Q1: What type of service/product?
+    askServiceType();
+  }
 
-    // High confidence
-    if (results.length === 1 || top.score >= results[1].score * 1.5) {
-      addBellaMessage(
-        '<p>That sounds like a great hands-on business! Based on what you described, ' +
-        'I would put you in the <strong>' + esc(industryName) + '</strong> industry -- ' +
-        esc(industryDesc) + '. Does that sound right?</p>',
-        function () {
-          renderChips([
-            { label: industryName + ' -- Yes!', value: top.industry, primary: true },
-            { label: 'Actually, let me pick a different category', value: 'pick' }
-          ], function (chip) {
-            if (chip.value === 'pick') {
-              addUserMessage('Let me pick a different category');
-              showAllIndustryChips();
-            } else {
-              addUserMessage(industryName + ' -- Yes!');
-              selectIndustryChat(chip.value);
-            }
-          });
-        }
-      );
+  function askServiceType() {
+    var prelim = chatData._prelimIndustry;
+    var industryName = prelim ? INDUSTRY_NAMES[prelim] : '';
+
+    var msg;
+    if (industryName) {
+      msg = '<p>A ' + esc(industryName.toLowerCase()) + ' business -- that is a solid space to be in. ' +
+            'Let me ask a few questions so I can build you a strong business concept.</p>' +
+            '<p>First: what specific type of work will you do? The more specific we get, the stronger your business plan will be.</p>';
     } else {
-      // Multiple matches
-      var secondName = INDUSTRY_NAMES[results[1].industry] || results[1].industry;
-      addBellaMessage(
-        '<p>Based on what you described, your business touches both <strong>' + esc(industryName) +
-        '</strong> and <strong>' + esc(secondName) + '</strong>. ' +
-        'I would lean toward ' + esc(industryName) + ' as the primary fit. Which feels right?</p>',
-        function () {
-          renderChips([
-            { label: industryName, value: top.industry, primary: true },
-            { label: secondName, value: results[1].industry },
-            { label: 'Something else', value: 'pick' }
-          ], function (chip) {
-            if (chip.value === 'pick') {
-              addUserMessage('Something else');
-              showAllIndustryChips();
-            } else {
-              addUserMessage(INDUSTRY_NAMES[chip.value] || chip.value);
-              selectIndustryChat(chip.value);
-            }
-          });
-        }
-      );
+      msg = '<p>Interesting idea! Let me ask a few questions so I can help you shape it into a clear business concept.</p>' +
+            '<p>What specific type of product or service will you offer?</p>';
     }
+
+    addBellaMessage(msg, function () {
+      // Show relevant chips if we have a preliminary industry, plus text input
+      var chips = [];
+      if (prelim && SERVICE_TYPE_CHIPS[prelim]) {
+        SERVICE_TYPE_CHIPS[prelim].forEach(function (label) {
+          chips.push({ label: label, value: label });
+        });
+      }
+
+      if (chips.length > 0) {
+        renderChipsAndText(
+          chips,
+          function (chip) {
+            addUserMessage(chip.label);
+            chatData.serviceType = chip.label;
+            clearInputArea();
+            askCustomers();
+          },
+          'Or describe it in your own words...',
+          function (val) {
+            addUserMessage(val);
+            chatData.serviceType = val;
+            clearInputArea();
+            askCustomers();
+          }
+        );
+      } else {
+        renderTextInput(
+          'e.g. Residential cleaning for homes and apartments...',
+          function (val) {
+            addUserMessage(val);
+            chatData.serviceType = val;
+            clearInputArea();
+            askCustomers();
+          }
+        );
+      }
+    });
+  }
+
+  function askCustomers() {
+    addBellaMessage(
+      '<p>Great. Now who are your ideal customers? Knowing your audience shapes everything ' +
+      'from your marketing to your pricing to your insurance needs.</p>',
+      function () {
+        var chips = CUSTOMER_CHIPS.map(function (label) {
+          return { label: label, value: label };
+        });
+        renderChipsAndText(
+          chips,
+          function (chip) {
+            addUserMessage(chip.label);
+            chatData.customers = chip.label;
+            clearInputArea();
+            askDifferentiator();
+          },
+          'Or describe your target customers...',
+          function (val) {
+            addUserMessage(val);
+            chatData.customers = val;
+            clearInputArea();
+            askDifferentiator();
+          }
+        );
+      }
+    );
+  }
+
+  function askDifferentiator() {
+    addBellaMessage(
+      '<p>Last one before I put it all together: what will set your business apart? ' +
+      'Why should a customer pick you over someone else?</p>' +
+      '<p>Think about things like: quality of work, speed, pricing, specialization, ' +
+      'customer service, experience, or anything unique you bring to the table.</p>',
+      function () {
+        renderTextInput(
+          'e.g. We offer same-day service and a satisfaction guarantee...',
+          function (val) {
+            addUserMessage(val);
+            chatData.differentiator = val;
+            clearInputArea();
+            generateAbstract();
+          }
+        );
+      }
+    );
+  }
+
+  // ── Generate Business Abstract ──────────────────────────────
+
+  function generateAbstract() {
+    // Build the abstract from collected answers
+    var idea = chatData.userIdea || '';
+    var serviceType = chatData.serviceType || '';
+    var customers = chatData.customers || '';
+    var differentiator = chatData.differentiator || '';
+
+    // Re-classify using ALL collected information for better accuracy
+    var fullText = [idea, serviceType, customers, differentiator].join(' ');
+    var results = classifyBusiness(fullText);
+
+    var industryKey = chatData._prelimIndustry || (results.length > 0 ? results[0].industry : null);
+    var industryName = industryKey ? INDUSTRY_NAMES[industryKey] : '';
+
+    // Construct professional abstract
+    var abstract = buildAbstractText(serviceType, customers, differentiator, industryName);
+    chatData.generatedAbstract = abstract;
+
+    // Show the abstract with industry classification
+    var html = '<p>Here is a professional business abstract based on everything you told me:</p>' +
+      '<div class="bella-chat__verify">' +
+        '<div class="bella-chat__verify-title">Your Business Concept</div>' +
+        '<div style="padding: var(--sp-md); color: var(--color-text); line-height: 1.7; font-size: var(--fs-sm);">' +
+          esc(abstract) +
+        '</div>' +
+      '</div>';
+
+    if (industryName) {
+      html += '<p>Based on all of this, I would classify your business as <strong>' +
+              esc(industryName) + '</strong> -- ' +
+              esc(INDUSTRY_DESCRIPTIONS[industryKey] || '') + '. Does this look right?</p>';
+    } else {
+      html += '<p>Which industry category fits this best?</p>';
+    }
+
+    addBellaMessage(html, function () {
+      if (industryKey) {
+        renderChips([
+          { label: 'Looks great -- ' + industryName, value: industryKey, primary: true },
+          { label: 'Let me tweak the description', value: 'edit' },
+          { label: 'Pick a different industry', value: 'pick' }
+        ], function (chip) {
+          if (chip.value === 'edit') {
+            addUserMessage('Let me tweak the description');
+            editAbstract();
+          } else if (chip.value === 'pick') {
+            addUserMessage('Pick a different industry');
+            showAllIndustryChips();
+          } else {
+            addUserMessage('Looks great -- ' + industryName);
+            chatData.businessDesc = chatData.generatedAbstract;
+            selectIndustryChat(chip.value);
+          }
+        });
+      } else {
+        showAllIndustryChips();
+      }
+    });
+  }
+
+  function buildAbstractText(serviceType, customers, differentiator, industryName) {
+    // Build a clean, professional abstract sentence by sentence
+    var parts = [];
+
+    // Opening line based on service type
+    if (serviceType) {
+      var svc = serviceType.replace(/^(Residential|Commercial|Specialty|General|Professional)\s*/i, '');
+      parts.push('A ' + (industryName ? industryName.toLowerCase() : 'service') +
+        ' business specializing in ' + serviceType.toLowerCase().replace(/\.$/, '') + '.');
+    }
+
+    // Customer focus
+    if (customers) {
+      var custLower = customers.toLowerCase();
+      if (custLower.indexOf('individual') !== -1 || custLower.indexOf('homeowner') !== -1 || custLower.indexOf('families') !== -1) {
+        parts.push('Serving residential customers including homeowners and families.');
+      } else if (custLower.indexOf('business') !== -1 && custLower.indexOf('mix') === -1) {
+        parts.push('Providing services to commercial clients and business organizations.');
+      } else if (custLower.indexOf('property') !== -1) {
+        parts.push('Serving property managers, landlords, and real estate professionals.');
+      } else if (custLower.indexOf('mix') !== -1 || custLower.indexOf('both') !== -1) {
+        parts.push('Serving both residential and commercial clients.');
+      } else {
+        parts.push('Serving ' + customers.toLowerCase().replace(/\.$/, '') + '.');
+      }
+    }
+
+    // Differentiator
+    if (differentiator) {
+      var diff = differentiator.charAt(0).toUpperCase() + differentiator.slice(1).replace(/\.$/, '');
+      parts.push('Differentiated by ' + differentiator.toLowerCase().replace(/\.$/, '') + '.');
+    }
+
+    return parts.join(' ');
+  }
+
+  function editAbstract() {
+    addBellaMessage(
+      '<p>No problem -- edit the description below to say exactly what you want:</p>',
+      function () {
+        renderTextInput(
+          'Edit your business description...',
+          function (val) {
+            addUserMessage(val);
+            chatData.generatedAbstract = val;
+            chatData.businessDesc = val;
+            clearInputArea();
+
+            // Re-classify with edited text
+            var results = classifyBusiness(val + ' ' + chatData.userIdea);
+            var industryKey = results.length > 0 ? results[0].industry : chatData._prelimIndustry;
+            var industryName = industryKey ? INDUSTRY_NAMES[industryKey] : '';
+
+            if (industryKey) {
+              addBellaMessage(
+                '<p>Updated. I still see this as <strong>' + esc(industryName) + '</strong>. Ready to continue?</p>',
+                function () {
+                  renderChips([
+                    { label: 'Yes, continue', value: industryKey, primary: true },
+                    { label: 'Pick a different industry', value: 'pick' }
+                  ], function (chip) {
+                    if (chip.value === 'pick') {
+                      addUserMessage('Pick a different industry');
+                      showAllIndustryChips();
+                    } else {
+                      addUserMessage('Yes, continue');
+                      selectIndustryChat(chip.value);
+                    }
+                  });
+                }
+              );
+            } else {
+              showAllIndustryChips();
+            }
+          },
+          true // textarea
+        );
+
+        // Pre-fill
+        var textarea = inputAreaEl.querySelector('textarea');
+        if (textarea) textarea.value = chatData.generatedAbstract || '';
+      }
+    );
   }
 
   function showAllIndustryChips() {
@@ -1030,6 +1314,7 @@
         });
         renderChips(chips, function (chip) {
           addUserMessage(chip.label);
+          if (!chatData.businessDesc) chatData.businessDesc = chatData.generatedAbstract || chatData.userIdea || '';
           selectIndustryChat(chip.value);
         });
       }
@@ -1039,6 +1324,7 @@
   function selectIndustryChat(industryKey) {
     chatData.industry = industryKey;
     chatData.industryName = INDUSTRY_NAMES[industryKey] || industryKey;
+    if (!chatData.businessDesc) chatData.businessDesc = chatData.generatedAbstract || chatData.userIdea || '';
     clearInputArea();
 
     // Set wizard global
@@ -1300,32 +1586,37 @@
     );
   }
 
-  // -- Step 5: Ask business description ─────────────────────────
+  // -- Step 5: Confirm or edit business description ────────────
+  // Description was already generated during the discovery phase.
+  // Now we just let them review and edit if needed.
 
   function askBusinessDesc() {
     conversationStep = 4;
 
-    var defaultDesc = chatData.userIdea || '';
+    var currentDesc = chatData.businessDesc || chatData.generatedAbstract || chatData.userIdea || '';
+
+    if (currentDesc && currentDesc.length > 20) {
+      // We already have a good description from the discovery phase
+      // Go straight to verification
+      showVerification();
+      return;
+    }
+
+    // Fallback: ask for description if somehow we don't have one
     addBellaMessage(
-      '<p>And give me a quick description of what your business does. ' +
+      '<p>Give me a quick description of what your business does. ' +
       'This will go on your formation documents.</p>',
       function () {
         renderTextInput(
-          'e.g. Professional Christmas light installation, garage door installation and repair services for residential and commercial properties.',
+          'Describe your business...',
           function (val) {
             addUserMessage(val);
             chatData.businessDesc = val;
             clearInputArea();
             showVerification();
           },
-          true // textarea
+          true
         );
-
-        // Pre-fill with user idea if available
-        if (defaultDesc) {
-          var textarea = inputAreaEl.querySelector('textarea');
-          if (textarea) textarea.value = defaultDesc;
-        }
       }
     );
   }
