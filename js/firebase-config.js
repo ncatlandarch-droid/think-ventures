@@ -19,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 // Global references
 const auth = firebase.auth();
 const db = firebase.firestore();
+const storage = typeof firebase.storage === 'function' ? firebase.storage() : null;
 
 // Admin email(s) -- users with these emails get admin role on first login
 const ADMIN_EMAILS = ['chris@think-ventures.org'];

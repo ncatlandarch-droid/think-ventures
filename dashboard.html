@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard -- Think! Ventures Entrepreneur Dashboard</title>
+  <meta name="description" content="Your Think! Ventures entrepreneur dashboard. Track your business formation progress, manage documents, access resources, and complete your launch checklist.">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="icon" href="assets/images/bella-mascot.png" type="image/png">
+  <style>
+    /* ── Loading State ─────────────────────────────────── */
+    .dash-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 72px);
+      margin-top: 72px;
+      gap: var(--sp-lg);
+    }
+    .dash-loading__spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top-color: var(--color-secondary);
+      border-radius: 50%;
+      animation: dashSpin 0.8s linear infinite;
+    }
+    .dash-loading__text {
+      font-family: var(--font-heading);
+      color: var(--color-text-muted);
+      font-size: var(--fs-sm);
+    }
+    @keyframes dashSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Mobile nav toggle for dashboard sections ────── */
+    .dash-mobile-nav {
+      display: none;
+      padding: var(--sp-md);
+      gap: var(--sp-sm);
+      overflow-x: auto;
+      border-bottom: 1px solid var(--color-border);
+      margin-top: 72px;
+    }
+    .dash-mobile-nav__btn {
+      padding: var(--sp-xs) var(--sp-md);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      color: var(--color-text-muted);
+      font-size: var(--fs-xs);
+      font-family: var(--font-body);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .dash-mobile-nav__btn:hover,
+    .dash-mobile-nav__btn.active {
+      background: rgba(245, 166, 35, 0.1);
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+    }
+
+    @media (max-width: 1024px) {
+      .dash-mobile-nav { display: flex; }
+      .dash-layout { margin-top: 0; }
+    }
+
+    /* ── Mobile Resources Drawer ─────────────────────── */
+    .dash-resources-mobile {
+      display: none;
+    }
+    @media (max-width: 1024px) {
+      .dash-resources-mobile {
+        display: block;
+        margin-top: var(--sp-xl);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/logo/think-logo-white.png" alt="Think! Design & Planning" class="nav__logo-img">
+        <span class="nav__logo-text">THINK! <span>VENTURES</span></span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="launchpad.html" class="nav__link">LaunchPad</a>
+        <a href="donate.html" class="nav__link">Donate</a>
+        <a href="merch.html" class="nav__link">Merch</a>
+        <a href="about.html" class="nav__link">About</a>
+        <span class="nav__link active">Dashboard</span>
+        <div id="tv-nav-auth">
+          <button class="tv-nav-auth-btn" onclick="Auth.openModal('signin')">Sign In</button>
+        </div>
+      </div>
+      <div class="nav__hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Loading State -->
+  <div id="dash-loading" class="dash-loading">
+    <div class="dash-loading__spinner"></div>
+    <div class="dash-loading__text">Loading your dashboard...</div>
+  </div>
+
+  <!-- Mobile Navigation (visible < 1024px) -->
+  <div class="dash-mobile-nav" style="display:none;" id="dash-mobile-nav">
+    <button class="dash-mobile-nav__btn active" onclick="Dashboard.scrollToSection('section-overview')">Overview</button>
+    <button class="dash-mobile-nav__btn" onclick="Dashboard.scrollToSection('section-progress')">Progress</button>
+    <button class="dash-mobile-nav__btn" onclick="Dashboard.scrollToSection('section-documents')">Documents</button>
+    <button class="dash-mobile-nav__btn" onclick="Dashboard.scrollToSection('section-giveback')">Give Back</button>
+  </div>
+
+  <!-- Dashboard Layout (hidden until auth) -->
+  <div class="dash-layout" id="dash-layout" style="display:none;">
+
+    <!-- ═══ Left Sidebar ═══ -->
+    <aside class="dash-sidebar">
+      <img src="assets/images/bella-mascot.png" alt="Your avatar" class="dash-sidebar__avatar">
+      <h3 class="dash-sidebar__name" id="dash-user-name">Entrepreneur</h3>
+      <div class="dash-sidebar__type" id="dash-user-type">Getting Started</div>
+
+      <ul class="dash-sidebar__nav">
+        <li>
+          <a href="#" class="active" onclick="event.preventDefault();Dashboard.scrollToSection('section-overview')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Overview
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="event.preventDefault();Dashboard.scrollToSection('section-progress')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Progress
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="event.preventDefault();Dashboard.scrollToSection('section-documents')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Documents
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="event.preventDefault();Dashboard.scrollToSection('section-resources')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Resources
+          </a>
+        </li>
+      </ul>
+
+      <!-- Level Badge -->
+      <div class="dash-level">
+        <div class="dash-level__badge" id="dash-level-badge">Explorer</div>
+        <div class="dash-level__label" id="dash-level-label">Just getting started</div>
+      </div>
+    </aside>
+
+    <!-- ═══ Center Content ═══ -->
+    <main class="dash-center">
+
+      <!-- Welcome Banner -->
+      <div id="dash-welcome" class="dash-welcome">
+        <img src="assets/images/bella-mascot.png" alt="Bella" class="dash-welcome__avatar">
+        <div class="dash-welcome__text">
+          <h2>Welcome back</h2>
+          <p>Loading your dashboard...</p>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="dash-stats" id="section-overview">
+        <div class="dash-stat">
+          <div class="dash-stat__value" id="stat-total">--</div>
+          <div class="dash-stat__label">Total Steps</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat__value" id="stat-done">--</div>
+          <div class="dash-stat__label">Completed</div>
+        </div>
+        <div class="dash-stat dash-stat--highlight">
+          <div class="dash-stat__value" id="stat-pct">--%</div>
+          <div class="dash-stat__label">Progress</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat__value" id="stat-cost">$0</div>
+          <div class="dash-stat__label">Est. Costs Left</div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="dash-progress" id="section-progress">
+        <div class="dash-progress__header">
+          <span class="dash-progress__label" id="progress-label">0 of 0 steps completed</span>
+          <span class="dash-progress__pct" id="progress-pct">0%</span>
+        </div>
+        <div class="dash-progress__track">
+          <div class="dash-progress__fill" id="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Checklist -->
+      <div class="dash-section">
+        <h2 class="dash-section__title">Launch Checklist</h2>
+        <p class="dash-section__subtitle">Your personalized roadmap based on your industry, state, and entity type. Check off items as you complete them.</p>
+        <div id="dash-checklist">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Document Vault -->
+      <div class="dash-section" id="section-documents">
+        <h2 class="dash-section__title">Document Vault</h2>
+        <p class="dash-section__subtitle">Upload and store your key business documents in one secure place.</p>
+        <div class="dash-docs" id="dash-docs">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Give Back Section -->
+      <div class="dash-section" id="section-giveback">
+        <div class="dash-giveback">
+          <h3 class="dash-giveback__title">Graduated Give-Back Model</h3>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm);margin-bottom:var(--sp-md);">
+            Think! Ventures provides everything at zero upfront cost. Once your business is profitable, a small contribution funds the next wave of entrepreneurs.
+          </p>
+          <ul class="dash-giveback__schedule">
+            <li><strong>Year 1:</strong> 10% of net profits (capped at $5,000)</li>
+            <li><strong>Year 2:</strong> 7% of net profits (capped at $5,000)</li>
+            <li><strong>Year 3:</strong> 5% of net profits (capped at $5,000)</li>
+            <li><strong>Year 4+:</strong> Voluntary contributions -- pay it forward</li>
+          </ul>
+          <p class="dash-giveback__impact">Every dollar you give back helps launch another entrepreneur just like you.</p>
+        </div>
+      </div>
+
+      <!-- Mobile Resources (visible on mobile only) -->
+      <div class="dash-resources-mobile" id="section-resources-mobile">
+        <h2 class="dash-section__title">Resources</h2>
+        <div id="dash-resources-list-mobile">
+          <!-- Duplicated by JS on mobile -->
+        </div>
+        <div class="dash-bella" style="margin-top:var(--sp-lg);">
+          <img src="assets/images/bella-mascot.png" alt="Bella" class="dash-bella__avatar">
+          <div class="dash-bella__text" id="dash-bella-text-mobile">
+            Welcome to Think! Ventures. Head over to the LaunchPad to start building your business.
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ═══ Right Sidebar (Resources) ═══ -->
+    <aside class="dash-resources" id="section-resources">
+      <div id="dash-resources-list">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Bella Encouragement -->
+      <div class="dash-bella">
+        <img src="assets/images/bella-mascot.png" alt="Bella" class="dash-bella__avatar">
+        <div class="dash-bella__text" id="dash-bella-text">
+          Welcome to Think! Ventures. Head over to the LaunchPad to start building your business.
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Firebase SDK (Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+
+</body>
+</html>

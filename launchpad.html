@@ -1217,6 +1217,7 @@
         <a href="merch.html" class="nav__link">Merch</a>
         <a href="donate.html" class="nav__link">Donate</a>
         <span class="nav__link active">LaunchPad</span>
+        <a href="dashboard.html" class="nav__link">Dashboard</a>
         <div id="tv-nav-auth">
           <button class="tv-nav-auth-btn" onclick="Auth.openModal('signin')">Sign In</button>
         </div>
@@ -1411,6 +1412,40 @@
         <h3>Application Submitted</h3>
         <p>Our team will review your roadmap and reach out within 24-48 hours. Welcome to Think! Ventures.</p>
       </div>
+
+      <!-- Save to Dashboard CTA -->
+      <div id="save-to-dashboard-cta" style="text-align:center; margin-top: var(--sp-xl); padding: var(--sp-xl); background: rgba(13,79,79,0.2); border: 1px solid rgba(245,166,35,0.2); border-radius: var(--border-radius-lg);">
+        <h3 style="font-family:var(--font-heading); color:var(--color-secondary); margin-bottom:var(--sp-sm);">Track Your Progress</h3>
+        <p style="color:var(--color-text-muted); font-size:var(--fs-sm); margin-bottom:var(--sp-lg);">Save your roadmap to your personal dashboard. Track progress, upload documents, and access resources anytime.</p>
+        <button class="btn btn--gold btn--lg" id="save-to-dashboard-btn" onclick="saveToDashboard()">Save to My Dashboard</button>
+      </div>
+
+      <script>
+        function saveToDashboard() {
+          var user = auth.currentUser;
+          if (!user) {
+            Auth.openModal('signup', function(u) { saveToDashboard(); });
+            return;
+          }
+          var data = {
+            currentStep: typeof currentStep !== 'undefined' ? currentStep : 4,
+            selectedIndustry: selections.industry || null,
+            selectedState: selections.state || null,
+            selectedEntity: selections.entity || null,
+            businessName: (document.getElementById('biz-name') || {}).value || '',
+            businessDesc: (document.getElementById('biz-desc') || {}).value || '',
+            status: 'completed',
+            savedToDashboard: true,
+            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+          };
+          db.collection('applications').doc(user.uid).set(data, { merge: true }).then(function() {
+            window.location.href = 'dashboard.html';
+          }).catch(function(err) {
+            console.error('[SaveDash] Error:', err);
+            window.location.href = 'dashboard.html';
+          });
+        }
+      </script>
 
       <!-- Think CTA -->
       <div class="think-cta" id="think-cta-block">
