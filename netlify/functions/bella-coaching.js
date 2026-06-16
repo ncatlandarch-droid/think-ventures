@@ -13,29 +13,8 @@
  * Returns: { insights: [ { severity, title, detail } ] }
  */
 
-// ── In-Memory Rate Limiter ──────────────────────────────────
-// Map of userId -> { count, resetDate }
-// Resets daily. Fine for a single Lambda instance; production
-// should use Redis or Netlify Blobs for persistence across
-// cold starts.
-var rateLimitMap = {};
-
-function checkRateLimit(userId) {
-  var today = new Date().toISOString().slice(0, 10);
-  var entry = rateLimitMap[userId];
-
-  if (!entry || entry.resetDate !== today) {
-    rateLimitMap[userId] = { count: 1, resetDate: today };
-    return true;
-  }
-
-  if (entry.count >= 3) {
-    return false;
-  }
-
-  entry.count += 1;
-  return true;
-}
+// Rate limiting removed -- cost per call is fractions of a cent.
+// Unlimited coaching is a core value of Think! Ventures.
 
 // ── Fallback Insights (pure math, no AI) ────────────────────
 function generateFallbackInsights(data) {
@@ -156,26 +135,6 @@ exports.handler = async function (event) {
     };
   }
 
-  // ── Rate Limiting ───────────────────────────────────────────
-  var userId = (event.headers && (event.headers['x-user-id'] || event.headers['X-User-Id'])) || '';
-  if (!userId) {
-    return {
-      statusCode: 400,
-      headers: headers,
-      body: JSON.stringify({ error: 'X-User-Id header is required' })
-    };
-  }
-
-  if (!checkRateLimit(userId)) {
-    return {
-      statusCode: 429,
-      headers: headers,
-      body: JSON.stringify({
-        error: 'Rate limit exceeded',
-        message: 'Bella has shared enough insights for today. Come back tomorrow for fresh coaching.'
-      })
-    };
-  }
 
   // ── Parse body ──────────────────────────────────────────────
   var data;

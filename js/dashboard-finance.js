@@ -786,16 +786,6 @@
       body: JSON.stringify(payload)
     })
     .then(function (resp) {
-      if (resp.status === 429) {
-        loadingEl.style.display = 'none';
-        btn.disabled = false;
-        resultsEl.innerHTML =
-          '<div class="fin-insight fin-insight--info">' +
-            '<div class="fin-insight__title">Coaching limit reached for today</div>' +
-            '<p class="fin-insight__detail">Bella has shared enough insights for today. Come back tomorrow for fresh coaching.</p>' +
-          '</div>';
-        return null;
-      }
       return resp.json();
     })
     .then(function (data) {
