@@ -1085,81 +1085,150 @@
     chatData.userIdea = text;
     clearInputArea();
 
-    // Do a preliminary classification to guide follow-ups
+    // Classify the idea
     var results = classifyBusiness(text);
+
     if (results.length > 0) {
       chatData._prelimIndustry = results[0].industry;
-    }
+      var industryName = INDUSTRY_NAMES[results[0].industry] || results[0].industry;
 
-    // Discovery Q1: What type of service/product?
-    askServiceType();
+      // Confirm classification with user
+      addBellaMessage(
+        '<p>It sounds like you want to start a <strong>' + esc(industryName) + '</strong> business. ' +
+        'Did I get that right?</p>',
+        function () {
+          renderChips([
+            { label: 'Yes, that is right', value: results[0].industry, primary: true },
+            { label: 'No, let me pick a different category', value: 'pick' }
+          ], function (chip) {
+            if (chip.value === 'pick') {
+              addUserMessage('Let me pick a different category');
+              clearInputArea();
+              pickIndustryManually();
+            } else {
+              addUserMessage('Yes -- ' + industryName);
+              clearInputArea();
+              confirmAndContinue(chip.value);
+            }
+          });
+        }
+      );
+    } else {
+      // No match -- ask them to pick
+      addBellaMessage(
+        '<p>Interesting idea! I was not able to narrow that down to a specific category. ' +
+        'Which of these industries best describes what you want to do?</p>',
+        function () { pickIndustryManually(); }
+      );
+    }
+  }
+
+  function pickIndustryManually() {
+    clearInputArea();
+    var chips = Object.keys(INDUSTRY_NAMES).map(function (key) {
+      return { label: INDUSTRY_NAMES[key], value: key };
+    });
+    renderChips(chips, function (chip) {
+      addUserMessage(chip.label);
+      clearInputArea();
+      chatData._prelimIndustry = chip.value;
+      confirmAndContinue(chip.value);
+    });
+  }
+
+  function confirmAndContinue(industryKey) {
+    var industryName = INDUSTRY_NAMES[industryKey] || industryKey;
+    chatData._prelimIndustry = industryKey;
+
+    addBellaMessage(
+      '<p>' + esc(industryName) + ' -- that is a solid space to be in. ' +
+      'Now let me ask a few quick questions so I can build you a strong business concept. ' +
+      'Ready? Here we go.</p>',
+      function () {
+        // Small delay then auto-advance to first question
+        setTimeout(function () {
+          askServiceType();
+        }, 600);
+      }
+    );
   }
 
   function askServiceType() {
     var prelim = chatData._prelimIndustry;
     var industryName = prelim ? INDUSTRY_NAMES[prelim] : '';
 
-    var msg;
-    if (industryName) {
-      msg = '<p>A ' + esc(industryName.toLowerCase()) + ' business -- that is a solid space to be in. ' +
-            'Let me ask a few questions so I can build you a strong business concept.</p>' +
-            '<p>First: what specific type of work will you do? The more specific we get, the stronger your business plan will be.</p>';
-    } else {
-      msg = '<p>Interesting idea! Let me ask a few questions so I can help you shape it into a clear business concept.</p>' +
-            '<p>What specific type of product or service will you offer?</p>';
-    }
+    addBellaMessage(
+      '<p><strong>Question 1 of 3:</strong> What specific type of work will you do? ' +
+      'The more specific we get, the stronger your business plan will be.</p>',
+      function () {
+        // Show relevant chips if we have a preliminary industry
+        var chips = [];
+        if (prelim && SERVICE_TYPE_CHIPS[prelim]) {
+          SERVICE_TYPE_CHIPS[prelim].forEach(function (label) {
+            chips.push({ label: label, value: label });
+          });
+        }
 
-    addBellaMessage(msg, function () {
-      // Show relevant chips if we have a preliminary industry, plus text input
-      var chips = [];
-      if (prelim && SERVICE_TYPE_CHIPS[prelim]) {
-        SERVICE_TYPE_CHIPS[prelim].forEach(function (label) {
-          chips.push({ label: label, value: label });
-        });
-      }
+        // Always add a go-back option
+        chips.push({ label: 'Go back -- I want to change my industry', value: '__goback__' });
 
-      if (chips.length > 0) {
-        renderChipsAndText(
-          chips,
-          function (chip) {
-            addUserMessage(chip.label);
-            chatData.serviceType = chip.label;
-            clearInputArea();
-            askCustomers();
-          },
-          'Or describe it in your own words...',
-          function (val) {
-            addUserMessage(val);
-            chatData.serviceType = val;
-            clearInputArea();
-            askCustomers();
-          }
-        );
-      } else {
-        renderTextInput(
-          'e.g. Residential cleaning for homes and apartments...',
-          function (val) {
-            addUserMessage(val);
-            chatData.serviceType = val;
-            clearInputArea();
-            askCustomers();
-          }
-        );
+        if (chips.length > 1) {
+          renderChipsAndText(
+            chips,
+            function (chip) {
+              if (chip.value === '__goback__') {
+                addUserMessage('Let me go back');
+                clearInputArea();
+                pickIndustryManually();
+                return;
+              }
+              addUserMessage(chip.label);
+              chatData.serviceType = chip.label;
+              clearInputArea();
+              askCustomers();
+            },
+            'Or describe it in your own words...',
+            function (val) {
+              addUserMessage(val);
+              chatData.serviceType = val;
+              clearInputArea();
+              askCustomers();
+            }
+          );
+        } else {
+          renderTextInput(
+            'e.g. Residential cleaning for homes and apartments...',
+            function (val) {
+              addUserMessage(val);
+              chatData.serviceType = val;
+              clearInputArea();
+              askCustomers();
+            }
+          );
+        }
       }
-    });
+    );
   }
 
   function askCustomers() {
     addBellaMessage(
-      '<p>Great. Now who are your ideal customers? Knowing your audience shapes everything ' +
-      'from your marketing to your pricing to your insurance needs.</p>',
+      '<p><strong>Question 2 of 3:</strong> Who are your ideal customers? ' +
+      'Knowing your audience shapes everything from your marketing to your pricing.</p>',
       function () {
         var chips = CUSTOMER_CHIPS.map(function (label) {
           return { label: label, value: label };
         });
+        chips.push({ label: 'Go back -- I want to change my answer', value: '__goback__' });
+
         renderChipsAndText(
           chips,
           function (chip) {
+            if (chip.value === '__goback__') {
+              addUserMessage('Let me go back');
+              clearInputArea();
+              askServiceType();
+              return;
+            }
             addUserMessage(chip.label);
             chatData.customers = chip.label;
             clearInputArea();
@@ -1179,12 +1248,20 @@
 
   function askDifferentiator() {
     addBellaMessage(
-      '<p>Last one before I put it all together: what will set your business apart? ' +
+      '<p><strong>Question 3 of 3 -- last one:</strong> What will set your business apart? ' +
       'Why should a customer pick you over someone else?</p>' +
       '<p>Think about things like: quality of work, speed, pricing, specialization, ' +
       'customer service, experience, or anything unique you bring to the table.</p>',
       function () {
-        renderTextInput(
+        renderChipsAndText(
+          [{ label: 'Go back -- I want to change my answer', value: '__goback__' }],
+          function (chip) {
+            if (chip.value === '__goback__') {
+              addUserMessage('Let me go back');
+              clearInputArea();
+              askCustomers();
+            }
+          },
           'e.g. We offer same-day service and a satisfaction guarantee...',
           function (val) {
             addUserMessage(val);
@@ -1196,6 +1273,8 @@
       }
     );
   }
+
+
 
   // ── Generate Business Abstract ──────────────────────────────
 
@@ -1402,9 +1481,14 @@
           }
         });
         chips.push({ label: 'Search all states...', value: 'search' });
+        chips.push({ label: 'Go back -- I want to change my business concept', value: '__goback__' });
 
         renderChips(chips, function (chip) {
-          if (chip.value === 'search') {
+          if (chip.value === '__goback__') {
+            addUserMessage('Let me go back');
+            clearInputArea();
+            askBusinessIdea();
+          } else if (chip.value === 'search') {
             addUserMessage('Search all states');
             showStateSearch();
           } else {
@@ -1534,9 +1618,14 @@
       function () {
         renderChips([
           { label: recName + ' -- let us do it!', value: recType, primary: true },
-          { label: 'Tell me about other options', value: 'other' }
+          { label: 'Tell me about other options', value: 'other' },
+          { label: 'Go back -- I want to change my state', value: '__goback__' }
         ], function (chip) {
-          if (chip.value === 'other') {
+          if (chip.value === '__goback__') {
+            addUserMessage('Let me go back');
+            clearInputArea();
+            askState();
+          } else if (chip.value === 'other') {
             addUserMessage('Tell me about other options');
             showAllEntityOptions();
           } else {
