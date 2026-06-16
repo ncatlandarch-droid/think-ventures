@@ -744,6 +744,12 @@ const Dashboard = (function () {
         if (layoutEl) layoutEl.style.display = 'grid';
 
         renderAll();
+
+        // Initialize financial dashboard if module is loaded
+        if (typeof window.financeModule !== 'undefined' && window.financeModule.init) {
+          var industry = (_appData && _appData.selectedIndustry) ? _appData.selectedIndustry : 'professional';
+          window.financeModule.init(user.uid, industry);
+        }
       });
     });
   }

@@ -946,11 +946,50 @@
       'we will sharpen it together.</p>';
 
     addBellaMessage(msg, function () {
-      renderTextInput(
+      renderChipsAndText(
+        [{ label: 'I already know what I need -- skip ahead', value: 'quickstart' }],
+        function (chip) {
+          if (chip.value === 'quickstart') {
+            addUserMessage('I already know what I need');
+            clearInputArea();
+            quickStartFlow();
+          }
+        },
         'e.g. I want to start a cleaning company, I want to open a bakery...',
         handleBusinessIdea
       );
     });
+  }
+
+  // ── Quick-Start Flow (skip discovery) ─────────────────────────
+
+  function quickStartFlow() {
+    addBellaMessage(
+      '<p>No problem -- let us move fast. Pick your industry:</p>',
+      function () {
+        var chips = Object.keys(INDUSTRY_NAMES).map(function (key) {
+          return { label: INDUSTRY_NAMES[key], value: key };
+        });
+        renderChips(chips, function (chip) {
+          addUserMessage(chip.label);
+          chatData.industry = chip.value;
+          chatData.industryName = chip.label;
+          chatData.businessDesc = chip.label + ' business';
+          clearInputArea();
+
+          if (window.selections) window.selections.industry = chip.value;
+          if (typeof window.selectIndustry === 'function') {
+            try { window.selectIndustry(chip.value); } catch (e) { /* silent */ }
+          }
+          if (window.gamification) {
+            try { window.gamification.completeStep(0); } catch (e) { /* silent */ }
+          }
+
+          syncStepper(1);
+          askState();
+        });
+      }
+    );
   }
 
   // ── Discovery Phase Sub-Question Maps ──────────────────────────
